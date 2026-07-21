@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Tawakal Tehnik Mandiri - Solusi Industri</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Montserrat (Professional Headings) & Inter (Clean Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ttmBlue: '#0f172a', // Dark Navy Blue
+                        ttmGold: '#facc15', // Bright Yellow/Gold
+                        ttmLightBlue: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .font-heading { font-family: 'Montserrat', sans-serif; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #0f172a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+        /* Animations */
+        .fade-in-up { animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Industrial Hover Effects */
+        .product-card { transition: all 0.3s ease; border-bottom: 4px solid transparent; }
+        .product-card:hover { transform: translateY(-5px); border-bottom-color: #facc15; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+        
+        .btn-industrial { position: relative; overflow: hidden; z-index: 1; }
+        .btn-industrial::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: rgba(255,255,255,0.2); transition: left 0.4s ease; z-index: -1; transform: skewX(-20deg); }
+        .btn-industrial:hover::before { left: 100%; }
+
+        /* Image Gallery Active State */
+        .thumb-active { border-color: #0f172a !important; transform: scale(1.05); }
+        
+        /* Filter Button Styles */
+        .filter-btn { transition: all 0.3s ease; }
+        .filter-btn.active { background-color: #0f172a; color: white; border-color: #0f172a; }
+        .filter-btn:not(.active) { background-color: white; color: #4b5563; border-color: #e5e7eb; }
+        .filter-btn:not(.active):hover { border-color: #0f172a; color: #0f172a; }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800 antialiased flex flex-col min-h-screen selection:bg-ttmGold selection:text-ttmBlue">
+
+    <!-- ==================== HEADER ==================== -->
+    <header id="frontend-header" class="sticky top-0 z-50 bg-white shadow-md border-b-4 border-ttmGold">
+        <!-- Top Bar -->
+        <div class="bg-ttmBlue text-white text-xs py-2 px-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex space-x-4">
+                    <span><i class="fas fa-phone-alt mr-2 text-ttmGold"></i>085 718 200 115</span>
+                    <span class="hidden md:inline"><i class="fas fa-envelope mr-2 text-ttmGold"></i>sales@tatehnikk.com</span>
+                </div>
+                <div class="flex space-x-3">
+                    <a href="#" class="hover:text-ttmGold transition"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-ttmGold transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-ttmGold transition"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Area -->
+                <div class="flex items-center cursor-pointer group" onclick="navigateTo('home')">
+                    <div class="w-12 h-12 bg-ttmBlue rounded-full flex items-center justify-center text-white font-black text-xl mr-3 border-2 border-ttmGold group-hover:scale-110 transition duration-300">
+                        <img scr="https://tatehnik.com/assets/uploads/logo.jpg">
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-black uppercase tracking-tight leading-none text-ttmBlue font-heading">PT Tawakal<br>Tehnik Mandiri</h1>
+                        <p class="text-[10px] text-gray-500 font-medium tracking-wide uppercase">Solusi Tepat, Teknologi Hebat</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" onclick="navigateTo('home')" class="text-sm font-bold uppercase hover:text-ttmBlue transition relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-1 after:bottom-[-4px] after:left-0 after:bg-ttmGold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left font-heading">Beranda</a>
+                    <a href="#" onclick="navigateTo('products')" class="text-sm font-bold uppercase hover:text-ttmBlue transition relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-1 after:bottom-[-4px] after:left-0 after:bg-ttmGold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left font-heading">Produk</a>
+                    <a href="#" onclick="navigateTo('brands')" class="text-sm font-bold uppercase hover:text-ttmBlue transition relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-1 after:bottom-[-4px] after:left-0 after:bg-ttmGold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left font-heading">Merek</a>
+                    <a href="#" onclick="navigateTo('about')" class="text-sm font-bold uppercase hover:text-ttmBlue transition relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-1 after:bottom-[-4px] after:left-0 after:bg-ttmGold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left font-heading">Tentang Kami</a>
+                    <a href="#" onclick="navigateTo('contact')" class="text-sm font-bold uppercase hover:text-ttmBlue transition relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-1 after:bottom-[-4px] after:left-0 after:bg-ttmGold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left font-heading">Kontak</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-ttmBlue hover:text-ttmGold focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-lg origin-top transform transition-all duration-300 scale-y-0 opacity-0">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#" onclick="navigateTo('home'); toggleMobileMenu()" class="block px-3 py-3 text-base font-bold uppercase hover:bg-gray-50 hover:text-ttmBlue border-l-4 border-transparent hover:border-ttmGold transition font-heading">Beranda</a>
+                <a href="#" onclick="navigateTo('products'); toggleMobileMenu()" class="block px-3 py-3 text-base font-bold uppercase hover:bg-gray-50 hover:text-ttmBlue border-l-4 border-transparent hover:border-ttmGold transition font-heading">Produk</a>
+                <a href="#" onclick="navigateTo('brands'); toggleMobileMenu()" class="block px-3 py-3 text-base font-bold uppercase hover:bg-gray-50 hover:text-ttmBlue border-l-4 border-transparent hover:border-ttmGold transition font-heading">Merek</a>
+                <a href="#" onclick="navigateTo('about'); toggleMobileMenu()" class="block px-3 py-3 text-base font-bold uppercase hover:bg-gray-50 hover:text-ttmBlue border-l-4 border-transparent hover:border-ttmGold transition font-heading">Tentang Kami</a>
+                <a href="#" onclick="navigateTo('contact'); toggleMobileMenu()" class="block px-3 py-3 text-base font-bold uppercase hover:bg-gray-50 hover:text-ttmBlue border-l-4 border-transparent hover:border-ttmGold transition font-heading">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="app-content" class="flex-grow fade-in-up">
+        <!-- Content injected via JS -->
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer id="frontend-footer" class="bg-ttmBlue text-white mt-auto border-t-8 border-ttmGold">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- Brand Info -->
+                <div class="reveal">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-ttmBlue font-black text-lg mr-3 font-heading">TTM</div>
+                        <h3 class="text-lg font-bold uppercase leading-tight font-heading">PT Tawakal<br>Tehnik Mandiri</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                        Authorized Distributor solusi timbangan industri dan peralatan mesin presisi tinggi. Kami menyediakan produk original dengan kualitas terjamin dan layanan profesional.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center hover:bg-ttmGold hover:text-ttmBlue transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center hover:bg-ttmGold hover:text-ttmBlue transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center hover:bg-ttmGold hover:text-ttmBlue transition"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="reveal delay-100">
+                    <h4 class="text-ttmGold font-bold uppercase tracking-wider mb-6 border-b border-white/20 pb-2 inline-block font-heading">Menu Cepat</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="#" onclick="navigateTo('home')" class="hover:text-white hover:translate-x-2 transition-transform inline-block"><i class="fas fa-chevron-right text-xs mr-2 text-ttmGold"></i>Beranda</a></li>
+                        <li><a href="#" onclick="navigateTo('products')" class="hover:text-white hover:translate-x-2 transition-transform inline-block"><i class="fas fa-chevron-right text-xs mr-2 text-ttmGold"></i>Katalog Produk</a></li>
+                        <li><a href="#" onclick="navigateTo('brands')" class="hover:text-white hover:translate-x-2 transition-transform inline-block"><i class="fas fa-chevron-right text-xs mr-2 text-ttmGold"></i>Merek Partner</a></li>
+                        <li><a href="#" onclick="navigateTo('about')" class="hover:text-white hover:translate-x-2 transition-transform inline-block"><i class="fas fa-chevron-right text-xs mr-2 text-ttmGold"></i>Tentang Kami</a></li>
+                    </ul>
+                </div>
+
+                <!-- Products -->
+                <div class="reveal delay-200">
+                    <h4 class="text-ttmGold font-bold uppercase tracking-wider mb-6 border-b border-white/20 pb-2 inline-block font-heading">Kategori Produk</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white hover:translate-x-2 transition-transform inline-block"><i class="fas fa-chevron-right text-xs mr-2 text-ttmGold"></i>Load Cell Bongshin</a></li>
+                        <li><a href="#" class="hover:text-white hover:translate-x-2 transition-transform inline-block"><i class="fas fa-chevron-right text-xs mr-2 text-ttmGold"></i>CNC Tool & Grinder</a></li>
+                        <li><a href="#" class="hover:text-white hover:translate-x-2 transition-transform inline-block"><i class="fas fa-chevron-right text-xs mr-2 text-ttmGold"></i>Filter Coolant Sugino</a></li>
+                        <li><a href="#" class="hover:text-white hover:translate-x-2 transition-transform inline-block"><i class="fas fa-chevron-right text-xs mr-2 text-ttmGold"></i>Painting Conveyor</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Footer -->
+                <div class="reveal delay-300">
+                    <h4 class="text-ttmGold font-bold uppercase tracking-wider mb-6 border-b border-white/20 pb-2 inline-block font-heading">Hubungi Kami</h4>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 w-5 text-ttmGold"></i> Jl. Cibenda Ruko 2A-3A, Serang Baru Bekasi</li>
+                        <li class="flex items-center"><i class="fas fa-phone-alt mr-3 w-5 text-ttmGold"></i> 085 718 200 115</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-3 w-5 text-ttmGold"></i> sales@tatehnikk.com</li>
+                        <li class="flex items-center"><i class="fas fa-globe mr-3 w-5 text-ttmGold"></i> www.tatehnik.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 reveal">
+                <p>&copy; 2024 PT Tawakal Tehnik Mandiri. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Authorized Distributor - Produk Original & Bergaransi</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        // --- DATA MOCKUP (Updated with multiple images for gallery feature) ---
+        const brands = [
+            { id: 'bongshin', name: 'BONGSHIN', tagline: 'LOAD CELL', desc: 'Distributor Resmi Load Cell Bongshin Korea. Menyediakan berbagai jenis load cell dengan akurasi tinggi, tahan lama, dan andal.', img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80' },
+            { id: 'bigtool', name: 'BIG TOOL', tagline: 'CNC SOLUTIONS', desc: 'Produsen mesin cutting tool berkualitas tinggi dari Korea. Dikenal dengan presisi, keandalan, dan teknologi inovatif.', img: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=800&q=80' },
+            { id: 'sugino', name: 'SUGINO', tagline: 'THINK VALUE', desc: 'Spesialis sistem filtrasi coolant. Menjaga kebersihan cairan pendingin, meningkatkan umur mesin dan kualitas produk.', img: 'https://images.unsplash.com/photo-1531297461136-82lw9z28b43d?auto=format&fit=crop&w=800&q=80' },
+            { id: 'ehwa', name: 'EHWA', tagline: 'GRINDING WHEEL', desc: 'Menyediakan diamond & CBN grinding wheel berkualitas tinggi untuk aplikasi presisi dengan umur pakai maksimal.', img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80' },
+            { id: 'jukyo', name: 'JUKYO', tagline: 'PAINTING CHAIN', desc: 'Rantai painting berkualitas tinggi yang kuat, presisi, dan tahan lama untuk berbagai kebutuhan industri.', img: 'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?auto=format&fit=crop&w=800&q=80' }
+        ];
+
+        // Added 'images' array to simulate the gallery feature from the video
+        const products = [
+            { 
+                id: 1, 
+                name: "Compression Load Cell BSA", 
+                brand: "Bongshin", 
+                category: "load-cell", 
+                price: "Call for Price", 
+                desc: "Kapasitas: 500kg - 50ton. Aplikasi: Hopper, Tank, Silo, Platform Scale. Desain compact dengan akurasi tinggi.", 
+                images: ["#cbd5e1", "#94a3b8", "#64748b", "#475569"] 
+            },
+            { 
+                id: 2, 
+                name: "Canister Load Cell BCK", 
+                brand: "Bongshin", 
+                category: "load-cell", 
+                price: "Call for Price", 
+                desc: "Kapasitas: 1ton - 100ton. Aplikasi: Tank, Silo, Truck Scale. Tahan terhadap beban kejut dan side load.", 
+                images: ["#94a3b8", "#cbd5e1", "#334155", "#1e293b"] 
+            },
+            { 
+                id: 3, 
+                name: "Shear Beam Load Cell BSU", 
+                brand: "Bongshin", 
+                category: "load-cell", 
+                price: "Call for Price", 
+                desc: "Kapasitas: 250kg - 5ton. Aplikasi: Platform Scale, Hopper, Conveyor. Instalasi mudah dan stabil.", 
+                images: ["#64748b", "#475569", "#cbd5e1", "#94a3b8"] 
+            },
+            { 
+                id: 4, 
+                name: "XIN Series CNC Tool Grinder", 
+                brand: "Big Tool", 
+                category: "cnc", 
+                price: "Call for Price", 
+                desc: "Presisi tinggi, stabil dan handal. Mudah dioperasikan dengan hasil gerinda sangat akurat. Dilengkapi kontrol CNC modern.", 
+                images: ["#475569", "#334155", "#1e293b", "#0f172a"] 
+            },
+            { 
+                id: 5, 
+                name: "Magnetic Separator", 
+                brand: "Sugino", 
+                category: "filter", 
+                price: "Call for Price", 
+                desc: "Menghilangkan serbuk besi halus secara efektif dari coolant. Memperpanjang umur tool dan meningkatkan kualitas permukaan.", 
+                images: ["#334155", "#475569", "#64748b", "#94a3b8"] 
+            },
+            { 
+                id: 6, 
+                name: "Paper Filter System", 
+                brand: "Sugino", 
+                category: "filter", 
+                price: "Call for Price", 
+                desc: "Filtrasi halus dengan kertas filter berkualitas tinggi. Cocok untuk proses grinding presisi tinggi.", 
+                images: ["#1e293b", "#334155", "#475569", "#64748b"] 
+            },
+            { 
+                id: 7, 
+                name: "Drum Filter Automatic", 
+                brand: "Sugino", 
+                category: "filter", 
+                price: "Call for Price", 
+                desc: "Filtrasi otomatis dengan kapasitas besar dan efisiensi tinggi. Mengurangi frekuensi penggantian filter.", 
+                images: ["#0f172a", "#1e293b", "#334155", "#475569"] 
+            },
+            { 
+                id: 8, 
+                name: "Diamond Grinding Wheel", 
+                brand: "Ehwa", 
+                category: "grinding", 
+                price: "Call for Price", 
+                desc: "Grinding wheel presisi tinggi untuk aplikasi industrial berat. Umur pakai panjang dan konsistensi dimensi terjaga.", 
+                images: ["#334155", "#0f172a", "#1e293b", "#475569"] 
+            }
+        ];
+
+        // --- ROUTING & RENDERING ---
+        function navigateTo(page, param = null) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const content = document.getElementById('app-content');
+            const header = document.getElementById('frontend-header');
+            const footer = document.getElementById('frontend-footer');
+
+            // Reset animation trigger
+            content.classList.remove('fade-in-up');
+            void content.offsetWidth; // Trigger reflow
+            content.classList.add('fade-in-up');
+
+            if (page.startsWith('admin')) {
+                header.style.display = 'none';
+                footer.style.display = 'none';
+                renderAdmin(page, param);
+            } else {
+                header.style.display = 'block';
+                footer.style.display = 'block';
+                
+                switch(page) {
+                    case 'home': content.innerHTML = renderHome(); break;
+                    case 'products': content.innerHTML = renderProducts(); break;
+                    case 'product-detail': content.innerHTML = renderProductDetail(param); break; // New route for detail
+                    case 'brands': content.innerHTML = renderBrands(); break;
+                    case 'about': content.innerHTML = renderAbout(); break;
+                    case 'contact': content.innerHTML = renderContact(); break;
+                    default: content.innerHTML = renderHome();
+                }
+                
+                // Re-initialize scroll observer
+                setTimeout(initScrollReveal, 100);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => {
+                    menu.classList.remove('scale-y-0', 'opacity-0');
+                    menu.classList.add('scale-y-100', 'opacity-100');
+                }, 10);
+            } else {
+                menu.classList.remove('scale-y-100', 'opacity-100');
+                menu.classList.add('scale-y-0', 'opacity-0');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // --- SCROLL REVEAL OBSERVER ---
+        function initScrollReveal() {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        // --- FILTER FUNCTIONALITY ---
+        function filterProducts(category) {
+            // Update active button state
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Filter products
+            let filteredProducts = products;
+            if (category !== 'all') {
+                filteredProducts = products.filter(p => p.category === category);
+            }
+
+            // Render filtered products
+            const productGrid = document.getElementById('product-grid');
+            if (filteredProducts.length > 0) {
+                productGrid.innerHTML = filteredProducts.map((p, idx) => `
+                    <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 reveal delay-${(idx % 4 + 1) * 100} cursor-pointer" onclick="navigateTo('product-detail', ${p.id})">
+                        <div class="aspect-square bg-gray-100 relative overflow-hidden group">
+                            <div class="absolute inset-0 flex items-center justify-center text-6xl transition-transform duration-500 group-hover:scale-110" style="background-color: ${p.images[0]}">
+                                <i class="fas fa-cog text-white/30 animate-spin-slow" style="animation-duration: 10s;"></i>
+                            </div>
+                            <div class="absolute top-4 left-4 bg-ttmBlue text-white text-[10px] font-bold px-3 py-1 uppercase tracking-wider rounded-sm font-heading">${p.brand}</div>
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-sm font-black uppercase text-ttmBlue mb-2 leading-tight h-10 font-heading">${p.name}</h3>
+                            <p class="text-xs text-gray-500 mb-4 line-clamp-2 h-8">${p.desc}</p>
+                            <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                                <span class="text-xs font-bold text-ttmGold uppercase font-heading">Industrial Grade</span>
+                                <span class="text-ttmBlue hover:text-ttmGold transition text-sm font-bold font-heading">Detail <i class="fas fa-arrow-right ml-1"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                productGrid.innerHTML = `
+                    <div class="col-span-full text-center py-20">
+                        <i class="fas fa-search text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500 font-heading">Tidak ada produk dalam kategori ini.</p>
+                    </div>
+                `;
+            }
+            
+            // Re-initialize scroll observer for new elements
+            setTimeout(initScrollReveal, 100);
+        }
+
+        // --- PAGE TEMPLATES ---
+
+        function renderHome() {
+            return `
+                <!-- Hero Section -->
+                <section class="relative h-[85vh] flex items-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1565514020176-db79294fcce7?auto=format&fit=crop&w=1920&q=80');">
+                    <div class="absolute inset-0 bg-gradient-to-r from-ttmBlue/95 via-ttmBlue/80 to-transparent"></div>
+                    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="max-w-4xl reveal active">
+                            <div class="inline-block bg-ttmGold text-ttmBlue font-black text-xs uppercase tracking-widest px-4 py-1 mb-6 font-heading">Authorized Distributor</div>
+                            <h2 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight uppercase font-heading">Solusi Timbangan<br><span class="text-ttmGold">Industri Presisi</span></h2>
+                            <p class="text-xl text-gray-300 mb-10 font-light max-w-2xl">PT Tawakal Tehnik Mandiri menyediakan produk original berkualitas tinggi untuk kebutuhan industri Anda. Akurat, Tangguh & Terpercaya.</p>
+                            
+                            <!-- FIXED BUTTONS: Wrapped in flex-wrap and given proper padding/max-width -->
+                            <div class="flex flex-wrap gap-4 max-w-full">
+                                <button onclick="navigateTo('products')" class="bg-ttmGold text-ttmBlue px-6 py-4 md:px-8 md:py-4 font-black uppercase tracking-wider hover:bg-white hover:scale-105 transition-all duration-300 btn-industrial shadow-lg shadow-yellow-500/20 font-heading whitespace-nowrap">Lihat Katalog</button>
+                                <button onclick="navigateTo('contact')" class="border-2 border-white text-white px-6 py-4 md:px-8 md:py-4 font-bold uppercase tracking-wider hover:bg-white hover:text-ttmBlue hover:scale-105 transition-all duration-300 font-heading whitespace-nowrap">Hubungi Kami</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Features Strip -->
+                    <div class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-200 py-6 hidden md:block">
+                        <div class="container mx-auto px-4 flex justify-between items-center text-sm font-bold text-ttmBlue uppercase tracking-wide font-heading">
+                            <div class="flex items-center"><i class="fas fa-shield-alt text-ttmGold mr-3 text-xl"></i> Produk Original</div>
+                            <div class="flex items-center"><i class="fas fa-award text-ttmGold mr-3 text-xl"></i> Kualitas Terjamin</div>
+                            <div class="flex items-center"><i class="fas fa-headset text-ttmGold mr-3 text-xl"></i> Layanan Profesional</div>
+                            <div class="flex items-center"><i class="fas fa-truck-fast text-ttmGold mr-3 text-xl"></i> Pengiriman Cepat</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Featured Brands Preview -->
+                <section class="py-20 bg-white">
+                    <div class="container mx-auto px-4">
+                        <div class="text-center mb-16 reveal">
+                            <h2 class="text-4xl font-black uppercase text-ttmBlue mb-4 font-heading">Merek Partner Kami</h2>
+                            <div class="w-24 h-1 bg-ttmGold mx-auto"></div>
+                            <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Kami bekerja sama dengan produsen terkemuka dunia untuk menghadirkan teknologi terbaik bagi industri Indonesia.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500 reveal delay-100">
+                            ${brands.map(b => `
+                                <div class="flex flex-col items-center justify-center p-4 hover:scale-110 transition duration-300 cursor-pointer" onclick="navigateTo('brands')">
+                                    <div class="text-2xl font-black text-ttmBlue mb-2 font-heading">${b.name}</div>
+                                    <div class="text-xs font-bold text-gray-400 uppercase tracking-widest font-heading">${b.tagline}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Product Categories Grid -->
+                <section class="py-20 bg-gray-50">
+                    <div class="container mx-auto px-4">
+                        <div class="flex justify-between items-end mb-12 reveal">
+                            <div>
+                                <h2 class="text-4xl font-black uppercase text-ttmBlue font-heading">Kategori Unggulan</h2>
+                                <div class="w-24 h-1 bg-ttmGold mt-4"></div>
+                            </div>
+                            <button onclick="navigateTo('products')" class="hidden md:block text-ttmBlue font-bold uppercase hover:text-ttmGold transition font-heading">Lihat Semua <i class="fas fa-arrow-right ml-2"></i></button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            ${[
+                                {title: 'Load Cell Bongshin', img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80', cat: 'load-cell'},
+                                {title: 'CNC Tool Grinder', img: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=600&q=80', cat: 'cnc'},
+                                {title: 'Filter Coolant Sugino', img: 'https://images.unsplash.com/photo-1531297461136-82lw9z28b43d?auto=format&fit=crop&w=600&q=80', cat: 'filter'}
+                            ].map((item, idx) => `
+                                <div class="group relative h-80 overflow-hidden rounded-xl shadow-lg cursor-pointer reveal delay-${(idx+1)*100}" onclick="navigateTo('products')">
+                                    <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-ttmBlue via-ttmBlue/50 to-transparent opacity-90"></div>
+                                    <div class="absolute bottom-0 left-0 p-8 translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                        <h3 class="text-2xl font-black text-white uppercase mb-2 font-heading">${item.title}</h3>
+                                        <span class="text-ttmGold text-sm font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition duration-500 delay-100 font-heading">Lihat Produk <i class="fas fa-arrow-right ml-1"></i></span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Why Choose Us -->
+                <section class="py-20 bg-ttmBlue text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 transform translate-x-1/4"></div>
+                    <div class="container mx-auto px-4 relative z-10">
+                        <h2 class="text-4xl font-black uppercase text-center mb-16 reveal font-heading">Mengapa Memilih TTM?</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                            ${[
+                                {icon: 'fa-crosshairs', title: 'Akurasi Tinggi', desc: 'Hasil penimbangan stabil dan presisi untuk kebutuhan industri kritis.'},
+                                {icon: 'fa-check-circle', title: 'Original Korea', desc: 'Produk 100% asli dari pabrik resmi dengan garansi penuh.'},
+                                {icon: 'fa-industry', title: 'Aplikasi Luas', desc: 'Cocok untuk berbagai sektor mulai dari manufaktur hingga pertambangan.'},
+                                {icon: 'fa-tools', title: 'Support Teknis', desc: 'Tim engineer siap membantu instalasi dan maintenance.'}
+                            ].map((item, idx) => `
+                                <div class="bg-white/5 p-8 rounded-xl border border-white/10 hover:bg-white/10 hover:border-ttmGold transition-all duration-300 reveal delay-${(idx+1)*100}">
+                                    <div class="w-16 h-16 bg-ttmGold rounded-lg flex items-center justify-center text-ttmBlue text-2xl mb-6 shadow-lg shadow-yellow-500/20"><i class="fas ${item.icon}"></i></div>
+                                    <h3 class="text-xl font-bold mb-3 uppercase font-heading">${item.title}</h3>
+                                    <p class="text-gray-400 text-sm leading-relaxed">${item.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderProducts() {
+            return `
+                <section class="relative h-[40vh] flex items-center justify-center bg-cover bg-center bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=80');">
+                    <div class="absolute inset-0 bg-ttmBlue/80"></div>
+                    <div class="relative z-10 text-center text-white px-4 reveal active">
+                        <h2 class="text-5xl md:text-6xl font-black uppercase mb-4 tracking-wide font-heading">Katalog Produk</h2>
+                        <p class="max-w-2xl mx-auto text-lg opacity-80 font-light">Temukan solusi peralatan industri presisi tinggi dari merek-merek ternama dunia.</p>
+                    </div>
+                </section>
+                
+                <section class="py-16 container mx-auto px-4">
+                    <!-- Filter Tabs - NOW FUNCTIONAL -->
+                    <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
+                        <button class="filter-btn active px-6 py-3 font-bold uppercase text-sm rounded-full shadow-lg font-heading" data-category="all" onclick="filterProducts('all')">Semua Produk</button>
+                        <button class="filter-btn px-6 py-3 font-bold uppercase text-sm rounded-full shadow-lg font-heading" data-category="load-cell" onclick="filterProducts('load-cell')">Load Cell</button>
+                        <button class="filter-btn px-6 py-3 font-bold uppercase text-sm rounded-full shadow-lg font-heading" data-category="cnc" onclick="filterProducts('cnc')">CNC Tools</button>
+                        <button class="filter-btn px-6 py-3 font-bold uppercase text-sm rounded-full shadow-lg font-heading" data-category="filter" onclick="filterProducts('filter')">Filter Coolant</button>
+                    </div>
+
+                    <!-- Product Grid Container -->
+                    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        ${products.map((p, idx) => `
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 reveal delay-${(idx % 4 + 1) * 100} cursor-pointer" onclick="navigateTo('product-detail', ${p.id})">
+                                <div class="aspect-square bg-gray-100 relative overflow-hidden group">
+                                    <div class="absolute inset-0 flex items-center justify-center text-6xl transition-transform duration-500 group-hover:scale-110" style="background-color: ${p.images[0]}">
+                                        <i class="fas fa-cog text-white/30 animate-spin-slow" style="animation-duration: 10s;"></i>
+                                    </div>
+                                    <div class="absolute top-4 left-4 bg-ttmBlue text-white text-[10px] font-bold px-3 py-1 uppercase tracking-wider rounded-sm font-heading">${p.brand}</div>
+                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300"></div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-sm font-black uppercase text-ttmBlue mb-2 leading-tight h-10 font-heading">${p.name}</h3>
+                                    <p class="text-xs text-gray-500 mb-4 line-clamp-2 h-8">${p.desc}</p>
+                                    <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                                        <span class="text-xs font-bold text-ttmGold uppercase font-heading">Industrial Grade</span>
+                                        <span class="text-ttmBlue hover:text-ttmGold transition text-sm font-bold font-heading">Detail <i class="fas fa-arrow-right ml-1"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        // --- NEW PRODUCT DETAIL PAGE WITH IMAGE GALLERY FEATURE ---
+        function renderProductDetail(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return '<div class="p-20 text-center">Produk tidak ditemukan</div>';
+
+            return `
+                <div class="bg-gray-100 py-4 border-b border-gray-200">
+                    <div class="container mx-auto px-4 text-sm text-gray-500">
+                        <span class="cursor-pointer hover:text-ttmBlue transition" onclick="navigateTo('home')">Beranda</span> 
+                        <i class="fas fa-chevron-right text-[10px] mx-2"></i> 
+                        <span class="cursor-pointer hover:text-ttmBlue transition" onclick="navigateTo('products')">Semua Produk</span> 
+                        <i class="fas fa-chevron-right text-[10px] mx-2"></i> 
+                        <span class="text-ttmBlue font-bold font-heading">${product.name}</span>
+                    </div>
+                </div>
+
+                <section class="py-16 container mx-auto px-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                        <!-- LEFT COLUMN: IMAGE GALLERY (Feature from Video) -->
+                        <div class="reveal">
+                            <!-- Main Image Display -->
+                            <div class="aspect-square bg-gray-200 rounded-xl overflow-hidden mb-6 flex items-center justify-center text-9xl shadow-inner transition-all duration-500 border border-gray-300" id="main-product-img" style="background-color: ${product.images[0]}">
+                                <i class="fas fa-cog text-white/40 animate-spin-slow" style="animation-duration: 15s;"></i>
+                            </div>
+                            
+                            <!-- Thumbnail Gallery -->
+                            <div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+                                ${product.images.map((color, idx) => `
+                                    <div class="w-24 h-24 flex-shrink-0 rounded-lg cursor-pointer border-2 border-transparent hover:border-ttmBlue transition-all duration-300 overflow-hidden shadow-sm ${idx === 0 ? 'thumb-active' : ''}" 
+                                         onclick="changeMainImage('${color}', this)" 
+                                         style="background-color: ${color}">
+                                        <div class="w-full h-full flex items-center justify-center text-3xl">
+                                            <i class="fas fa-cog text-white/50"></i>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- RIGHT COLUMN: PRODUCT INFO -->
+                        <div class="reveal delay-200">
+                            <div class="mb-2">
+                                <span class="bg-ttmGold text-ttmBlue text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm font-heading">${product.brand}</span>
+                                <span class="ml-2 text-gray-400 text-xs uppercase tracking-wider font-heading">${product.category}</span>
+                            </div>
+                            
+                            <h1 class="text-4xl md:text-5xl font-black text-ttmBlue mb-6 uppercase leading-tight font-heading">${product.name}</h1>
+                            
+                            <div class="flex items-center mb-8">
+                                <span class="text-3xl font-bold text-gray-900 mr-4 font-heading">${product.price}</span>
+                                <span class="text-sm text-green-600 font-bold bg-green-100 px-3 py-1 rounded-full font-heading"><i class="fas fa-check-circle mr-1"></i> Tersedia</span>
+                            </div>
+                            
+                            <button class="w-full bg-ttmBlue text-white py-5 font-black uppercase tracking-widest hover:bg-ttmGold hover:text-ttmBlue hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 btn-industrial shadow-lg mb-10 flex items-center justify-center font-heading">
+                                <i class="fab fa-whatsapp mr-3 text-xl"></i> Pesan Sekarang / Minta Penawaran
+                            </button>
+                            
+                            <p class="text-gray-600 mb-12 leading-relaxed text-lg border-l-4 border-ttmGold pl-6 italic">${product.desc}</p>
+
+                            <!-- Accordions for Specs -->
+                            <div class="border-t border-gray-200 space-y-0">
+                                <details class="group border-b border-gray-200 open:bg-gray-50 transition-colors duration-300" open>
+                                    <summary class="flex justify-between items-center py-6 font-bold text-ttmBlue select-none hover:text-ttmGold transition cursor-pointer font-heading">
+                                        Spesifikasi Teknis <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open:rotate-180"></i>
+                                    </summary>
+                                    <div class="pb-6 text-sm text-gray-600 pl-4 leading-relaxed bg-gray-50">
+                                        <ul class="list-disc space-y-2 marker:text-ttmGold">
+                                            <li>Material: High-grade Stainless Steel / Alloy</li>
+                                            <li>Protection Class: IP67 / IP68</li>
+                                            <li>Accuracy Class: C3 / C4 / C5</li>
+                                            <li>Cable Length: Standard 5m shielded cable</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                                <details class="group border-b border-gray-200 open:bg-gray-50 transition-colors duration-300">
+                                    <summary class="flex justify-between items-center py-6 font-bold text-ttmBlue select-none hover:text-ttmGold transition cursor-pointer font-heading">
+                                        Dimensi & Berat <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open:rotate-180"></i>
+                                    </summary>
+                                    <div class="pb-6 text-sm text-gray-600 pl-4 leading-relaxed bg-gray-50">
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div><span class="font-bold text-gray-800 font-heading">Lebar:</span> 120 mm</div>
+                                            <div><span class="font-bold text-gray-800 font-heading">Tinggi:</span> 85 mm</div>
+                                            <div><span class="font-bold text-gray-800 font-heading">Panjang:</span> 200 mm</div>
+                                            <div><span class="font-bold text-gray-800 font-heading">Berat:</span> 2.5 kg</div>
+                                        </div>
+                                    </div>
+                                </details>
+                                <details class="group border-b border-gray-200 open:bg-gray-50 transition-colors duration-300">
+                                    <summary class="flex justify-between items-center py-6 font-bold text-ttmBlue select-none hover:text-ttmGold transition cursor-pointer font-heading">
+                                        Aplikasi & Penggunaan <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-open:rotate-180"></i>
+                                    </summary>
+                                    <div class="pb-6 text-sm text-gray-600 pl-4 leading-relaxed bg-gray-50">
+                                        <p>Cocok digunakan untuk sistem timbangan hopper, tangki penyimpanan, silo, dan platform scale industri berat. Tahan terhadap lingkungan korosif dan beban dinamis.</p>
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // Function to handle image switching (The requested feature)
+        function changeMainImage(color, el) {
+            const mainDiv = document.getElementById('main-product-img');
+            
+            // Add a quick fade effect
+            mainDiv.style.opacity = '0.5';
+            setTimeout(() => {
+                mainDiv.style.backgroundColor = color;
+                mainDiv.style.opacity = '1';
+            }, 150);
+            
+            // Update active border styling on thumbnails
+            const thumbnails = el.parentElement.children;
+            for (let i = 0; i < thumbnails.length; i++) {
+                thumbnails[i].classList.remove('thumb-active', 'border-ttmBlue');
+                thumbnails[i].classList.add('border-transparent');
+            }
+            
+            el.classList.remove('border-transparent');
+            el.classList.add('thumb-active', 'border-ttmBlue');
+        }
+
+        function renderBrands() {
+            return `
+                <section class="py-20 container mx-auto px-4">
+                    <div class="text-center mb-16 reveal">
+                        <h2 class="text-4xl font-black uppercase text-ttmBlue mb-4 font-heading">Merek Partner Resmi</h2>
+                        <div class="w-24 h-1 bg-ttmGold mx-auto"></div>
+                    </div>
+
+                    <div class="space-y-12">
+                        ${brands.map((b, idx) => `
+                            <div class="flex flex-col md:flex-row gap-8 items-center bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition duration-300 reveal delay-${(idx % 3 + 1) * 100}">
+                                <div class="w-full md:w-1/3 h-64 bg-gray-100 rounded-xl overflow-hidden relative">
+                                    <img src="${b.img}" class="w-full h-full object-cover hover:scale-110 transition duration-700">
+                                    <div class="absolute inset-0 bg-ttmBlue/10"></div>
+                                </div>
+                                <div class="w-full md:w-2/3">
+                                    <div class="flex items-center mb-4">
+                                        <h3 class="text-3xl font-black text-ttmBlue uppercase mr-4 font-heading">${b.name}</h3>
+                                        <span class="bg-ttmGold text-ttmBlue text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm font-heading">${b.tagline}</span>
+                                    </div>
+                                    <p class="text-gray-600 leading-relaxed mb-6 text-lg">${b.desc}</p>
+                                    <ul class="space-y-2 mb-6">
+                                        <li class="flex items-center text-sm text-gray-500"><i class="fas fa-check text-green-500 mr-2"></i> Produk Original & Bergaransi Resmi</li>
+                                        <li class="flex items-center text-sm text-gray-500"><i class="fas fa-check text-green-500 mr-2"></i> Dukungan Teknis Penuh</li>
+                                        <li class="flex items-center text-sm text-gray-500"><i class="fas fa-check text-green-500 mr-2"></i> Stok Lengkap & Siap Kirim</li>
+                                    </ul>
+                                    <button onclick="navigateTo('products')" class="text-ttmBlue font-bold uppercase text-sm hover:text-ttmGold transition flex items-center font-heading">Lihat Produk ${b.name} <i class="fas fa-arrow-right ml-2"></i></button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderAbout() {
+            return `
+                <section class="py-24 container mx-auto px-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+                        <div class="reveal img-zoom-container rounded-2xl shadow-2xl overflow-hidden">
+                            <img src="https://tatehnik.com/assets/uploads/testimonial-1.png" alt="Team TTM" class="w-full h-[500px] object-cover hover:scale-105 transition duration-700">
+                        </div>
+                        <div class="reveal delay-200">
+                            <div class="text-ttmGold font-bold uppercase tracking-widest mb-2 font-heading">Tentang Perusahaan</div>
+                            <h2 class="text-4xl font-black text-ttmBlue mb-8 uppercase leading-tight font-heading">PT Tawakal Tehnik Mandiri</h2>
+                            <p class="text-gray-600 mb-6 leading-relaxed text-lg">Didirikan dengan visi menjadi penyedia solusi industri terdepan di Indonesia. Kami berkomitmen menghadirkan teknologi presisi tinggi dari Korea dan Jepang untuk mendukung produktivitas sektor manufaktur nasional.</p>
+                            <p class="text-gray-600 mb-8 leading-relaxed text-lg">Sebagai authorized distributor resmi, kami menjamin keaslian setiap produk yang kami jual. Kepercayaan pelanggan adalah aset terbesar kami.</p>
+                            
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="border-l-4 border-ttmGold pl-4">
+                                    <div class="text-3xl font-black text-ttmBlue mb-1 font-heading">10+</div>
+                                    <div class="text-xs text-gray-500 uppercase font-bold font-heading">Tahun Pengalaman</div>
+                                </div>
+                                <div class="border-l-4 border-ttmGold pl-4">
+                                    <div class="text-3xl font-black text-ttmBlue mb-1 font-heading">500+</div>
+                                    <div class="text-xs text-gray-500 uppercase font-bold font-heading">Klien Industri</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-ttmBlue rounded-3xl p-12 text-center text-white relative overflow-hidden reveal">
+                        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+                        <div class="relative z-10">
+                            <h2 class="text-3xl md:text-5xl font-black uppercase mb-6 font-heading">Siap Meningkatkan Efisiensi Produksi Anda?</h2>
+                            <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">Konsultasikan kebutuhan peralatan industri Anda dengan tim ahli kami. Gratis survei dan estimasi biaya.</p>
+                            <button onclick="navigateTo('contact')" class="bg-ttmGold text-ttmBlue px-10 py-5 font-black uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300 btn-industrial shadow-2xl shadow-yellow-500/30 inline-flex items-center font-heading">
+                                <i class="fas fa-phone-alt mr-3"></i> Hubungi Kami Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderContact() {
+            return `
+                <section class="py-24 container mx-auto px-4">
+                    <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+                        <h2 class="text-5xl font-black uppercase text-ttmBlue mb-6 font-heading">Hubungi Kami</h2>
+                        <p class="text-gray-600 text-lg">Tim sales dan teknis kami siap membantu Anda menemukan solusi peralatan industri yang tepat.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+                        <!-- Form -->
+                        <form onsubmit="event.preventDefault(); alert('Pesan terkirim! Tim kami akan segera menghubungi Anda.');" class="space-y-6 reveal">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-2 ml-1 uppercase font-heading">Nama Lengkap</label>
+                                    <input type="text" required class="w-full border border-gray-300 px-5 py-4 rounded-lg focus:ring-2 focus:ring-ttmBlue focus:border-ttmBlue outline-none transition bg-gray-50 focus:bg-white">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-2 ml-1 uppercase font-heading">Perusahaan</label>
+                                    <input type="text" class="w-full border border-gray-300 px-5 py-4 rounded-lg focus:ring-2 focus:ring-ttmBlue focus:border-ttmBlue outline-none transition bg-gray-50 focus:bg-white">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2 ml-1 uppercase font-heading">Email / WhatsApp</label>
+                                <input type="text" required class="w-full border border-gray-300 px-5 py-4 rounded-lg focus:ring-2 focus:ring-ttmBlue focus:border-ttmBlue outline-none transition bg-gray-50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2 ml-1 uppercase font-heading">Pesan / Kebutuhan</label>
+                                <textarea rows="6" required class="w-full border border-gray-300 px-5 py-4 rounded-lg focus:ring-2 focus:ring-ttmBlue focus:border-ttmBlue outline-none transition bg-gray-50 focus:bg-white resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-ttmBlue text-white py-5 font-black uppercase tracking-widest hover:bg-ttmGold hover:text-ttmBlue hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 btn-industrial shadow-lg rounded-lg font-heading">Kirim Pesan</button>
+                        </form>
+
+                        <!-- Info & Map -->
+                        <div class="reveal delay-200">
+                            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mb-8">
+                                <h3 class="text-2xl font-black text-ttmBlue mb-8 uppercase border-b border-gray-100 pb-4 font-heading">Informasi Kontak</h3>
+                                <ul class="space-y-6 text-gray-600">
+                                    <li class="flex items-start group">
+                                        <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-ttmBlue mr-4 group-hover:bg-ttmGold group-hover:text-ttmBlue transition"><i class="fas fa-map-marker-alt text-lg"></i></div>
+                                        <div>
+                                            <div class="font-bold text-ttmBlue uppercase text-sm mb-1 font-heading">Alamat Kantor</div>
+                                            Jl. Cibenda Ruko 2A-3A, Serang Baru Bekasi
+                                        </div>
+                                    </li>
+                                    <li class="flex items-center group">
+                                        <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-ttmBlue mr-4 group-hover:bg-ttmGold group-hover:text-ttmBlue transition"><i class="fas fa-phone-alt text-lg"></i></div>
+                                        <div>
+                                            <div class="font-bold text-ttmBlue uppercase text-sm mb-1 font-heading">Telepon / WA</div>
+                                            085 718 200 115
+                                        </div>
+                                    </li>
+                                    <li class="flex items-center group">
+                                        <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-ttmBlue mr-4 group-hover:bg-ttmGold group-hover:text-ttmBlue transition"><i class="fas fa-envelope text-lg"></i></div>
+                                        <div>
+                                            <div class="font-bold text-ttmBlue uppercase text-sm mb-1 font-heading">Email</div>
+                                            sales@tatehnikk.com
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="w-full h-80 bg-gray-200 rounded-2xl overflow-hidden shadow-lg border-4 border-white hover:shadow-xl transition duration-300">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5!2d106.9!3d-6.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x0!2zNsKwMTInMDAuMCJTIDEwNsKwNTQnMDAuMCJF!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // --- ADMIN PANEL (Simplified) ---
+        function renderAdminLogin() {
+            return `
+                <div class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+                    <div class="max-w-md w-full bg-white p-10 rounded-2xl shadow-2xl border-t-8 border-ttmGold reveal active">
+                        <div class="mb-8 text-center">
+                            <div class="w-16 h-16 bg-ttmBlue rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4 font-heading">TTM</div>
+                            <h2 class="text-2xl font-black uppercase text-ttmBlue font-heading">Admin Portal</h2>
+                            <p class="text-sm text-gray-500 mt-2">Masuk untuk mengelola katalog produk</p>
+                        </div>
+                        <form onsubmit="handleAdminLogin(event)" class="space-y-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2 uppercase font-heading">Username</label>
+                                <input type="text" required class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-ttmBlue outline-none transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2 uppercase font-heading">Password</label>
+                                <input type="password" required class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-ttmBlue outline-none transition">
+                            </div>
+                            <button type="submit" class="w-full bg-ttmBlue text-white py-4 font-black uppercase tracking-widest hover:bg-ttmGold hover:text-ttmBlue transition-all duration-300 rounded-lg shadow-lg font-heading">Masuk Dashboard</button>
+                        </form>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            navigateTo('admin-dashboard');
+        }
+
+        function renderAdmin(route) {
+            const content = document.getElementById('app-content');
+            let mainContent = '';
+            
+            const sidebar = `
+                <aside class="fixed left-0 top-0 h-full w-20 bg-ttmBlue text-white flex flex-col items-center py-8 z-50 hidden md:flex shadow-2xl border-r border-white/10">
+                    <div class="mb-12 font-black text-xl text-ttmGold font-heading">TTM</div>
+                    <nav class="flex flex-col space-y-8 w-full">
+                        <a href="#" onclick="navigateTo('admin-dashboard')" class="flex flex-col items-center transition-all duration-300 ${route==='admin-dashboard'?'text-ttmGold scale-110':'text-gray-500 hover:text-white'}">
+                            <i class="fas fa-tachometer-alt text-xl mb-1"></i><span class="text-[10px] font-bold font-heading">Dash</span>
+                        </a>
+                        <a href="#" onclick="navigateTo('admin-products')" class="flex flex-col items-center transition-all duration-300 ${route==='admin-products'?'text-ttmGold scale-110':'text-gray-500 hover:text-white'}">
+                            <i class="fas fa-box-open text-xl mb-1"></i><span class="text-[10px] font-bold font-heading">Prod</span>
+                        </a>
+                    </nav>
+                    <div class="mt-auto">
+                        <a href="#" onclick="navigateTo('home')" class="flex flex-col items-center text-red-400 hover:text-red-300 hover:scale-110 transition duration-300">
+                            <i class="fas fa-sign-out-alt text-xl mb-1"></i><span class="text-[10px] font-bold font-heading">Out</span>
+                        </a>
+                    </div>
+                </aside>
+            `;
+
+            if(route === 'admin-dashboard') {
+                mainContent = `
+                    <div class="p-10">
+                        <h2 class="text-3xl font-black uppercase text-ttmBlue mb-8 reveal active font-heading">Dashboard Admin</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                            <div class="bg-white p-8 rounded-xl shadow-sm border-l-4 border-ttmBlue hover:shadow-lg transition reveal delay-100">
+                                <div class="text-gray-500 text-xs font-bold uppercase mb-2 font-heading">Total Produk</div>
+                                <div class="text-3xl font-black text-ttmBlue font-heading">124</div>
+                            </div>
+                            <div class="bg-white p-8 rounded-xl shadow-sm border-l-4 border-ttmGold hover:shadow-lg transition reveal delay-200">
+                                <div class="text-gray-500 text-xs font-bold uppercase mb-2 font-heading">Permintaan Penawaran</div>
+                                <div class="text-3xl font-black text-ttmBlue font-heading">18</div>
+                            </div>
+                            <div class="bg-white p-8 rounded-xl shadow-sm border-l-4 border-green-500 hover:shadow-lg transition reveal delay-300">
+                                <div class="text-gray-500 text-xs font-bold uppercase mb-2 font-heading">Pesanan Masuk</div>
+                                <div class="text-3xl font-black text-ttmBlue font-heading">5</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (route === 'admin-products') {
+                mainContent = `
+                    <div class="p-10">
+                        <div class="flex justify-between items-center mb-8 reveal">
+                            <h2 class="text-3xl font-black uppercase text-ttmBlue font-heading">Manajemen Produk</h2>
+                            <button class="bg-ttmBlue text-white px-6 py-3 rounded-lg text-sm font-bold hover:bg-ttmGold hover:text-ttmBlue transition shadow-md font-heading">+ Tambah Produk</button>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden reveal delay-100">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-gray-50 text-gray-500 uppercase text-xs font-bold font-heading">
+                                    <tr>
+                                        <th class="px-8 py-4">Nama Produk</th>
+                                        <th class="px-8 py-4">Merek</th>
+                                        <th class="px-8 py-4">Kategori</th>
+                                        <th class="px-8 py-4">Status</th>
+                                        <th class="px-8 py-4">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100">
+                                    ${products.slice(0,5).map(p => `
+                                        <tr class="hover:bg-blue-50/50 transition">
+                                            <td class="px-8 py-4 font-bold text-ttmBlue font-heading">${p.name}</td>
+                                            <td class="px-8 py-4 font-heading">${p.brand}</td>
+                                            <td class="px-8 py-4 capitalize font-heading">${p.category}</td>
+                                            <td class="px-8 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold font-heading">Aktif</span></td>
+                                            <td class="px-8 py-4 flex space-x-3">
+                                                <button class="text-gray-400 hover:text-ttmBlue transition"><i class="fas fa-edit"></i></button>
+                                                <button class="text-gray-400 hover:text-red-600 transition"><i class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+
+            content.innerHTML = sidebar + `<div class="md:pl-20 min-h-screen bg-gray-50">${mainContent}</div>`;
+            setTimeout(initScrollReveal, 100);
+        }
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            navigateTo('home');
+        });
+
+    </script>
+</body>
+</html>
+
