@@ -64,6 +64,10 @@
         /* Product Card Image Aspect Ratio */
         .product-img-container { aspect-ratio: 4/3; overflow: hidden; }
         .product-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Cart Sidebar Transition */
+        #cart-sidebar { transition: transform 0.3s ease-in-out; transform: translateX(100%); }
+        #cart-sidebar.open { transform: translateX(0); }
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden">
@@ -90,7 +94,7 @@
 
             <!-- Search Bar (Desktop) -->
             <div class="hidden md:flex flex-1 max-w-xl mx-8 relative">
-                <input type="text" placeholder="Cari produk (Load Cell, CNC, Filter)..." class="w-full bg-gray-100 border border-gray-200 rounded-md py-2.5 pl-4 pr-10 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all text-sm outline-none">
+                <input type="text" id="search-input" placeholder="Cari produk (Load Cell, CNC, Filter)..." class="w-full bg-gray-100 border border-gray-200 rounded-md py-2.5 pl-4 pr-10 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all text-sm outline-none">
                 <button class="absolute right-2 top-2 p-1 text-gray-500 hover:text-brand-blue">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -257,6 +261,12 @@
             <!-- Product Grid Container -->
             <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <!-- Products will be injected here by JavaScript -->
+            </div>
+             <!-- No Results Message -->
+            <div id="no-results" class="hidden text-center py-16">
+                <i class="fa-solid fa-magnifying-glass text-4xl text-gray-300 mb-4"></i>
+                <p class="text-xl font-semibold text-gray-500">Produk tidak ditemukan.</p>
+                <p class="text-gray-400">Coba gunakan kata kunci lain atau periksa ejaan Anda.</p>
             </div>
         </div>
     </section>
@@ -584,8 +594,29 @@
         </div>
     </div>
 
+    <!-- Cart Sidebar -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden" onclick="toggleCart()"></div>
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-[70] flex flex-col">
+        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+            <h2 class="text-2xl font-bold text-brand-dark">Daftar Penawaran</h2>
+            <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-800 text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Cart items will be injected here -->
+            <div class="text-center text-gray-500 mt-10">
+                <i class="fa-solid fa-cart-shopping text-4xl mb-4 text-gray-300"></i>
+                <p>Keranjang penawaran Anda masih kosong.</p>
+            </div>
+        </div>
+        <div class="p-6 border-t border-gray-200 bg-gray-50">
+            <button onclick="alert('Fitur kirim penawaran akan segera hadir!')" class="w-full bg-brand-blue hover:bg-brand-dark text-white font-bold py-3 rounded-lg transition-colors shadow-lg shadow-brand-blue/30">
+                Kirim Permintaan Penawaran
+            </button>
+        </div>
+    </div>
+
     <!-- Toast Notification -->
-    <div id="toast" class="fixed top-24 right-4 bg-white border-l-4 border-brand-accent shadow-xl rounded-r-lg p-4 transform translate-x-full transition-transform duration-300 z-[70] flex items-center gap-3">
+    <div id="toast" class="fixed top-24 right-4 bg-white border-l-4 border-brand-accent shadow-xl rounded-r-lg p-4 transform translate-x-full transition-transform duration-300 z-[80] flex items-center gap-3">
         <div class="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
             <i class="fa-solid fa-check"></i>
         </div>
@@ -774,8 +805,9 @@
             }
         ];
 
-        let cartCount = 0;
+        let cart = [];
         let currentModalProduct = null;
+        let currentFilter = 'all';
 
         // --- Functions ---
 
@@ -790,39 +822,58 @@
         }
 
         // RENDER PRODUCTS
-        function renderProducts(filter = 'all') {
+        function renderProducts(filter = 'all', searchTerm = '') {
             const grid = document.getElementById('product-grid');
+            const noResults = document.getElementById('no-results');
             grid.innerHTML = '';
             
-            const filtered = filter === 'all' 
-                ? productsData 
-                : productsData.filter(p => p.category === filter);
+            let filtered = productsData;
 
-            filtered.forEach((product, index) => {
-                const card = document.createElement('div');
-                card.className = 'group bg-white rounded-xl border border-gray-200 overflow-hidden hover-lift cursor-pointer fade-in-up';
-                card.style.animationDelay = `${index * 0.05}s`;
-                card.onclick = () => openProductModal(product.id);
-                
-                card.innerHTML = `
-                    <div class="product-img-container relative bg-gray-100">
-                        <img src="${product.image}" alt="${product.name}" class="group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-brand-blue text-white text-[10px] font-bold px-2 py-1 rounded uppercase">${product.brand}</div>
-                        ${product.category === 'loadcell' ? '<div class="absolute top-3 right-3 bg-brand-accent text-brand-dark text-[10px] font-bold px-2 py-1 rounded">HOT</div>' : ''}
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-base font-bold text-gray-900 mb-2 line-clamp-2 h-12">${product.name}</h3>
-                        <p class="text-xs text-gray-500 mb-4 line-clamp-2">${product.desc}</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] bg-gray-100 text-gray-600 px-2 py-1 rounded capitalize">${getCategoryName(product.category)}</span>
-                            <button class="text-brand-blue hover:bg-brand-blue hover:text-white w-8 h-8 rounded-full flex items-center justify-center transition-colors">
-                                <i class="fa-solid fa-arrow-right text-sm"></i>
-                            </button>
+            // Apply category filter
+            if (filter !== 'all') {
+                filtered = filtered.filter(p => p.category === filter);
+            }
+
+            // Apply search filter
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(term) || 
+                    p.brand.toLowerCase().includes(term) ||
+                    p.desc.toLowerCase().includes(term)
+                );
+            }
+
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                filtered.forEach((product, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'group bg-white rounded-xl border border-gray-200 overflow-hidden hover-lift cursor-pointer fade-in-up';
+                    card.style.animationDelay = `${index * 0.05}s`;
+                    card.onclick = () => openProductModal(product.id);
+                    
+                    card.innerHTML = `
+                        <div class="product-img-container relative bg-gray-100">
+                            <img src="${product.image}" alt="${product.name}" class="group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3 bg-brand-blue text-white text-[10px] font-bold px-2 py-1 rounded uppercase">${product.brand}</div>
+                            ${product.category === 'loadcell' ? '<div class="absolute top-3 right-3 bg-brand-accent text-brand-dark text-[10px] font-bold px-2 py-1 rounded">HOT</div>' : ''}
                         </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
+                        <div class="p-5">
+                            <h3 class="text-base font-bold text-gray-900 mb-2 line-clamp-2 h-12">${product.name}</h3>
+                            <p class="text-xs text-gray-500 mb-4 line-clamp-2">${product.desc}</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] bg-gray-100 text-gray-600 px-2 py-1 rounded capitalize">${getCategoryName(product.category)}</span>
+                                <button class="text-brand-blue hover:bg-brand-blue hover:text-white w-8 h-8 rounded-full flex items-center justify-center transition-colors">
+                                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
         }
 
         function getCategoryName(cat) {
@@ -837,6 +888,7 @@
         }
 
         function filterProducts(category) {
+            currentFilter = category;
             // Update button styles
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 if(btn.dataset.filter === category) {
@@ -848,8 +900,23 @@
                 }
             });
             
-            renderProducts(category);
+            // Clear search when filtering by category
+            document.getElementById('search-input').value = '';
+            renderProducts(currentFilter, '');
         }
+
+        // SEARCH FUNCTIONALITY
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const searchTerm = e.target.value;
+            // Reset category filter buttons visually when searching
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                 btn.classList.remove('bg-brand-blue', 'text-white', 'border-transparent');
+                 btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+            });
+            currentFilter = 'all'; // Reset internal filter
+            renderProducts('all', searchTerm);
+        });
+
 
         function openProductModal(productId) {
             const product = productsData.find(p => p.id === productId);
@@ -883,20 +950,74 @@
             currentModalProduct = null;
         }
 
+        // CART FUNCTIONALITY
         function addToCartFromModal() {
             if (currentModalProduct) {
-                cartCount++;
-                updateCartUI();
-                showToast();
+                // Check if item already exists in cart
+                const existingItem = cart.find(item => item.id === currentModalProduct.id);
+                if (!existingItem) {
+                    cart.push({...currentModalProduct}); // Add a copy
+                    updateCartUI();
+                    showToast();
+                } else {
+                    alert('Produk ini sudah ada di daftar penawaran Anda.');
+                }
                 closeProductModal();
             }
         }
 
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
         function updateCartUI() {
             const badge = document.getElementById('cart-count');
-            badge.textContent = cartCount;
-            badge.classList.add('scale-125');
-            setTimeout(() => badge.classList.remove('scale-125'), 200);
+            badge.textContent = cart.length;
+            
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center text-gray-500 mt-10">
+                        <i class="fa-solid fa-cart-shopping text-4xl mb-4 text-gray-300"></i>
+                        <p>Keranjang penawaran Anda masih kosong.</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach(item => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'flex items-center gap-4 bg-gray-50 p-3 rounded-lg';
+                    itemEl.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md bg-white">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-sm text-gray-800 line-clamp-1">${item.name}</h4>
+                            <p class="text-xs text-gray-500">${item.brand}</p>
+                        </div>
+                        <button onclick="removeFromCart('${item.id}')" class="text-gray-400 hover:text-red-500 transition-colors p-2">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+            }
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            const isOpen = sidebar.classList.contains('open');
+            
+            if (isOpen) {
+                sidebar.classList.remove('open');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            } else {
+                sidebar.classList.add('open');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function showToast() {
