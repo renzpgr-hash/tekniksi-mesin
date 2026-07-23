@@ -30,6 +30,25 @@
                             accent: '#facc15', // Yellow/Gold
                             light: '#f8fafc',
                         }
+                    },
+                    animation: {
+                        'logo-enter': 'logoEnter 0.8s ease-out forwards',
+                        'progress-fill': 'progressFill 2s ease-in-out forwards',
+                        'fade-out': 'fadeOut 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        logoEnter: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        progressFill: {
+                            '0%': { width: '0%' },
+                            '100%': { width: '100%' },
+                        },
+                        fadeOut: {
+                            '0%': { opacity: '1', visibility: 'visible' },
+                            '100%': { opacity: '0', visibility: 'hidden' },
+                        }
                     }
                 }
             }
@@ -68,9 +87,59 @@
         /* Cart Sidebar Transition */
         #cart-sidebar { transition: transform 0.3s ease-in-out; transform: translateX(100%); }
         #cart-sidebar.open { transform: translateX(0); }
+
+        /* --- HERO SLIDESHOW ANIMATIONS --- */
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out, transform 0.8s ease-in-out;
+            transform: translateX(50px); /* Start slightly to the right */
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0); /* Move to center */
+        }
+
+        .hero-slide.exit {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50px); /* Move to the left and fade out */
+        }
+        
+        .hero-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 25px 25px rgba(0,0,0,0.3));
+        }
+
+        /* Prevent scrolling when loading */
+        body.loading { overflow: hidden; }
     </style>
 </head>
-<body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden">
+<body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden loading">
+
+    <!-- PRELOADER / LOADING SCREEN -->
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-brand-dark flex flex-col items-center justify-center gap-8 animate-fade-out" style="animation-delay: 2.2s;">
+        <!-- Logo TTM -->
+        <div class="text-6xl font-black italic text-white tracking-tighter animate-logo-enter">TTM</div>
+        
+        <!-- Progress Bar Container -->
+        <div class="w-64 h-1 bg-gray-700 rounded-full overflow-hidden">
+            <!-- Animated Yellow Bar -->
+            <div class="h-full bg-brand-accent rounded-full animate-progress-fill"></div>
+        </div>
+    </div>
 
     <!-- Top Notification Bar -->
     <div class="bg-brand-dark text-white py-2 px-4 text-xs font-medium flex justify-center items-center gap-6 border-b border-white/10 relative z-50">
@@ -79,33 +148,14 @@
         <span class="hidden md:flex items-center gap-2"><i class="fa-solid fa-shield-halved text-brand-accent"></i> Garansi Resmi</span>
     </div>
 
-    <!-- Main Header / Navbar -->
+    <!-- Main Header / Navbar (CLEANED UP) -->
     <header class="bg-white sticky top-0 z-40 shadow-md transition-all duration-300" id="main-header">
         <div class="container mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Logo Area -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="text-3xl font-black italic text-brand-blue tracking-tighter group-hover:scale-105 transition-transform">TTM</div>
-                <div class="h-8 w-[1px] bg-gray-300 hidden sm:block"></div>
-                <div class="hidden sm:flex flex-col leading-none">
-                    <span class="font-bold text-sm text-brand-dark">PT TAWAKAL TEHNIK MANDIRI</span>
-                    <span class="text-[10px] text-gray-500">Solusi Tepat, Teknologi Hebat</span>
-                </div>
-            </a>
+            <!-- Logo Area WITH ENTRY ANIMATION -->
+             <img src="assets/img/logo.png" width="235" alt="Logo" class="animate-logo-enter">
 
-            <!-- Search Bar (Desktop) -->
-            <div class="hidden md:flex flex-1 max-w-xl mx-8 relative">
-                <input type="text" id="search-input" placeholder="Cari produk (Load Cell, CNC, Filter)..." class="w-full bg-gray-100 border border-gray-200 rounded-md py-2.5 pl-4 pr-10 focus:ring-2 focus:ring-brand-blue focus:bg-white transition-all text-sm outline-none">
-                <button class="absolute right-2 top-2 p-1 text-gray-500 hover:text-brand-blue">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-
-            <!-- Icons -->
+            <!-- Icons (WISHLIST REMOVED) -->
             <div class="flex items-center gap-6 text-gray-600">
-                <button class="flex flex-col items-center gap-1 hover:text-brand-blue transition-colors group relative">
-                    <i class="fa-regular fa-heart text-lg group-hover:scale-110 transition-transform"></i>
-                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[9px] rounded-full flex items-center justify-center">0</span>
-                </button>
                 <button class="flex flex-col items-center gap-1 hover:text-brand-blue transition-colors group relative" onclick="toggleCart()">
                     <div class="relative">
                         <i class="fa-solid fa-cart-shopping text-lg group-hover:scale-110 transition-transform"></i>
@@ -149,7 +199,7 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Hero Section WITH SLIDESHOW -->
     <section id="home" class="relative bg-gradient-to-br from-brand-dark to-brand-blue overflow-hidden text-white min-h-[600px] flex items-center">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
@@ -183,11 +233,32 @@
                     </div>
                 </div>
 
-                <!-- Hero Image -->
+                <!-- Hero Slideshow Container -->
                 <div class="lg:w-1/2 relative w-full fade-in-up delay-200">
-                    <img src="https://image.qwenlm.ai/output/2026-07-23/5d247033-1408-4228-a654-4475820433b7/1753267486720627969_0.png" 
-                         alt="Bongshin Load Cell Products" 
-                         class="w-full max-w-2xl mx-auto drop-shadow-2xl rounded-lg object-contain aspect-video hover:scale-105 transition-transform duration-700">
+                    <div class="relative w-full aspect-video flex items-center justify-center">
+                        <!-- Slide 1 -->
+                        <div class="hero-slide active" data-index="0">
+                            <img src="assets/img/Bongshin_BSA.png" 
+                                 alt="Bongshin Load Cell Products">
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="hero-slide" data-index="1">
+                            <img src="assets/img/Bongshin_BCK.png" 
+                                 alt="Bongshin Digital Load Cell">
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="hero-slide" data-index="2">
+                            <img src="https://placehold.co/800x600/f1f5f9/0f172a?text=Bongshin+Canister+Type" 
+                                 alt="Bongshin Canister Type">
+                        </div>
+                    </div>
+                    
+                    <!-- Slide Indicators -->
+                    <div class="flex justify-center gap-2 mt-4">
+                        <button class="slide-indicator w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors active" data-slide="0"></button>
+                        <button class="slide-indicator w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="1"></button>
+                        <button class="slide-indicator w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="2"></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -196,7 +267,7 @@
         <div class="absolute bottom-0 left-0 w-full h-24 bg-gray-50" style="clip-path: polygon(0 100%, 100% 100%, 100% 0);"></div>
     </section>
 
-    <!-- Trust Badges -->
+    <!-- Trust Badges (ICONS FIXED & THEMED) -->
     <section class="bg-white container mx-auto rounded-xl shadow-lg p-8 mb-16 relative z-20 -mt-12 mx-4 lg:mx-auto max-w-6xl">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="flex items-center gap-4 justify-center md:justify-start group cursor-default">
@@ -208,6 +279,7 @@
                     <p class="text-xs text-gray-500">Hasil penimbangan presisi</p>
                 </div>
             </div>
+            <!-- QUALITY ASSURANCE ICON RESTORED -->
             <div class="flex items-center gap-4 justify-center md:justify-start group cursor-default">
                 <div class="w-12 h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors">
                     <i class="fa-solid fa-shield-check"></i>
@@ -238,23 +310,33 @@
         </div>
     </section>
 
-    <!-- PRODUCT LIST SECTION (REVISED WITH INDIVIDUAL PRODUCTS) -->
+    <!-- PRODUCT LIST SECTION (SEARCH MOVED HERE) -->
     <section id="products" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
-                <div>
+            
+            <!-- NEW LAYOUT FOR SEARCH AND FILTERS -->
+            <div class="mb-10 space-y-6">
+                <div class="text-center md:text-left">
                     <h2 class="text-3xl font-extrabold text-brand-dark uppercase tracking-tight">Katalog Produk Lengkap</h2>
                     <p class="text-gray-500 mt-2">Pilih produk spesifik sesuai kebutuhan industri Anda.</p>
                 </div>
                 
-                <!-- Category Filters -->
-                <div class="flex flex-wrap gap-2">
-                    <button onclick="filterProducts('all')" class="filter-btn active px-4 py-2 bg-brand-blue text-white rounded text-sm font-bold transition-colors" data-filter="all">Semua</button>
-                    <button onclick="filterProducts('loadcell')" class="filter-btn px-4 py-2 bg-white border border-gray-200 text-gray-600 rounded text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors" data-filter="loadcell">Load Cell</button>
-                    <button onclick="filterProducts('cnc')" class="filter-btn px-4 py-2 bg-white border border-gray-200 text-gray-600 rounded text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors" data-filter="cnc">Mesin CNC</button>
-                    <button onclick="filterProducts('filtration')" class="filter-btn px-4 py-2 bg-white border border-gray-200 text-gray-600 rounded text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors" data-filter="filtration">Filtrasi</button>
-                    <button onclick="filterProducts('grinding')" class="filter-btn px-4 py-2 bg-white border border-gray-200 text-gray-600 rounded text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors" data-filter="grinding">Grinding Wheel</button>
-                    <button onclick="filterProducts('conveyor')" class="filter-btn px-4 py-2 bg-white border border-gray-200 text-gray-600 rounded text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors" data-filter="conveyor">Conveyor & Chain</button>
+                <div class="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center">
+                    <!-- Search Bar (MOVED FROM HEADER) -->
+                    <div class="relative flex-grow max-w-2xl">
+                        <input type="text" id="search-input" placeholder="Cari nama produk, merek, atau kata kunci..." class="w-full bg-white border border-gray-300 rounded-lg py-3 pl-12 pr-4 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none shadow-sm transition-all">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+
+                    <!-- Category Filters -->
+                    <div class="flex flex-wrap gap-2 justify-center lg:justify-end">
+                        <button onclick="filterProducts('all')" class="filter-btn active px-4 py-3 bg-brand-blue text-white rounded-lg text-sm font-bold transition-colors shadow-sm" data-filter="all">Semua</button>
+                        <button onclick="filterProducts('loadcell')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="loadcell">Load Cell</button>
+                        <button onclick="filterProducts('cnc')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="cnc">Mesin CNC</button>
+                        <button onclick="filterProducts('filtration')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="filtration">Filtrasi</button>
+                        <button onclick="filterProducts('grinding')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="grinding">Grinding Wheel</button>
+                        <button onclick="filterProducts('conveyor')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="conveyor">Conveyor</button>
+                    </div>
                 </div>
             </div>
             
@@ -370,10 +452,12 @@
 
     <!-- Services Section -->
     <section id="services" class="py-16 bg-white">
-        <div class="container mx-auto px-4 lg:px-8">
+        <div class="container mx-auto px-4 lg:px-8 text-center">
             <div class="flex flex-col md:flex-row justify-between items-end mb-10">
-                <h2 class="text-3xl font-extrabold text-brand-dark">LAYANAN KAMI</h2>
-                <p class="text-gray-500 mt-2 md:mt-0">Dukungan penuh dari konsultasi hingga pemasangan.</p>
+                <h2 class="text-3xl font-extrabold text-brand-dark mb-4 text-center w-full">
+    LAYANAN KAMI
+</h2>
+                <p class="text-gray-500 mt-2 md:mt-0 text-center w-full">Dukungan penuh dari konsultasi hingga pemasangan.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -636,7 +720,7 @@
                 name: 'Bongshin Compression Load Cell BSA-500kg',
                 category: 'loadcell',
                 brand: 'Bongshin',
-                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Bongshin+BSA+500kg',
+                image: 'assets/img/Bongshin_BSA.png',
                 desc: 'Load cell tipe kompresi dengan kapasitas 500kg. Ideal untuk platform scale dan hopper kecil. Material alloy steel dengan proteksi IP67.',
                 specs: ['Kapasitas: 500kg', 'Tipe: Compression', 'Material: Alloy Steel', 'Proteksi: IP67', 'Output: 2.0mV/V']
             },
@@ -850,8 +934,8 @@
                 noResults.classList.add('hidden');
                 filtered.forEach((product, index) => {
                     const card = document.createElement('div');
-                    card.className = 'group bg-white rounded-xl border border-gray-200 overflow-hidden hover-lift cursor-pointer fade-in-up';
-                    card.style.animationDelay = `${index * 0.05}s`;
+                    // FIX: Removed 'fade-in-up' class from here to prevent conflict with IntersectionObserver on re-render
+                    card.className = 'group bg-white rounded-xl border border-gray-200 overflow-hidden hover-lift cursor-pointer';
                     card.onclick = () => openProductModal(product.id);
                     
                     card.innerHTML = `
@@ -1072,6 +1156,7 @@
         });
 
         // Intersection Observer for Fade-in animations
+        // FIX: Adjusted observer to only target static sections, not dynamically rendered product cards
         const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1082,15 +1167,68 @@
             });
         }, observerOptions);
 
+        // --- HERO SLIDESHOW LOGIC ---
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const indicators = document.querySelectorAll('.slide-indicator');
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        function showSlide(index) {
+            // Remove active/exit classes from all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active', 'exit');
+            });
+            indicators.forEach(ind => ind.classList.remove('active', 'bg-white'));
+            indicators.forEach(ind => ind.classList.add('bg-white/50'));
+
+            // Set new active slide
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active', 'bg-white');
+            indicators[index].classList.remove('bg-white/50');
+        }
+
+        function nextSlide() {
+            // Mark current slide as exiting (fade out to left)
+            slides[currentSlideIndex].classList.remove('active');
+            slides[currentSlideIndex].classList.add('exit');
+
+            // Calculate next index
+            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+
+            // Show next slide (fade in from right)
+            showSlide(currentSlideIndex);
+        }
+
+        function startSlideshow() {
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        // Add click events to indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                clearInterval(slideInterval); // Stop auto-sliding on manual click
+                currentSlideIndex = index;
+                showSlide(currentSlideIndex);
+                startSlideshow(); // Restart auto-sliding
+            });
+        });
+
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts('all');
+            startSlideshow(); // Start the hero slideshow
             
-            // Observe elements
-            document.querySelectorAll('section > div > div').forEach(el => {
+            // Observe elements (excluding dynamic product grid)
+            document.querySelectorAll('section:not(#products) > div > div, .trust-badge-item, .service-card').forEach(el => {
                 el.style.opacity = '0';
                 observer.observe(el);
             });
+
+            // Remove loading class after preloader animation finishes
+            setTimeout(() => {
+                document.body.classList.remove('loading');
+            }, 2700); // Matches animation-delay (2.2s) + fade-out duration (0.5s)
         });
 
     </script>
