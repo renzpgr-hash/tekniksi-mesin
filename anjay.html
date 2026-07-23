@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Tawakal Tehnik Mandiri - Katalog Produk Industri</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Montserrat for Professional Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a', // Dark Blue/Slate
+                            blue: '#1e3a8a', // Primary Blue
+                            accent: '#facc15', // Yellow/Gold
+                            light: '#f8fafc',
+                        }
+                    },
+                    animation: {
+                        'logo-enter': 'logoEnter 1s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                    },
+                    keyframes: {
+                        logoEnter: {
+                            '0%': { opacity: '0', transform: 'translateY(15px) scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Animations & Utilities */
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+        
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* Hide scrollbar but allow scroll */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Modal Transitions */
+        .modal { transition: opacity 0.3s ease, visibility 0.3s ease; opacity: 0; visibility: hidden; }
+        .modal.active { opacity: 1; visibility: visible; }
+        .modal-content { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); transform: scale(0.9); }
+        .modal.active .modal-content { transform: scale(1); }
+
+        /* Mobile Menu Slide */
+        #mobile-menu { transition: transform 0.3s ease-in-out; transform: translateX(100%); }
+        #mobile-menu.open { transform: translateX(0); }
+
+        /* Product Card Image Aspect Ratio */
+        .product-img-container { aspect-ratio: 4/3; overflow: hidden; }
+        .product-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Cart Sidebar Transition */
+        #cart-sidebar { transition: transform 0.3s ease-in-out; transform: translateX(100%); }
+        #cart-sidebar.open { transform: translateX(0); }
+
+        /* --- HERO SLIDESHOW ANIMATIONS --- */
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out, transform 0.8s ease-in-out;
+            transform: translateX(50px); 
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0); 
+        }
+
+        .hero-slide.exit {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50px); 
+        }
+        
+        .hero-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 25px 25px rgba(0,0,0,0.3));
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Top Notification Bar -->
+    <div class="bg-brand-dark text-white py-2 px-4 text-xs font-medium flex justify-center items-center gap-6 border-b border-white/10 relative z-50">
+        <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-brand-accent"></i> Produk Original Bongshin Korea</span>
+        <span class="hidden sm:flex items-center gap-2"><i class="fa-solid fa-truck-fast text-brand-accent"></i> Stok Lengkap & Siap Kirim</span>
+        <span class="hidden md:flex items-center gap-2"><i class="fa-solid fa-shield-halved text-brand-accent"></i> Garansi Resmi</span>
+    </div>
+
+    <!-- Main Header / Navbar -->
+    <header class="bg-white sticky top-0 z-40 shadow-md transition-all duration-300" id="main-header">
+        <div class="container mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo Area WITH ENTRY ANIMATION -->
+             <!-- Pastikan file assets/img/logo.png tersedia -->
+             <img src="assets/img/logo.png" width="235" alt="Logo PT Tawakal Tehnik Mandiri" class="animate-logo-enter">
+
+            <!-- Icons -->
+            <div class="flex items-center gap-6 text-gray-600">
+                <button class="flex flex-col items-center gap-1 hover:text-brand-blue transition-colors group relative" onclick="toggleCart()">
+                    <div class="relative">
+                        <i class="fa-solid fa-cart-shopping text-lg group-hover:scale-110 transition-transform"></i>
+                        <span id="cart-count" class="absolute -top-1.5 -right-2 bg-brand-accent text-brand-dark text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">0</span>
+                    </div>
+                </button>
+                <button class="md:hidden text-xl ml-2 text-brand-dark" onclick="toggleMobileMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Sub Navigation (Desktop) -->
+        <nav class="hidden md:block border-t border-gray-100 bg-white">
+            <div class="container mx-auto px-8">
+                <ul class="flex items-center gap-8 text-sm font-semibold text-gray-600 py-3 overflow-x-auto hide-scrollbar">
+                    <li><a href="#home" class="hover:text-brand-blue whitespace-nowrap py-1 border-b-2 border-transparent hover:border-brand-blue transition-all">Beranda</a></li>
+                    <li><a href="#products" class="hover:text-brand-blue whitespace-nowrap py-1 border-b-2 border-transparent hover:border-brand-blue transition-all">Produk</a></li>
+                    <li><a href="#about" class="hover:text-brand-blue whitespace-nowrap py-1 border-b-2 border-transparent hover:border-brand-blue transition-all">Tentang Kami</a></li>
+                    <li><a href="#services" class="hover:text-brand-blue whitespace-nowrap py-1 border-b-2 border-transparent hover:border-brand-blue transition-all">Layanan</a></li>
+                    <li><a href="#contact" class="hover:text-brand-blue whitespace-nowrap py-1 border-b-2 border-transparent hover:border-brand-blue transition-all">Kontak</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-white pt-24 px-6 md:hidden flex flex-col gap-6">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-2xl text-gray-600"><i class="fa-solid fa-xmark"></i></button>
+        <a href="#home" onclick="toggleMobileMenu()" class="text-xl font-bold text-brand-dark border-b pb-2">Beranda</a>
+        <a href="#products" onclick="toggleMobileMenu()" class="text-xl font-bold text-brand-dark border-b pb-2">Produk</a>
+        <a href="#about" onclick="toggleMobileMenu()" class="text-xl font-bold text-brand-dark border-b pb-2">Tentang Kami</a>
+        <a href="#services" onclick="toggleMobileMenu()" class="text-xl font-bold text-brand-dark border-b pb-2">Layanan</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="text-xl font-bold text-brand-dark border-b pb-2">Kontak</a>
+        
+        <div class="mt-8">
+            <p class="text-sm text-gray-500 mb-2">Hubungi Kami</p>
+            <a href="tel:085718200115" class="flex items-center gap-3 text-brand-blue font-bold text-lg">
+                <i class="fa-solid fa-phone"></i> 085 718 200 115
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section WITH SLIDESHOW -->
+    <section id="home" class="relative bg-gradient-to-br from-brand-dark to-brand-blue overflow-hidden text-white min-h-[600px] flex items-center">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-accent/10 to-transparent"></div>
+        
+        <div class="container mx-auto px-4 lg:px-8 py-16 lg:py-24 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                
+                <!-- Text Content -->
+                <div class="lg:w-1/2 space-y-6 fade-in-up">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 rounded text-xs font-bold text-brand-accent uppercase tracking-wide">
+                        <i class="fa-solid fa-star"></i> Authorized Distributor
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight">
+                        SOLUSI TIMBANGAN <br>
+                        <span class="text-brand-accent">INDUSTRI AKURAT</span>
+                    </h1>
+                    <p class="text-lg text-gray-300 max-w-lg leading-relaxed font-light">
+                        PT Tawakal Tehnik Mandiri menyediakan berbagai jenis Load Cell Bongshin dengan kualitas tinggi untuk berbagai kebutuhan industri Anda. Akurat, Tangguh & Terpercaya.
+                    </p>
+                    <div class="flex items-center gap-4 pt-4">
+                        <a href="#products" class="bg-brand-accent hover:bg-yellow-400 text-brand-dark px-8 py-3.5 rounded font-bold shadow-lg shadow-yellow-500/20 transition-all hover:-translate-y-1 inline-block">
+                            Lihat Katalog
+                        </a>
+                        <a href="#contact" class="flex items-center gap-2 text-white font-semibold hover:text-brand-accent transition-colors group">
+                            <span class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:border-brand-accent group-hover:text-brand-accent transition-colors">
+                                <i class="fa-solid fa-phone text-xs"></i>
+                            </span>
+                            Hubungi Sales
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Slideshow Container -->
+                <div class="lg:w-1/2 relative w-full fade-in-up delay-200">
+                    <div class="relative w-full aspect-video flex items-center justify-center">
+                        <!-- Slide 1 -->
+                        <div class="hero-slide active" data-index="0">
+                            <img src="assets/img/Bongshin_BSA.png" 
+                                 alt="Bongshin Load Cell Products">
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="hero-slide" data-index="1">
+                            <img src="assets/img/Bongshin_BCK.png" 
+                                 alt="Bongshin Digital Load Cell">
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="hero-slide" data-index="2">
+                            <img src="https://placehold.co/800x600/f1f5f9/0f172a?text=Bongshin+Canister+Type" 
+                                 alt="Bongshin Canister Type">
+                        </div>
+                    </div>
+                    
+                    <!-- Slide Indicators -->
+                    <div class="flex justify-center gap-2 mt-4">
+                        <button class="slide-indicator w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors active" data-slide="0"></button>
+                        <button class="slide-indicator w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="1"></button>
+                        <button class="slide-indicator w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="2"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slanted Bottom -->
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gray-50" style="clip-path: polygon(0 100%, 100% 100%, 100% 0);"></div>
+    </section>
+
+    <!-- Trust Badges (FIXED & THEMED) -->
+    <section class="bg-white container mx-auto rounded-xl shadow-lg p-8 mb-16 relative z-20 -mt-12 mx-4 lg:mx-auto max-w-6xl">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- Badge 1: Akurasi -->
+            <div class="flex items-center gap-4 justify-center md:justify-start group cursor-default">
+                <div class="w-14 h-14 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-2xl group-hover:bg-brand-blue group-hover:text-white transition-all duration-300 shadow-sm">
+                    <i class="fa-solid fa-crosshairs"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-900 text-sm">Akurasi Tinggi</h3>
+                    <p class="text-xs text-gray-500">Hasil penimbangan presisi</p>
+                </div>
+            </div>
+            
+            <!-- Badge 2: Kualitas Terjamin (RESTORED & FIXED) -->
+            <div class="flex items-center gap-4 justify-center md:justify-start group cursor-default">
+                <div class="w-14 h-14 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-2xl group-hover:bg-brand-blue group-hover:text-white transition-all duration-300 shadow-sm">
+                    <i class="fa-solid fa-shield-check"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-900 text-sm">Kualitas Terjamin</h3>
+                    <p class="text-xs text-gray-500">Original Korea, Tahan Lama</p>
+                </div>
+            </div>
+            
+            <!-- Badge 3: Aplikasi Luas -->
+            <div class="flex items-center gap-4 justify-center md:justify-start group cursor-default">
+                <div class="w-14 h-14 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-2xl group-hover:bg-brand-blue group-hover:text-white transition-all duration-300 shadow-sm">
+                    <i class="fa-solid fa-industry"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-900 text-sm">Aplikasi Luas</h3>
+                    <p class="text-xs text-gray-500">Cocok segala industri</p>
+                </div>
+            </div>
+            
+            <!-- Badge 4: Layanan Profesional -->
+            <div class="flex items-center gap-4 justify-center md:justify-start group cursor-default">
+                <div class="w-14 h-14 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-2xl group-hover:bg-brand-blue group-hover:text-white transition-all duration-300 shadow-sm">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-900 text-sm">Layanan Profesional</h3>
+                    <p class="text-xs text-gray-500">Tim support siap bantu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT LIST SECTION -->
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            
+            <div class="mb-10 space-y-6">
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl font-extrabold text-brand-dark uppercase tracking-tight">Katalog Produk Lengkap</h2>
+                    <p class="text-gray-500 mt-2">Pilih produk spesifik sesuai kebutuhan industri Anda.</p>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center">
+                    <!-- Search Bar -->
+                    <div class="relative flex-grow max-w-2xl">
+                        <input type="text" id="search-input" placeholder="Cari nama produk, merek, atau kata kunci..." class="w-full bg-white border border-gray-300 rounded-lg py-3 pl-12 pr-4 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none shadow-sm transition-all">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+
+                    <!-- Category Filters -->
+                    <div class="flex flex-wrap gap-2 justify-center lg:justify-end">
+                        <button onclick="filterProducts('all')" class="filter-btn active px-4 py-3 bg-brand-blue text-white rounded-lg text-sm font-bold transition-colors shadow-sm" data-filter="all">Semua</button>
+                        <button onclick="filterProducts('loadcell')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="loadcell">Load Cell</button>
+                        <button onclick="filterProducts('cnc')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="cnc">Mesin CNC</button>
+                        <button onclick="filterProducts('filtration')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="filtration">Filtrasi</button>
+                        <button onclick="filterProducts('grinding')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="grinding">Grinding Wheel</button>
+                        <button onclick="filterProducts('conveyor')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="conveyor">Conveyor</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Grid Container -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Products will be injected here by JavaScript -->
+            </div>
+             <!-- No Results Message -->
+            <div id="no-results" class="hidden text-center py-16">
+                <i class="fa-solid fa-magnifying-glass text-4xl text-gray-300 mb-4"></i>
+                <p class="text-xl font-semibold text-gray-500">Produk tidak ditemukan.</p>
+                <p class="text-gray-400">Coba gunakan kata kunci lain atau periksa ejaan Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Product Detail -->
+    <section class="py-16 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2 fade-in-up">
+                    <h2 class="text-3xl font-extrabold text-brand-dark mb-6">SPESIFIKASI TEKNIS <br><span class="text-brand-blue">BONGSHIN LOAD CELL</span></h2>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-brand-blue transition-colors cursor-pointer group">
+                            <div class="w-10 h-10 rounded bg-brand-blue text-white flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-weight-hanging"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Compression Load Cell (BSA)</h4>
+                                <p class="text-sm text-gray-600 mt-1">Kapasitas: 500kg - 50ton. Aplikasi: Hopper, Tank, Silo, Platform Scale.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-brand-blue transition-colors cursor-pointer group">
+                            <div class="w-10 h-10 rounded bg-brand-blue text-white flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-box"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Canister Load Cell (BCK)</h4>
+                                <p class="text-sm text-gray-600 mt-1">Kapasitas: 1ton - 100ton. Aplikasi: Tank, Silo, Truck Scale.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-brand-blue transition-colors cursor-pointer group">
+                            <div class="w-10 h-10 rounded bg-brand-blue text-white flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-arrows-left-right"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Shear Beam (BSU) & Single Point (BST)</h4>
+                                <p class="text-sm text-gray-600 mt-1">Kapasitas bervariasi. Cocok untuk Platform Scale, Bench Scale, dan Counting Scale.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 bg-brand-dark p-8 rounded-2xl text-white relative overflow-hidden fade-in-up delay-200">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue rounded-full blur-3xl opacity-20 -mr-16 -mt-16"></div>
+                    <h3 class="text-2xl font-bold mb-6">Mengapa Memilih Kami?</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-accent"></i>
+                            <span>Produk Original Bongshin Korea</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-accent"></i>
+                            <span>Stok Lengkap & Siap Kirim</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-accent"></i>
+                            <span>Harga Kompetitif</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-accent"></i>
+                            <span>Garansi Resmi</span>
+                        </li>
+                    </ul>
+                    <button onclick="scrollToContact()" class="mt-8 bg-brand-accent text-brand-dark font-bold py-3 px-6 rounded hover:bg-yellow-400 transition-colors w-full sm:w-auto">
+                        Minta Penawaran Harga
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-extrabold text-brand-dark mb-4">TENTANG PT TAWAKAL TEHNIK MANDIRI</h2>
+                <p class="text-gray-600">Kami adalah distributor resmi peralatan industri terkemuka di Indonesia. Dengan pengalaman bertahun-tahun, kami berkomitmen memberikan solusi tepat, teknologi hebat, dan kinerja optimal bagi pelanggan kami.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm text-center hover-lift">
+                    <div class="w-16 h-16 bg-brand-blue/10 text-brand-blue rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Visi Kami</h3>
+                    <p class="text-sm text-gray-600">Menjadi distributor peralatan industri terdepan yang dipercaya oleh seluruh sektor industri di Indonesia.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm text-center hover-lift">
+                    <div class="w-16 h-16 bg-brand-blue/10 text-brand-blue rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Misi Kami</h3>
+                    <p class="text-sm text-gray-600">Memberikan produk berkualitas tinggi, layanan purna jual terbaik, dan solusi teknis yang inovatif.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm text-center hover-lift">
+                    <div class="w-16 h-16 bg-brand-blue/10 text-brand-blue rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Nilai Kami</h3>
+                    <p class="text-sm text-gray-600">Integritas, Profesionalisme, Inovasi, dan Kepuasan Pelanggan adalah prioritas utama kami.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4 lg:px-8 text-center">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-10">
+                <h2 class="text-3xl font-extrabold text-brand-dark mb-4 text-center w-full">LAYANAN KAMI</h2>
+                <p class="text-gray-500 mt-2 md:mt-0 text-center w-full">Dukungan penuh dari konsultasi hingga pemasangan.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
+                    <i class="fa-solid fa-comments text-3xl text-brand-blue mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-bold text-lg mb-2">Konsultasi Teknis</h3>
+                    <p class="text-sm text-gray-600">Tim ahli kami siap membantu memilih produk yang tepat sesuai kebutuhan aplikasi Anda.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
+                    <i class="fa-solid fa-screwdriver-wrench text-3xl text-brand-blue mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-bold text-lg mb-2">Instalasi & Kalibrasi</h3>
+                    <p class="text-sm text-gray-600">Layanan instalasi profesional dan kalibrasi berkala untuk memastikan akurasi tetap terjaga.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
+                    <i class="fa-solid fa-box-open text-3xl text-brand-blue mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-bold text-lg mb-2">Pengiriman Cepat</h3>
+                    <p class="text-sm text-gray-600">Stok lengkap dengan jaringan distribusi luas untuk pengiriman ke seluruh Indonesia.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
+                    <i class="fa-solid fa-file-contract text-3xl text-brand-blue mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-bold text-lg mb-2">Garansi Resmi</h3>
+                    <p class="text-sm text-gray-600">Setiap produk dilengkapi garansi resmi dari pabrik dan dukungan after-sales service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-brand-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-extrabold mb-6">HUBUNGI KAMI</h2>
+                    <p class="text-gray-300 mb-8">Butuh penawaran harga atau konsultasi teknis? Jangan ragu untuk menghubungi tim sales kami. Kami siap melayani Anda.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-blue flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Alamat Kantor</h4>
+                                <p class="text-gray-400">Ruko Cikangkara no.2A-3A<br>Cibenda Serang Baru Bekasi</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-blue flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Telepon / WhatsApp</h4>
+                                <p class="text-gray-400">085 718 200 115</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-blue flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Email</h4>
+                                <p class="text-gray-400">sales@tatehnkk.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-blue flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Website</h4>
+                                <p class="text-gray-400">www.tatehnik.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 bg-white text-gray-800 rounded-2xl p-8 shadow-2xl">
+                    <h3 class="text-2xl font-bold mb-6 text-brand-dark">Kirim Pesan</h3>
+                    <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                                <input type="text" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">No. Telepon</label>
+                                <input type="tel" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Pesan / Permintaan</label>
+                            <textarea rows="4" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brand-blue hover:bg-brand-dark text-white font-bold py-3 rounded-lg transition-colors shadow-lg shadow-brand-blue/30">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-16 pb-8 border-t border-gray-800">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1">
+                    <h2 class="text-3xl font-black italic mb-4">TTM</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        PT Tawakal Tehnik Mandiri adalah distributor resmi peralatan industri terpercaya di Indonesia. Kami berkomitmen memberikan solusi tepat dengan teknologi hebat.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center hover:bg-brand-accent hover:text-brand-dark transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center hover:bg-brand-accent hover:text-brand-dark transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center hover:bg-brand-accent hover:text-brand-dark transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-6 text-lg text-brand-accent">Produk Unggulan</h3>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Bongshin Load Cell</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Big Tool CNC Machine</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Sugino Filter System</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Ehwa Grinding Wheel</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Yamasa Taps</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-6 text-lg text-brand-accent">Tautan Cepat</h3>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="#about" class="hover:text-white transition-colors">Tentang Kami</a></li>
+                        <li><a href="#products" class="hover:text-white transition-colors">Katalog Produk</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Layanan</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-6 text-lg text-brand-accent">Jam Operasional</h3>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex justify-between"><span>Senin - Jumat:</span> <span>08:00 - 17:00</span></li>
+                        <li class="flex justify-between"><span>Sabtu:</span> <span>08:00 - 15:00</span></li>
+                        <li class="flex justify-between"><span>Minggu:</span> <span>Tutup</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+                <p>&copy; 2026 PT Tawakal Tehnik Mandiri. All rights reserved.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Bottom Contact Bar -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md">
+        <div class="bg-brand-blue text-white rounded-full shadow-2xl shadow-blue-900/40 p-2 pr-6 flex items-center justify-between backdrop-blur-sm bg-opacity-95 border border-white/20">
+            <div class="flex items-center gap-3 pl-4">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-blue">
+                    <i class="fa-solid fa-headset text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-[10px] font-medium opacity-90 uppercase tracking-wider">Sales Support</span>
+                    <span class="text-sm font-bold">085 718 200 115</span>
+                </div>
+            </div>
+            <a href="https://wa.me/6285718200115" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 transition-colors">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Chat
+            </a>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="modal fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="modal-content bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl relative">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors z-10">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="bg-gray-100 p-8 flex items-center justify-center">
+                    <img id="modal-img" src="" alt="Product" class="max-w-full max-h-[400px] object-contain drop-shadow-lg">
+                </div>
+                <div class="p-8 lg:p-10">
+                    <span id="modal-category" class="text-xs font-bold text-brand-blue uppercase tracking-wider mb-2 block">Category</span>
+                    <h2 id="modal-title" class="text-3xl font-extrabold text-brand-dark mb-4">Product Title</h2>
+                    <p id="modal-desc" class="text-gray-600 mb-6 leading-relaxed">Description goes here.</p>
+                    
+                    <div class="mb-8">
+                        <h4 class="font-bold text-sm text-gray-900 mb-3 uppercase">Spesifikasi Utama:</h4>
+                        <ul id="modal-specs" class="space-y-2 text-sm text-gray-600">
+                            <!-- Specs injected via JS -->
+                        </ul>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button onclick="addToCartFromModal()" class="flex-1 bg-brand-blue hover:bg-brand-dark text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i> Tambah ke Penawaran
+                        </button>
+                        <a href="https://wa.me/6285718200115" target="_blank" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp"></i> Tanya via WA
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden" onclick="toggleCart()"></div>
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-[70] flex flex-col">
+        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+            <h2 class="text-2xl font-bold text-brand-dark">Daftar Penawaran</h2>
+            <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-800 text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Cart items will be injected here -->
+            <div class="text-center text-gray-500 mt-10">
+                <i class="fa-solid fa-cart-shopping text-4xl mb-4 text-gray-300"></i>
+                <p>Keranjang penawaran Anda masih kosong.</p>
+            </div>
+        </div>
+        <div class="p-6 border-t border-gray-200 bg-gray-50">
+            <button onclick="alert('Fitur kirim penawaran akan segera hadir!')" class="w-full bg-brand-blue hover:bg-brand-dark text-white font-bold py-3 rounded-lg transition-colors shadow-lg shadow-brand-blue/30">
+                Kirim Permintaan Penawaran
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-24 right-4 bg-white border-l-4 border-brand-accent shadow-xl rounded-r-lg p-4 transform translate-x-full transition-transform duration-300 z-[80] flex items-center gap-3">
+        <div class="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <h4 class="font-bold text-sm text-gray-900">Berhasil!</h4>
+            <p class="text-xs text-gray-500">Produk ditambahkan ke daftar penawaran.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- DATA: Individual Products with Realistic Images ---
+        const productsData = [
+            // BONGSHIN LOAD CELLS
+            {
+                id: 'bsa-500kg',
+                name: 'Bongshin Compression Load Cell BSA-500kg',
+                category: 'loadcell',
+                brand: 'Bongshin',
+                image: 'assets/img/Bongshin_BSA.png',
+                desc: 'Load cell tipe kompresi dengan kapasitas 500kg. Ideal untuk platform scale dan hopper kecil. Material alloy steel dengan proteksi IP67.',
+                specs: ['Kapasitas: 500kg', 'Tipe: Compression', 'Material: Alloy Steel', 'Proteksi: IP67', 'Output: 2.0mV/V']
+            },
+            {
+                id: 'bsa-5ton',
+                name: 'Bongshin Compression Load Cell BSA-5Ton',
+                category: 'loadcell',
+                brand: 'Bongshin',
+                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Bongshin+BSA+5Ton',
+                desc: 'Load cell kompresi kapasitas menengah 5 ton. Cocok untuk tank scale dan silo berukuran sedang. Akurasi tinggi dan stabil.',
+                specs: ['Kapasitas: 5 Ton', 'Tipe: Compression', 'Material: Alloy Steel', 'Proteksi: IP67', 'Aplikasi: Tank Scale']
+            },
+            {
+                id: 'bck-10ton',
+                name: 'Bongshin Canister Load Cell BCK-10Ton',
+                category: 'loadcell',
+                brand: 'Bongshin',
+                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Bongshin+BCK+10T',
+                desc: 'Load cell tipe canister/hermetic sealed dengan kapasitas 10 ton. Tahan terhadap lingkungan keras dan kelembaban tinggi.',
+                specs: ['Kapasitas: 10 Ton', 'Tipe: Canister (Hermetic)', 'Material: Stainless Steel', 'Proteksi: IP68', 'Aplikasi: Truck Scale']
+            },
+            {
+                id: 'bck-50ton',
+                name: 'Bongshin Canister Load Cell BCK-50Ton',
+                category: 'loadcell',
+                brand: 'Bongshin',
+                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Bongshin+BCK+50T',
+                desc: 'Load cell canister kapasitas besar 50 ton untuk aplikasi truck scale dan weighbridge. Konstruksi kokoh dan tahan lama.',
+                specs: ['Kapasitas: 50 Ton', 'Tipe: Canister', 'Material: Stainless Steel', 'Proteksi: IP68', 'Aplikasi: Weighbridge']
+            },
+            {
+                id: 'bsu-1ton',
+                name: 'Bongshin Shear Beam Load Cell BSU-1Ton',
+                category: 'loadcell',
+                brand: 'Bongshin',
+                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Bongshin+BSU+1T',
+                desc: 'Load cell shear beam compact dengan kapasitas 1 ton. Sangat cocok untuk platform scale lantai dan conveyor scale.',
+                specs: ['Kapasitas: 1 Ton', 'Tipe: Shear Beam', 'Material: Alloy Steel', 'Proteksi: IP67', 'Aplikasi: Platform Scale']
+            },
+            {
+                id: 'bst-50kg',
+                name: 'Bongshin Single Point Load Cell BST-50kg',
+                category: 'loadcell',
+                brand: 'Bongshin',
+                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Bongshin+BST+50kg',
+                desc: 'Load cell single point untuk bench scale dan counting scale. Presisi tinggi untuk penimbangan benda kecil hingga menengah.',
+                specs: ['Kapasitas: 50kg', 'Tipe: Single Point', 'Material: Aluminum Alloy', 'Proteksi: IP66', 'Aplikasi: Bench Scale']
+            },
+            {
+                id: 'bmd-digital',
+                name: 'Bongshin Digital Load Cell BMD-20Ton',
+                category: 'loadcell',
+                brand: 'Bongshin',
+                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Bongshin+Digital+20T',
+                desc: 'Load cell digital dengan output sinyal digital langsung. Anti-interferensi elektromagnetik, cocok untuk lingkungan industri berat.',
+                specs: ['Kapasitas: 20 Ton', 'Tipe: Digital', 'Output: RS485/Modbus', 'Proteksi: IP68', 'Anti-EMI']
+            },
+
+            // BIG TOOL / CNC
+            {
+                id: 'xin-cnc-grinder',
+                name: 'XIN Series CNC Tool & Cutter Grinder',
+                category: 'cnc',
+                brand: 'Big Tool',
+                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=XIN+CNC+Grinder',
+                desc: 'Mesin gerinda alat potong CNC presisi tinggi dari Korea. Dilengkapi kontrol numerik untuk hasil grinding yang sangat akurat dan konsisten.',
+                specs: ['Presisi: ±0.002mm', 'Kontrol: CNC System', 'Spindle Speed: Variable', 'Aplikasi: Endmill, Drill, Tap', 'Origin: Korea']
+            },
+            {
+                id: 'bigtool-endmill',
+                name: 'Big Tool Solid Carbide Endmill',
+                category: 'cnc',
+                brand: 'Big Tool',
+                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Carbide+Endmill',
+                desc: 'Endmill solid carbide berkualitas tinggi untuk milling material keras. Coating khusus untuk umur pakai lebih panjang.',
+                specs: ['Material: Solid Carbide', 'Coating: TiAlN', 'Flute: 2/3/4 Flutes', 'Diameter: 1mm - 20mm', 'Hardness: HRC65']
+            },
+
+            // SUGINO FILTRATION
+            {
+                id: 'sugino-magnetic',
+                name: 'Sugino Magnetic Separator MS-Series',
+                category: 'filtration',
+                brand: 'Sugino',
+                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Magnetic+Separator',
+                desc: 'Magnetic separator untuk menghilangkan serbuk besi halus dari coolant. Efektif menjaga kebersihan cairan pendingin mesin.',
+                specs: ['Tipe: Magnetic Drum', 'Flow Rate: 50-200 L/min', 'Particle Size: >10 micron', 'Material: Stainless Steel', 'Auto Cleaning']
+            },
+            {
+                id: 'sugino-paper',
+                name: 'Sugino Paper Filter PF-Series',
+                category: 'filtration',
+                brand: 'Sugino',
+                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Paper+Filter',
+                desc: 'Paper filter otomatis dengan kertas filter berkualitas tinggi. Filtrasi halus untuk finishing process machining.',
+                specs: ['Filtration: 5-20 micron', 'Auto Feed Paper', 'Tank Capacity: 100-500L', 'Pump: Included', 'Application: Grinding']
+            },
+            {
+                id: 'sugino-drum',
+                name: 'Sugino Drum Filter DF-Series',
+                category: 'filtration',
+                brand: 'Sugino',
+                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Drum+Filter',
+                desc: 'Drum filter dengan kapasitas besar dan efisiensi tinggi. Sistem filtrasi otomatis continuous untuk produksi massal.',
+                specs: ['Capacity: Large Volume', 'Auto Backwash', 'Filtration: 10-50 micron', 'Continuous Operation', 'Low Maintenance']
+            },
+
+            // EHWA GRINDING
+            {
+                id: 'ehwa-diamond-wheel',
+                name: 'Ehwa Diamond Grinding Wheel D107',
+                category: 'grinding',
+                brand: 'Ehwa',
+                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Diamond+Wheel',
+                desc: 'Diamond grinding wheel untuk material keras seperti carbide dan ceramic. Grit D107 untuk finishing halus.',
+                specs: ['Abrasive: Diamond', 'Grit: D107', 'Bond: Resin/Metal', 'Diameter: 100-200mm', 'Application: Carbide']
+            },
+            {
+                id: 'ehwa-cbn-wheel',
+                name: 'Ehwa CBN Grinding Wheel B64',
+                category: 'grinding',
+                brand: 'Ehwa',
+                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=CBN+Wheel',
+                desc: 'CBN wheel untuk grinding baja hardened. Umur pakai 10x lebih lama dibanding conventional wheel.',
+                specs: ['Abrasive: CBN', 'Grit: B64', 'Bond: Vitrified', 'Hardness: HRC60+', 'Application: Steel']
+            },
+
+            // YAMASA & YUH CHERN
+            {
+                id: 'yamasa-tap-m6',
+                name: 'Yamasa Spiral Point Tap M6',
+                category: 'conveyor',
+                brand: 'Yamasa',
+                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Yamasa+Tap+M6',
+                desc: 'Tap ulir metrik M6 dengan spiral point untuk through hole. Performa unggul dan daya tahan tinggi.',
+                specs: ['Size: M6 x 1.0', 'Type: Spiral Point', 'Material: HSS-E', 'Coating: TiN', 'Thread: Metric']
+            },
+            {
+                id: 'yuhchern-hanger',
+                name: 'Yuh Chern Painting Hanger Jig',
+                category: 'conveyor',
+                brand: 'Yuh Chern',
+                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Painting+Hanger',
+                desc: 'Hanger jig untuk proses painting conveyor. Desain kuat dan tahan panas oven cat.',
+                specs: ['Material: Heat Resistant Steel', 'Load: 5-20kg', 'Temperature: Up to 200°C', 'Custom Design Available', 'Anti-Drip']
+            },
+
+            // JUKYO CHAIN
+            {
+                id: 'jukyo-painting-chain',
+                name: 'Jukyo Overhead Painting Chain X458',
+                category: 'conveyor',
+                brand: 'Jukyo',
+                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Painting+Chain+X458',
+                desc: 'Rantai overhead conveyor tipe X458 untuk sistem painting. Kuat, presisi, dan tahan terhadap cat dan suhu tinggi.',
+                specs: ['Type: X458 Drop Forged', 'Pitch: 76.2mm', 'Material: Alloy Steel', 'Heat Treatment: Yes', 'Application: Paint Line']
+            },
+            {
+                id: 'jukyo-power-free',
+                name: 'Jukyo Power & Free Chain',
+                category: 'conveyor',
+                brand: 'Jukyo',
+                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Power+Free+Chain',
+                desc: 'Sistem rantai power and free untuk conveyor fleksibel. Memungkinkan accumulation dan switching jalur otomatis.',
+                specs: ['Type: Power & Free', 'Track: Enclosed', 'Switch: Automatic', 'Accumulation: Yes', 'Heavy Duty']
+            }
+        ];
+
+        let cart = [];
+        let currentModalProduct = null;
+        let currentFilter = 'all';
+
+        // --- Functions ---
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('open');
+            document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+        }
+
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // RENDER PRODUCTS
+        function renderProducts(filter = 'all', searchTerm = '') {
+            const grid = document.getElementById('product-grid');
+            const noResults = document.getElementById('no-results');
+            grid.innerHTML = '';
+            
+            let filtered = productsData;
+
+            if (filter !== 'all') {
+                filtered = filtered.filter(p => p.category === filter);
+            }
+
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(term) || 
+                    p.brand.toLowerCase().includes(term) ||
+                    p.desc.toLowerCase().includes(term)
+                );
+            }
+
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                filtered.forEach((product, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'group bg-white rounded-xl border border-gray-200 overflow-hidden hover-lift cursor-pointer';
+                    card.onclick = () => openProductModal(product.id);
+                    
+                    card.innerHTML = `
+                        <div class="product-img-container relative bg-gray-100">
+                            <img src="${product.image}" alt="${product.name}" class="group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3 bg-brand-blue text-white text-[10px] font-bold px-2 py-1 rounded uppercase">${product.brand}</div>
+                            ${product.category === 'loadcell' ? '<div class="absolute top-3 right-3 bg-brand-accent text-brand-dark text-[10px] font-bold px-2 py-1 rounded">HOT</div>' : ''}
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-base font-bold text-gray-900 mb-2 line-clamp-2 h-12">${product.name}</h3>
+                            <p class="text-xs text-gray-500 mb-4 line-clamp-2">${product.desc}</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] bg-gray-100 text-gray-600 px-2 py-1 rounded capitalize">${getCategoryName(product.category)}</span>
+                                <button class="text-brand-blue hover:bg-brand-blue hover:text-white w-8 h-8 rounded-full flex items-center justify-center transition-colors">
+                                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        function getCategoryName(cat) {
+            const names = {
+                'loadcell': 'Load Cell',
+                'cnc': 'Mesin CNC',
+                'filtration': 'Filtrasi',
+                'grinding': 'Grinding Wheel',
+                'conveyor': 'Conveyor'
+            };
+            return names[cat] || cat;
+        }
+
+        function filterProducts(category) {
+            currentFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if(btn.dataset.filter === category) {
+                    btn.classList.add('bg-brand-blue', 'text-white', 'border-transparent');
+                    btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+                } else {
+                    btn.classList.remove('bg-brand-blue', 'text-white', 'border-transparent');
+                    btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                }
+            });
+            
+            document.getElementById('search-input').value = '';
+            renderProducts(currentFilter, '');
+        }
+
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const searchTerm = e.target.value;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                 btn.classList.remove('bg-brand-blue', 'text-white', 'border-transparent');
+                 btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+            });
+            currentFilter = 'all';
+            renderProducts('all', searchTerm);
+        });
+
+
+        function openProductModal(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+
+            currentModalProduct = product;
+            
+            document.getElementById('modal-img').src = product.image;
+            document.getElementById('modal-category').textContent = product.brand + ' - ' + getCategoryName(product.category);
+            document.getElementById('modal-title').textContent = product.name;
+            document.getElementById('modal-desc').textContent = product.desc;
+            
+            const specsList = document.getElementById('modal-specs');
+            specsList.innerHTML = '';
+            product.specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start gap-2';
+                li.innerHTML = `<i class="fa-solid fa-check text-brand-accent mt-1 text-xs"></i> <span>${spec}</span>`;
+                specsList.appendChild(li);
+            });
+
+            const modal = document.getElementById('product-modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('product-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            currentModalProduct = null;
+        }
+
+        function addToCartFromModal() {
+            if (currentModalProduct) {
+                const existingItem = cart.find(item => item.id === currentModalProduct.id);
+                if (!existingItem) {
+                    cart.push({...currentModalProduct});
+                    updateCartUI();
+                    showToast();
+                } else {
+                    alert('Produk ini sudah ada di daftar penawaran Anda.');
+                }
+                closeProductModal();
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cart-count');
+            badge.textContent = cart.length;
+            
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center text-gray-500 mt-10">
+                        <i class="fa-solid fa-cart-shopping text-4xl mb-4 text-gray-300"></i>
+                        <p>Keranjang penawaran Anda masih kosong.</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach(item => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'flex items-center gap-4 bg-gray-50 p-3 rounded-lg';
+                    itemEl.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md bg-white">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-sm text-gray-800 line-clamp-1">${item.name}</h4>
+                            <p class="text-xs text-gray-500">${item.brand}</p>
+                        </div>
+                        <button onclick="removeFromCart('${item.id}')" class="text-gray-400 hover:text-red-500 transition-colors p-2">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+            }
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            const isOpen = sidebar.classList.contains('open');
+            
+            if (isOpen) {
+                sidebar.classList.remove('open');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            } else {
+                sidebar.classList.add('open');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-x-full');
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 3000);
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Terkirim!';
+                btn.classList.remove('bg-brand-blue');
+                btn.classList.add('bg-green-500');
+                
+                setTimeout(() => {
+                    e.target.reset();
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                    btn.classList.add('bg-brand-blue');
+                    btn.classList.remove('bg-green-500');
+                    alert('Terima kasih! Pesan Anda telah terkirim. Tim kami akan segera menghubungi Anda.');
+                }, 1500);
+            }, 1500);
+        }
+
+        document.getElementById('product-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeProductModal();
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+                header.querySelector('.container').classList.remove('h-20');
+                header.querySelector('.container').classList.add('h-16');
+            } else {
+                header.classList.remove('shadow-lg');
+                header.querySelector('.container').classList.add('h-20');
+                header.querySelector('.container').classList.remove('h-16');
+            }
+        });
+
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // --- HERO SLIDESHOW LOGIC ---
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const indicators = document.querySelectorAll('.slide-indicator');
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => {
+                slide.classList.remove('active', 'exit');
+            });
+            indicators.forEach(ind => ind.classList.remove('active', 'bg-white'));
+            indicators.forEach(ind => ind.classList.add('bg-white/50'));
+
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active', 'bg-white');
+            indicators[index].classList.remove('bg-white/50');
+        }
+
+        function nextSlide() {
+            slides[currentSlideIndex].classList.remove('active');
+            slides[currentSlideIndex].classList.add('exit');
+
+            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+            showSlide(currentSlideIndex);
+        }
+
+        function startSlideshow() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                currentSlideIndex = index;
+                showSlide(currentSlideIndex);
+                startSlideshow();
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts('all');
+            startSlideshow();
+            
+            document.querySelectorAll('section:not(#products) > div > div, .trust-badge-item, .service-card').forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+        });
+
+    </script>
+</body>
+</html>
