@@ -55,6 +55,14 @@
         }
     </script>
     <style>
+        /* FIX GLOBAL: Mencegah scrollbar horizontal & elemen bocor ke kanan */
+        html, body {
+            overflow-x: hidden !important;
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+        }
+
         /* Custom Animations & Utilities */
         .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
@@ -124,7 +132,10 @@
         }
 
         /* Prevent scrolling when loading */
-        body.loading { overflow: hidden; }
+        body.loading { 
+            overflow: hidden !important; 
+            overflow-x: hidden !important;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden loading">
@@ -132,43 +143,43 @@
     <!-- PRELOADER / LOADING SCREEN -->
 <div id="preloader" class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center gap-8 animate-fade-out" style="animation-delay: 2.2s;">
     <!-- Logo Image (PENGGANTI TEKS TTM) -->
-    <img src="assets/img/logo.png" alt="TTM Logo" class="w-64 h-auto object-contain animate-logo-enter drop-shadow-lg">
+    <img src="assets/img/logo.png" alt="TTM Logo" class="w-48 sm:w-64 h-auto object-contain animate-logo-enter drop-shadow-lg">
     
     <!-- Progress Bar Container -->
-    <div class="w-64 h-1 bg-gray-700 rounded-full overflow-hidden">
+    <div class="w-48 sm:w-64 h-1 bg-gray-700 rounded-full overflow-hidden">
         <!-- Animated Yellow Bar -->
         <div class="h-full bg-brand-accent rounded-full animate-progress-fill"></div>
     </div>
 </div>
 
-    <!-- Top Notification Bar -->
-    <div class="bg-brand-dark text-white py-2 px-4 text-xs font-medium flex justify-center items-center gap-6 border-b border-white/10 relative z-50">
-        <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-brand-accent"></i> Produk Original Bongshin Korea</span>
+    <!-- Top Notification Bar (Minimalist Mobile) -->
+    <div class="bg-brand-dark text-white py-2 px-3 text-[10px] sm:text-xs font-medium flex justify-center items-center gap-3 sm:gap-6 border-b border-white/10 relative z-50">
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-brand-accent"></i> <span class="hidden xs:inline">Produk Original Bongshin Korea</span><span class="xs:hidden">Original Korea</span></span>
         <span class="hidden sm:flex items-center gap-2"><i class="fa-solid fa-truck-fast text-brand-accent"></i> Stok Lengkap & Siap Kirim</span>
         <span class="hidden md:flex items-center gap-2"><i class="fa-solid fa-shield-halved text-brand-accent"></i> Garansi Resmi</span>
     </div>
 
-    <!-- Main Header / Navbar (CLEANED UP) -->
-    <header class="bg-white sticky top-0 z-40 shadow-md transition-all duration-300" id="main-header">
-        <div class="container mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Main Header / Navbar (MINIMALIST MOBILE) -->
+    <header class="bg-white sticky top-0 z-40 shadow-sm transition-all duration-300" id="main-header">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <!-- Logo Area WITH ENTRY ANIMATION -->
-             <img src="assets/img/logo.png" width="235" alt="Logo" class="animate-logo-enter">
+             <img src="assets/img/logo.png" width="180" alt="Logo" class="animate-logo-enter w-36 sm:w-[235px]">
 
             <!-- Icons (WISHLIST REMOVED) -->
-            <div class="flex items-center gap-6 text-gray-600">
-                <button class="flex flex-col items-center gap-1 hover:text-brand-blue transition-colors group relative" onclick="toggleCart()">
+            <div class="flex items-center gap-4 sm:gap-6 text-gray-600">
+                <button class="flex flex-col items-center gap-1 hover:text-brand-blue transition-colors group relative p-2" onclick="toggleCart()">
                     <div class="relative">
-                        <i class="fa-solid fa-cart-shopping text-lg group-hover:scale-110 transition-transform"></i>
-                        <span id="cart-count" class="absolute -top-1.5 -right-2 bg-brand-accent text-brand-dark text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">0</span>
+                        <i class="fa-solid fa-cart-shopping text-base sm:text-lg group-hover:scale-110 transition-transform"></i>
+                        <span id="cart-count" class="absolute -top-1.5 -right-2 bg-brand-accent text-brand-dark text-[8px] sm:text-[9px] font-bold w-3.5 h-3.5 sm:w-4 sm:h-4 flex items-center justify-center rounded-full">0</span>
                     </div>
                 </button>
-                <button class="md:hidden text-xl ml-2 text-brand-dark" onclick="toggleMobileMenu()">
+                <button class="sm:hidden text-lg text-brand-dark p-2" onclick="toggleMobileMenu()">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </div>
         
-        <!-- Sub Navigation (Desktop) -->
+        <!-- Sub Navigation (Desktop Only) -->
         <nav class="hidden md:block border-t border-gray-100 bg-white">
             <div class="container mx-auto px-8">
                 <ul class="flex items-center gap-8 text-sm font-semibold text-gray-600 py-3 overflow-x-auto hide-scrollbar">
@@ -182,50 +193,53 @@
         </nav>
     </header>
 
+    <!-- YELLOW HORIZONTAL BAR -->
+    <div class="w-full h-1 bg-brand-accent shadow-sm relative z-30"></div>
+
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 z-50 bg-white pt-24 px-6 md:hidden flex flex-col gap-6">
-        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-2xl text-gray-600"><i class="fa-solid fa-xmark"></i></button>
-        <a href="#home" onclick="toggleMobileMenu()" class="text-xl font-bold text-brand-dark border-b pb-2">Beranda</a>
-        <a href="#products" onclick="toggleMobileMenu()" class="text-xl font-bold text-brand-dark border-b pb-2">Produk</a>
-        <a href="#about" onclick="toggleMobileMenu()" class="text-xl font-bold text-brand-dark border-b pb-2">Tentang Kami</a>
-        <a href="#services" onclick="toggleMobileMenu()" class="text-xl font-bold text-brand-dark border-b pb-2">Layanan</a>
-        <a href="#contact" onclick="toggleMobileMenu()" class="text-xl font-bold text-brand-dark border-b pb-2">Kontak</a>
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-white pt-20 px-6 md:hidden flex flex-col gap-4">
+        <button onclick="toggleMobileMenu()" class="absolute top-5 right-5 text-2xl text-gray-600 p-2"><i class="fa-solid fa-xmark"></i></button>
+        <a href="#home" onclick="toggleMobileMenu()" class="text-lg font-bold text-brand-dark border-b pb-3 mt-8">Beranda</a>
+        <a href="#products" onclick="toggleMobileMenu()" class="text-lg font-bold text-brand-dark border-b pb-3">Produk</a>
+        <a href="#about" onclick="toggleMobileMenu()" class="text-lg font-bold text-brand-dark border-b pb-3">Tentang Kami</a>
+        <a href="#services" onclick="toggleMobileMenu()" class="text-lg font-bold text-brand-dark border-b pb-3">Layanan</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="text-lg font-bold text-brand-dark border-b pb-3">Kontak</a>
         
-        <div class="mt-8">
-            <p class="text-sm text-gray-500 mb-2">Hubungi Kami</p>
-            <a href="tel:085718200115" class="flex items-center gap-3 text-brand-blue font-bold text-lg">
+        <div class="mt-auto mb-8 p-4 bg-gray-50 rounded-xl">
+            <p class="text-xs text-gray-500 mb-2 uppercase tracking-wider font-semibold">Hubungi Kami</p>
+            <a href="tel:085718200115" class="flex items-center gap-3 text-brand-blue font-bold text-base">
                 <i class="fa-solid fa-phone"></i> 085 718 200 115
             </a>
         </div>
     </div>
 
-    <!-- Hero Section WITH SLIDESHOW -->
-    <section id="home" class="relative bg-gradient-to-br from-brand-dark to-brand-blue overflow-hidden text-white min-h-[600px] flex items-center">
+    <!-- Hero Section WITH SLIDESHOW (MINIMALIST MOBILE) -->
+    <section id="home" class="relative bg-gradient-to-br from-brand-dark to-brand-blue overflow-hidden text-white min-h-[500px] sm:min-h-[600px] flex items-center">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-accent/10 to-transparent"></div>
         
-        <div class="container mx-auto px-4 lg:px-8 py-16 lg:py-24 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-24 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                 
                 <!-- Text Content -->
-                <div class="lg:w-1/2 space-y-6 fade-in-up">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 rounded text-xs font-bold text-brand-accent uppercase tracking-wide">
+                <div class="lg:w-1/2 space-y-4 sm:space-y-6 fade-in-up text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-accent/20 border border-brand-accent/40 rounded-full text-[10px] sm:text-xs font-bold text-brand-accent uppercase tracking-wide">
                         <i class="fa-solid fa-star"></i> Authorized Distributor
                     </div>
-                    <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight">
+                    <h1 class="text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-tight">
                         SOLUSI TIMBANGAN <br>
                         <span class="text-brand-accent">INDUSTRI AKURAT</span>
                     </h1>
-                    <p class="text-lg text-gray-300 max-w-lg leading-relaxed font-light">
+                    <p class="text-sm sm:text-lg text-gray-300 max-w-lg leading-relaxed font-light mx-auto lg:mx-0">
                         PT Tawakal Tehnik Mandiri menyediakan berbagai jenis Load Cell Bongshin dengan kualitas tinggi untuk berbagai kebutuhan industri Anda. Akurat, Tangguh & Terpercaya.
                     </p>
-                    <div class="flex items-center gap-4 pt-4">
-                        <a href="#products" class="bg-brand-accent hover:bg-yellow-400 text-brand-dark px-8 py-3.5 rounded font-bold shadow-lg shadow-yellow-500/20 transition-all hover:-translate-y-1 inline-block">
+                    <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-2 sm:pt-4 justify-center lg:justify-start">
+                        <a href="#products" class="w-full sm:w-auto bg-brand-accent hover:bg-yellow-400 text-brand-dark px-6 sm:px-8 py-3 rounded-lg font-bold shadow-lg shadow-yellow-500/20 transition-all hover:-translate-y-1 inline-block text-center text-sm sm:text-base">
                             Lihat Katalog
                         </a>
-                        <a href="#contact" class="flex items-center gap-2 text-white font-semibold hover:text-brand-accent transition-colors group">
-                            <span class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:border-brand-accent group-hover:text-brand-accent transition-colors">
+                        <a href="#contact" class="w-full sm:w-auto flex items-center justify-center gap-2 text-white font-semibold hover:text-brand-accent transition-colors group text-sm sm:text-base">
+                            <span class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:border-brand-accent group-hover:text-brand-accent transition-colors">
                                 <i class="fa-solid fa-phone text-xs"></i>
                             </span>
                             Hubungi Sales
@@ -234,7 +248,7 @@
                 </div>
 
                 <!-- Hero Slideshow Container -->
-                <div class="lg:w-1/2 relative w-full fade-in-up delay-200">
+                <div class="lg:w-1/2 relative w-full fade-in-up delay-200 mt-4 lg:mt-0">
                     <div class="relative w-full aspect-video flex items-center justify-center">
                         <!-- Slide 1 -->
                         <div class="hero-slide active" data-index="0">
@@ -255,160 +269,160 @@
                     
                     <!-- Slide Indicators -->
                     <div class="flex justify-center gap-2 mt-4">
-                        <button class="slide-indicator w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors active" data-slide="0"></button>
-                        <button class="slide-indicator w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="1"></button>
-                        <button class="slide-indicator w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="2"></button>
+                        <button class="slide-indicator w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors active" data-slide="0"></button>
+                        <button class="slide-indicator w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="1"></button>
+                        <button class="slide-indicator w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="2"></button>
                     </div>
                 </div>
             </div>
         </div>
         
         <!-- Slanted Bottom -->
-        <div class="absolute bottom-0 left-0 w-full h-24 bg-gray-50" style="clip-path: polygon(0 100%, 100% 100%, 100% 0);"></div>
+        <div class="absolute bottom-0 left-0 w-full h-16 sm:h-24 bg-gray-50" style="clip-path: polygon(0 100%, 100% 100%, 100% 0);"></div>
     </section>
 
-    <!-- Trust Badges (ICONS FIXED & THEMED) -->
-    <section class="bg-white container mx-auto rounded-xl shadow-lg p-8 mb-16 relative z-20 -mt-12 mx-4 lg:mx-auto max-w-6xl">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="flex items-center gap-4 justify-center md:justify-start group cursor-default">
-                <div class="w-12 h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors">
+    <!-- Trust Badges (MINIMALIST MOBILE GRID) -->
+    <section class="bg-white container mx-auto rounded-xl shadow-lg p-4 sm:p-8 mb-8 sm:mb-16 relative z-20 -mt-8 sm:-mt-12 mx-3 sm:mx-4 lg:mx-auto max-w-6xl">
+        <div class="grid grid-cols-2 gap-4 sm:gap-8">
+            <div class="flex items-center gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-lg sm:text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors shrink-0">
                     <i class="fa-solid fa-crosshairs"></i>
                 </div>
                 <div>
-                    <h3 class="font-bold text-gray-900 text-sm">Akurasi Tinggi</h3>
-                    <p class="text-xs text-gray-500">Hasil penimbangan presisi</p>
+                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm">Akurasi Tinggi</h3>
+                    <p class="text-[10px] sm:text-xs text-gray-500">Hasil penimbangan presisi</p>
                 </div>
             </div>
             <!-- QUALITY ASSURANCE ICON RESTORED -->
-            <div class="flex items-center gap-4 justify-center md:justify-start group cursor-default">
-                <div class="w-12 h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors">
+            <div class="flex items-center gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-lg sm:text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors shrink-0">
                     <i class="fa-solid fa-shield-check"></i>
                 </div>
                 <div>
-                    <h3 class="font-bold text-gray-900 text-sm">Kualitas Terjamin</h3>
-                    <p class="text-xs text-gray-500">Original Korea, Tahan Lama</p>
+                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm">Kualitas Terjamin</h3>
+                    <p class="text-[10px] sm:text-xs text-gray-500">Original Korea, Tahan Lama</p>
                 </div>
             </div>
-            <div class="flex items-center gap-4 justify-center md:justify-start group cursor-default">
-                <div class="w-12 h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors">
+            <div class="flex items-center gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-lg sm:text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors shrink-0">
                     <i class="fa-solid fa-industry"></i>
                 </div>
                 <div>
-                    <h3 class="font-bold text-gray-900 text-sm">Aplikasi Luas</h3>
-                    <p class="text-xs text-gray-500">Cocok segala industri</p>
+                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm">Aplikasi Luas</h3>
+                    <p class="text-[10px] sm:text-xs text-gray-500">Cocok segala industri</p>
                 </div>
             </div>
-            <div class="flex items-center gap-4 justify-center md:justify-start group cursor-default">
-                <div class="w-12 h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors">
+            <div class="flex items-center gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-lg sm:text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors shrink-0">
                     <i class="fa-solid fa-headset"></i>
                 </div>
                 <div>
-                    <h3 class="font-bold text-gray-900 text-sm">Layanan Profesional</h3>
-                    <p class="text-xs text-gray-500">Tim support siap bantu</p>
+                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm">Layanan Profesional</h3>
+                    <p class="text-[10px] sm:text-xs text-gray-500">Tim support siap bantu</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRODUCT LIST SECTION (SEARCH MOVED HERE) -->
-    <section id="products" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 lg:px-8">
+    <!-- PRODUCT LIST SECTION (MINIMALIST MOBILE SEARCH & FILTERS) -->
+    <section id="products" class="py-10 sm:py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- NEW LAYOUT FOR SEARCH AND FILTERS -->
-            <div class="mb-10 space-y-6">
+            <div class="mb-8 sm:mb-10 space-y-4 sm:space-y-6">
                 <div class="text-center md:text-left">
-                    <h2 class="text-3xl font-extrabold text-brand-dark uppercase tracking-tight">Katalog Produk Lengkap</h2>
-                    <p class="text-gray-500 mt-2">Pilih produk spesifik sesuai kebutuhan industri Anda.</p>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-dark uppercase tracking-tight">Katalog Produk Lengkap</h2>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2">Pilih produk spesifik sesuai kebutuhan industri Anda.</p>
                 </div>
                 
-                <div class="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center">
+                <div class="flex flex-col gap-3 sm:gap-4">
                     <!-- Search Bar (MOVED FROM HEADER) -->
-                    <div class="relative flex-grow max-w-2xl">
-                        <input type="text" id="search-input" placeholder="Cari nama produk, merek, atau kata kunci..." class="w-full bg-white border border-gray-300 rounded-lg py-3 pl-12 pr-4 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none shadow-sm transition-all">
-                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <div class="relative w-full">
+                        <input type="text" id="search-input" placeholder="Cari nama produk, merek..." class="w-full bg-white border border-gray-300 rounded-lg py-2.5 sm:py-3 pl-10 sm:pl-12 pr-4 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none shadow-sm transition-all text-sm">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
                     </div>
 
-                    <!-- Category Filters -->
-                    <div class="flex flex-wrap gap-2 justify-center lg:justify-end">
-                        <button onclick="filterProducts('all')" class="filter-btn active px-4 py-3 bg-brand-blue text-white rounded-lg text-sm font-bold transition-colors shadow-sm" data-filter="all">Semua</button>
-                        <button onclick="filterProducts('loadcell')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="loadcell">Load Cell</button>
-                        <button onclick="filterProducts('cnc')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="cnc">Mesin CNC</button>
-                        <button onclick="filterProducts('filtration')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="filtration">Filtrasi</button>
-                        <button onclick="filterProducts('grinding')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="grinding">Grinding Wheel</button>
-                        <button onclick="filterProducts('conveyor')" class="filter-btn px-4 py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm" data-filter="conveyor">Conveyor</button>
+                    <!-- Category Filters (Horizontal Scroll on Mobile) -->
+                    <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 sm:pb-0 sm:flex-wrap sm:justify-end">
+                        <button onclick="filterProducts('all')" class="filter-btn active px-3 sm:px-4 py-2 sm:py-3 bg-brand-blue text-white rounded-lg text-xs sm:text-sm font-bold transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="all">Semua</button>
+                        <button onclick="filterProducts('loadcell')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="loadcell">Load Cell</button>
+                        <button onclick="filterProducts('cnc')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="cnc">Mesin CNC</button>
+                        <button onclick="filterProducts('filtration')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="filtration">Filtrasi</button>
+                        <button onclick="filterProducts('grinding')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="grinding">Grinding Wheel</button>
+                        <button onclick="filterProducts('conveyor')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="conveyor">Conveyor</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product Grid Container -->
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                 <!-- Products will be injected here by JavaScript -->
             </div>
              <!-- No Results Message -->
-            <div id="no-results" class="hidden text-center py-16">
-                <i class="fa-solid fa-magnifying-glass text-4xl text-gray-300 mb-4"></i>
-                <p class="text-xl font-semibold text-gray-500">Produk tidak ditemukan.</p>
-                <p class="text-gray-400">Coba gunakan kata kunci lain atau periksa ejaan Anda.</p>
+            <div id="no-results" class="hidden text-center py-12 sm:py-16">
+                <i class="fa-solid fa-magnifying-glass text-3xl sm:text-4xl text-gray-300 mb-3 sm:mb-4"></i>
+                <p class="text-base sm:text-xl font-semibold text-gray-500">Produk tidak ditemukan.</p>
+                <p class="text-xs sm:text-sm text-gray-400 mt-1">Coba gunakan kata kunci lain atau periksa ejaan Anda.</p>
             </div>
         </div>
     </section>
 
     <!-- Featured Product Detail (Bongshin Focus) -->
-    <section class="py-16 bg-white border-t border-gray-100">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex flex-col lg:flex-row gap-12 items-center">
-                <div class="lg:w-1/2 fade-in-up">
-                    <h2 class="text-3xl font-extrabold text-brand-dark mb-6">SPESIFIKASI TEKNIS <br><span class="text-brand-blue">BONGSHIN LOAD CELL</span></h2>
+    <section class="py-10 sm:py-16 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center">
+                <div class="lg:w-1/2 fade-in-up w-full">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-dark mb-4 sm:mb-6">SPESIFIKASI TEKNIS <br><span class="text-brand-blue">BONGSHIN LOAD CELL</span></h2>
                     
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-brand-blue transition-colors cursor-pointer group">
-                            <div class="w-10 h-10 rounded bg-brand-blue text-white flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-weight-hanging"></i></div>
+                    <div class="space-y-3 sm:space-y-4">
+                        <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-brand-blue transition-colors cursor-pointer group">
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded bg-brand-blue text-white flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-weight-hanging text-sm sm:text-base"></i></div>
                             <div>
-                                <h4 class="font-bold text-gray-900">Compression Load Cell (BSA)</h4>
-                                <p class="text-sm text-gray-600 mt-1">Kapasitas: 500kg - 50ton. Aplikasi: Hopper, Tank, Silo, Platform Scale.</p>
+                                <h4 class="font-bold text-gray-900 text-sm sm:text-base">Compression Load Cell (BSA)</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1">Kapasitas: 500kg - 50ton. Aplikasi: Hopper, Tank, Silo, Platform Scale.</p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-brand-blue transition-colors cursor-pointer group">
-                            <div class="w-10 h-10 rounded bg-brand-blue text-white flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-box"></i></div>
+                        <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-brand-blue transition-colors cursor-pointer group">
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded bg-brand-blue text-white flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-box text-sm sm:text-base"></i></div>
                             <div>
-                                <h4 class="font-bold text-gray-900">Canister Load Cell (BCK)</h4>
-                                <p class="text-sm text-gray-600 mt-1">Kapasitas: 1ton - 100ton. Aplikasi: Tank, Silo, Truck Scale.</p>
+                                <h4 class="font-bold text-gray-900 text-sm sm:text-base">Canister Load Cell (BCK)</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1">Kapasitas: 1ton - 100ton. Aplikasi: Tank, Silo, Truck Scale.</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-brand-blue transition-colors cursor-pointer group">
-                            <div class="w-10 h-10 rounded bg-brand-blue text-white flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-arrows-left-right"></i></div>
+                        <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-brand-blue transition-colors cursor-pointer group">
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded bg-brand-blue text-white flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-arrows-left-right text-sm sm:text-base"></i></div>
                             <div>
-                                <h4 class="font-bold text-gray-900">Shear Beam (BSU) & Single Point (BST)</h4>
-                                <p class="text-sm text-gray-600 mt-1">Kapasitas bervariasi. Cocok untuk Platform Scale, Bench Scale, dan Counting Scale.</p>
+                                <h4 class="font-bold text-gray-900 text-sm sm:text-base">Shear Beam (BSU) & Single Point (BST)</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1">Kapasitas bervariasi. Cocok untuk Platform Scale, Bench Scale, dan Counting Scale.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="lg:w-1/2 bg-brand-dark p-8 rounded-2xl text-white relative overflow-hidden fade-in-up delay-200">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue rounded-full blur-3xl opacity-20 -mr-16 -mt-16"></div>
-                    <h3 class="text-2xl font-bold mb-6">Mengapa Memilih Kami?</h3>
-                    <ul class="space-y-4">
+                <div class="lg:w-1/2 bg-brand-dark p-6 sm:p-8 rounded-2xl text-white relative overflow-hidden fade-in-up delay-200 w-full">
+                    <div class="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-brand-blue rounded-full blur-3xl opacity-20 -mr-10 sm:-mr-16 -mt-10 sm:-mt-16"></div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Mengapa Memilih Kami?</h3>
+                    <ul class="space-y-3 sm:space-y-4">
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-brand-accent"></i>
-                            <span>Produk Original Bongshin Korea</span>
+                            <i class="fa-solid fa-circle-check text-brand-accent text-sm sm:text-base"></i>
+                            <span class="text-sm sm:text-base">Produk Original Bongshin Korea</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-brand-accent"></i>
-                            <span>Stok Lengkap & Siap Kirim</span>
+                            <i class="fa-solid fa-circle-check text-brand-accent text-sm sm:text-base"></i>
+                            <span class="text-sm sm:text-base">Stok Lengkap & Siap Kirim</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-brand-accent"></i>
-                            <span>Harga Kompetitif</span>
+                            <i class="fa-solid fa-circle-check text-brand-accent text-sm sm:text-base"></i>
+                            <span class="text-sm sm:text-base">Harga Kompetitif</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-brand-accent"></i>
-                            <span>Garansi Resmi</span>
+                            <i class="fa-solid fa-circle-check text-brand-accent text-sm sm:text-base"></i>
+                            <span class="text-sm sm:text-base">Garansi Resmi</span>
                         </li>
                     </ul>
-                    <button onclick="scrollToContact()" class="mt-8 bg-brand-accent text-brand-dark font-bold py-3 px-6 rounded hover:bg-yellow-400 transition-colors w-full sm:w-auto">
+                    <button onclick="scrollToContact()" class="mt-6 sm:mt-8 bg-brand-accent text-brand-dark font-bold py-2.5 sm:py-3 px-5 sm:px-6 rounded-lg hover:bg-yellow-400 transition-colors w-full sm:w-auto text-sm sm:text-base">
                         Minta Penawaran Harga
                     </button>
                 </div>
@@ -417,148 +431,148 @@
     </section>
 
     <!-- About Us Section -->
-    <section id="about" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl font-extrabold text-brand-dark mb-4">TENTANG PT TAWAKAL TEHNIK MANDIRI</h2>
-                <p class="text-gray-600">Kami adalah distributor resmi peralatan industri terkemuka di Indonesia. Dengan pengalaman bertahun-tahun, kami berkomitmen memberikan solusi tepat, teknologi hebat, dan kinerja optimal bagi pelanggan kami.</p>
+    <section id="about" class="py-10 sm:py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-dark mb-3 sm:mb-4">TENTANG PT TAWAKAL TEHNIK MANDIRI</h2>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Kami adalah distributor resmi peralatan industri terkemuka di Indonesia. Dengan pengalaman bertahun-tahun, kami berkomitmen memberikan solusi tepat, teknologi hebat, dan kinerja optimal bagi pelanggan kami.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-sm text-center hover-lift">
-                    <div class="w-16 h-16 bg-brand-blue/10 text-brand-blue rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
+                <div class="bg-white p-5 sm:p-8 rounded-xl shadow-sm text-center hover-lift">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brand-blue/10 text-brand-blue rounded-full flex items-center justify-center text-xl sm:text-2xl mx-auto mb-3 sm:mb-4">
                         <i class="fa-solid fa-bullseye"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Visi Kami</h3>
-                    <p class="text-sm text-gray-600">Menjadi distributor peralatan industri terdepan yang dipercaya oleh seluruh sektor industri di Indonesia.</p>
+                    <h3 class="font-bold text-base sm:text-lg mb-1 sm:mb-2">Visi Kami</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">Menjadi distributor peralatan industri terdepan yang dipercaya oleh seluruh sektor industri di Indonesia.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm text-center hover-lift">
-                    <div class="w-16 h-16 bg-brand-blue/10 text-brand-blue rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                <div class="bg-white p-5 sm:p-8 rounded-xl shadow-sm text-center hover-lift">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brand-blue/10 text-brand-blue rounded-full flex items-center justify-center text-xl sm:text-2xl mx-auto mb-3 sm:mb-4">
                         <i class="fa-solid fa-handshake"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Misi Kami</h3>
-                    <p class="text-sm text-gray-600">Memberikan produk berkualitas tinggi, layanan purna jual terbaik, dan solusi teknis yang inovatif.</p>
+                    <h3 class="font-bold text-base sm:text-lg mb-1 sm:mb-2">Misi Kami</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">Memberikan produk berkualitas tinggi, layanan purna jual terbaik, dan solusi teknis yang inovatif.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm text-center hover-lift">
-                    <div class="w-16 h-16 bg-brand-blue/10 text-brand-blue rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                <div class="bg-white p-5 sm:p-8 rounded-xl shadow-sm text-center hover-lift">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-brand-blue/10 text-brand-blue rounded-full flex items-center justify-center text-xl sm:text-2xl mx-auto mb-3 sm:mb-4">
                         <i class="fa-solid fa-users"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Nilai Kami</h3>
-                    <p class="text-sm text-gray-600">Integritas, Profesionalisme, Inovasi, dan Kepuasan Pelanggan adalah prioritas utama kami.</p>
+                    <h3 class="font-bold text-base sm:text-lg mb-1 sm:mb-2">Nilai Kami</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">Integritas, Profesionalisme, Inovasi, dan Kepuasan Pelanggan adalah prioritas utama kami.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 bg-white">
-        <div class="container mx-auto px-4 lg:px-8 text-center">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-10">
-                <h2 class="text-3xl font-extrabold text-brand-dark mb-4 text-center w-full">
+    <section id="services" class="py-10 sm:py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-6 sm:mb-10">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-dark mb-2 sm:mb-4 text-center w-full">
     LAYANAN KAMI
 </h2>
-                <p class="text-gray-500 mt-2 md:mt-0 text-center w-full">Dukungan penuh dari konsultasi hingga pemasangan.</p>
+                <p class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 md:mt-0 text-center w-full">Dukungan penuh dari konsultasi hingga pemasangan.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
-                    <i class="fa-solid fa-comments text-3xl text-brand-blue mb-4 group-hover:scale-110 transition-transform block"></i>
-                    <h3 class="font-bold text-lg mb-2">Konsultasi Teknis</h3>
-                    <p class="text-sm text-gray-600">Tim ahli kami siap membantu memilih produk yang tepat sesuai kebutuhan aplikasi Anda.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div class="p-4 sm:p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
+                    <i class="fa-solid fa-comments text-2xl sm:text-3xl text-brand-blue mb-3 sm:mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-bold text-base sm:text-lg mb-1 sm:mb-2">Konsultasi Teknis</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">Tim ahli kami siap membantu memilih produk yang tepat sesuai kebutuhan aplikasi Anda.</p>
                 </div>
-                <div class="p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
-                    <i class="fa-solid fa-screwdriver-wrench text-3xl text-brand-blue mb-4 group-hover:scale-110 transition-transform block"></i>
-                    <h3 class="font-bold text-lg mb-2">Instalasi & Kalibrasi</h3>
-                    <p class="text-sm text-gray-600">Layanan instalasi profesional dan kalibrasi berkala untuk memastikan akurasi tetap terjaga.</p>
+                <div class="p-4 sm:p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
+                    <i class="fa-solid fa-screwdriver-wrench text-2xl sm:text-3xl text-brand-blue mb-3 sm:mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-bold text-base sm:text-lg mb-1 sm:mb-2">Instalasi & Kalibrasi</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">Layanan instalasi profesional dan kalibrasi berkala untuk memastikan akurasi tetap terjaga.</p>
                 </div>
-                <div class="p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
-                    <i class="fa-solid fa-box-open text-3xl text-brand-blue mb-4 group-hover:scale-110 transition-transform block"></i>
-                    <h3 class="font-bold text-lg mb-2">Pengiriman Cepat</h3>
-                    <p class="text-sm text-gray-600">Stok lengkap dengan jaringan distribusi luas untuk pengiriman ke seluruh Indonesia.</p>
+                <div class="p-4 sm:p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
+                    <i class="fa-solid fa-box-open text-2xl sm:text-3xl text-brand-blue mb-3 sm:mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-bold text-base sm:text-lg mb-1 sm:mb-2">Pengiriman Cepat</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">Stok lengkap dengan jaringan distribusi luas untuk pengiriman ke seluruh Indonesia.</p>
                 </div>
-                <div class="p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
-                    <i class="fa-solid fa-file-contract text-3xl text-brand-blue mb-4 group-hover:scale-110 transition-transform block"></i>
-                    <h3 class="font-bold text-lg mb-2">Garansi Resmi</h3>
-                    <p class="text-sm text-gray-600">Setiap produk dilengkapi garansi resmi dari pabrik dan dukungan after-sales service.</p>
+                <div class="p-4 sm:p-6 border border-gray-200 rounded-xl hover:border-brand-blue hover:shadow-lg transition-all group">
+                    <i class="fa-solid fa-file-contract text-2xl sm:text-3xl text-brand-blue mb-3 sm:mb-4 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="font-bold text-base sm:text-lg mb-1 sm:mb-2">Garansi Resmi</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">Setiap produk dilengkapi garansi resmi dari pabrik dan dukungan after-sales service.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-brand-dark text-white relative overflow-hidden">
+    <section id="contact" class="py-10 sm:py-16 bg-brand-dark text-white relative overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-        <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="flex flex-col lg:flex-row gap-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-8 sm:gap-12">
                 <div class="lg:w-1/2">
-                    <h2 class="text-3xl font-extrabold mb-6">HUBUNGI KAMI</h2>
-                    <p class="text-gray-300 mb-8">Butuh penawaran harga atau konsultasi teknis? Jangan ragu untuk menghubungi tim sales kami. Kami siap melayani Anda.</p>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mb-4 sm:mb-6">HUBUNGI KAMI</h2>
+                    <p class="text-xs sm:text-sm text-gray-300 mb-6 sm:mb-8 leading-relaxed">Butuh penawaran harga atau konsultasi teknis? Jangan ragu untuk menghubungi tim sales kami. Kami siap melayani Anda.</p>
                     
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-blue flex items-center justify-center text-xl shrink-0">
+                    <div class="space-y-4 sm:space-y-6">
+                        <div class="flex items-start gap-3 sm:gap-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-blue flex items-center justify-center text-base sm:text-xl shrink-0">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Alamat Kantor</h4>
-                                <p class="text-gray-400">Ruko Cikangkara no.2A-3A<br>Cibenda Serang Baru Bekasi</p>
+                                <h4 class="font-bold text-base sm:text-lg">Alamat Kantor</h4>
+                                <p class="text-xs sm:text-sm text-gray-400">Ruko Cikangkara no.2A-3A<br>Cibenda Serang Baru Bekasi</p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-blue flex items-center justify-center text-xl shrink-0">
+                        <div class="flex items-start gap-3 sm:gap-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-blue flex items-center justify-center text-base sm:text-xl shrink-0">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Telepon / WhatsApp</h4>
-                                <p class="text-gray-400">085 718 200 115</p>
+                                <h4 class="font-bold text-base sm:text-lg">Telepon / WhatsApp</h4>
+                                <p class="text-xs sm:text-sm text-gray-400">085 718 200 115</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-blue flex items-center justify-center text-xl shrink-0">
+                        <div class="flex items-start gap-3 sm:gap-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-blue flex items-center justify-center text-base sm:text-xl shrink-0">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Email</h4>
-                                <p class="text-gray-400">sales@tatehnkk.com</p>
+                                <h4 class="font-bold text-base sm:text-lg">Email</h4>
+                                <p class="text-xs sm:text-sm text-gray-400">sales@tatehnkk.com</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-blue flex items-center justify-center text-xl shrink-0">
+                        <div class="flex items-start gap-3 sm:gap-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-blue flex items-center justify-center text-base sm:text-xl shrink-0">
                                 <i class="fa-solid fa-globe"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Website</h4>
-                                <p class="text-gray-400">www.tatehnik.com</p>
+                                <h4 class="font-bold text-base sm:text-lg">Website</h4>
+                                <p class="text-xs sm:text-sm text-gray-400">www.tatehnik.com</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:w-1/2 bg-white text-gray-800 rounded-2xl p-8 shadow-2xl">
-                    <h3 class="text-2xl font-bold mb-6 text-brand-dark">Kirim Pesan</h3>
-                    <form onsubmit="handleFormSubmit(event)" class="space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="lg:w-1/2 bg-white text-gray-800 rounded-2xl p-5 sm:p-8 shadow-2xl">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-brand-dark">Kirim Pesan</h3>
+                    <form onsubmit="handleFormSubmit(event)" class="space-y-3 sm:space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                                <input type="text" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all">
+                                <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                                <input type="text" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all text-sm">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">No. Telepon</label>
-                                <input type="tel" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all">
+                                <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">No. Telepon</label>
+                                <input type="tel" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all text-sm">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all">
+                            <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all text-sm">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Pesan / Permintaan</label>
-                            <textarea rows="4" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all resize-none"></textarea>
+                            <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Pesan / Permintaan</label>
+                            <textarea rows="3" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all resize-none text-sm"></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-brand-blue hover:bg-brand-dark text-white font-bold py-3 rounded-lg transition-colors shadow-lg shadow-brand-blue/30">
+                        <button type="submit" class="w-full bg-brand-blue hover:bg-brand-dark text-white font-bold py-2.5 sm:py-3 rounded-lg transition-colors shadow-lg shadow-brand-blue/30 text-sm sm:text-base">
                             Kirim Pesan
                         </button>
                     </form>
@@ -568,24 +582,24 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-brand-dark text-white pt-16 pb-8 border-t border-gray-800">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1">
-                    <h2 class="text-3xl font-black italic mb-4">TTM</h2>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+    <footer class="bg-brand-dark text-white pt-10 sm:pt-16 pb-6 sm:pb-8 border-t border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-8 sm:mb-12">
+                <div class="col-span-1 sm:col-span-2 lg:col-span-1">
+                    <h2 class="text-2xl sm:text-3xl font-black italic mb-3 sm:mb-4">TTM</h2>
+                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed mb-4 sm:mb-6">
                         PT Tawakal Tehnik Mandiri adalah distributor resmi peralatan industri terpercaya di Indonesia. Kami berkomitmen memberikan solusi tepat dengan teknologi hebat.
                     </p>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center hover:bg-brand-accent hover:text-brand-dark transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center hover:bg-brand-accent hover:text-brand-dark transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center hover:bg-brand-accent hover:text-brand-dark transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <div class="flex gap-3 sm:gap-4">
+                        <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 rounded bg-gray-800 flex items-center justify-center hover:bg-brand-accent hover:text-brand-dark transition-colors text-sm sm:text-base"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 rounded bg-gray-800 flex items-center justify-center hover:bg-brand-accent hover:text-brand-dark transition-colors text-sm sm:text-base"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 rounded bg-gray-800 flex items-center justify-center hover:bg-brand-accent hover:text-brand-dark transition-colors text-sm sm:text-base"><i class="fa-brands fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 
                 <div>
-                    <h3 class="font-bold mb-6 text-lg text-brand-accent">Produk Unggulan</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
+                    <h3 class="font-bold mb-4 sm:mb-6 text-base sm:text-lg text-brand-accent">Produk Unggulan</h3>
+                    <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-400">
                         <li><a href="#" class="hover:text-white transition-colors">Bongshin Load Cell</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Big Tool CNC Machine</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Sugino Filter System</a></li>
@@ -595,8 +609,8 @@
                 </div>
 
                 <div>
-                    <h3 class="font-bold mb-6 text-lg text-brand-accent">Tautan Cepat</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
+                    <h3 class="font-bold mb-4 sm:mb-6 text-base sm:text-lg text-brand-accent">Tautan Cepat</h3>
+                    <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-400">
                         <li><a href="#about" class="hover:text-white transition-colors">Tentang Kami</a></li>
                         <li><a href="#products" class="hover:text-white transition-colors">Katalog Produk</a></li>
                         <li><a href="#services" class="hover:text-white transition-colors">Layanan</a></li>
@@ -605,8 +619,8 @@
                 </div>
 
                 <div>
-                    <h3 class="font-bold mb-6 text-lg text-brand-accent">Jam Operasional</h3>
-                    <ul class="space-y-3 text-gray-400 text-sm">
+                    <h3 class="font-bold mb-4 sm:mb-6 text-base sm:text-lg text-brand-accent">Jam Operasional</h3>
+                    <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-400">
                         <li class="flex justify-between"><span>Senin - Jumat:</span> <span>08:00 - 17:00</span></li>
                         <li class="flex justify-between"><span>Sabtu:</span> <span>08:00 - 15:00</span></li>
                         <li class="flex justify-between"><span>Minggu:</span> <span>Tutup</span></li>
@@ -614,9 +628,9 @@
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+            <div class="border-t border-gray-800 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-[10px] sm:text-xs text-gray-500">
                 <p>&copy; 2026 PT Tawakal Tehnik Mandiri. All rights reserved.</p>
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-3 sm:gap-4">
                     <a href="#" class="hover:text-white">Privacy Policy</a>
                     <a href="#" class="hover:text-white">Terms of Service</a>
                 </div>
@@ -625,54 +639,70 @@
     </footer>
 
     <!-- Fixed Bottom Contact Bar (Mobile Style) -->
-    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md">
-        <div class="bg-brand-blue text-white rounded-full shadow-2xl shadow-blue-900/40 p-2 pr-6 flex items-center justify-between backdrop-blur-sm bg-opacity-95 border border-white/20">
-            <div class="flex items-center gap-3 pl-4">
-                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-blue">
-                    <i class="fa-solid fa-headset text-lg"></i>
+    <div class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 w-[95%] sm:w-[90%] max-w-md">
+        <div class="bg-brand-blue text-white rounded-full shadow-2xl shadow-blue-900/40 p-1.5 sm:p-2 pr-4 sm:pr-6 flex items-center justify-between backdrop-blur-sm bg-opacity-95 border border-white/20">
+            <div class="flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center text-brand-blue shrink-0">
+                    <i class="fa-solid fa-headset text-base sm:text-lg"></i>
                 </div>
-                <div class="flex flex-col">
-                    <span class="text-[10px] font-medium opacity-90 uppercase tracking-wider">Sales Support</span>
-                    <span class="text-sm font-bold">085 718 200 115</span>
+                <div class="flex flex-col min-w-0">
+                    <span class="text-[8px] sm:text-[10px] font-medium opacity-90 uppercase tracking-wider truncate">Sales Support</span>
+                    <span class="text-xs sm:text-sm font-bold truncate">085 718 200 115</span>
                 </div>
             </div>
-            <a href="https://wa.me/6285718200115" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 transition-colors">
-                <i class="fa-brands fa-whatsapp text-lg"></i> Chat
+            <a href="https://wa.me/6285718200115" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-bold text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 transition-colors shrink-0">
+                <i class="fa-brands fa-whatsapp text-sm sm:text-lg"></i> <span class="hidden xs:inline">Chat</span>
             </a>
         </div>
     </div>
 
-    <!-- Product Detail Modal -->
-    <div id="product-modal" class="modal fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <!-- Product Detail Modal (IMPROVED MOBILE LAYOUT) -->
+    <div id="product-modal" class="modal fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm">
         <div class="modal-content bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl relative">
-            <button onclick="closeProductModal()" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors z-10">
-                <i class="fa-solid fa-xmark text-xl"></i>
+            <!-- Close Button -->
+            <button onclick="closeProductModal()" class="absolute top-3 sm:top-4 right-3 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors z-10">
+                <i class="fa-solid fa-xmark text-base sm:text-xl"></i>
             </button>
             
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="bg-gray-100 p-8 flex items-center justify-center">
-                    <img id="modal-img" src="" alt="Product" class="max-w-full max-h-[400px] object-contain drop-shadow-lg">
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                
+                <!-- Image Section (Full width on mobile, half on desktop) -->
+                <div class="bg-gray-50 p-4 sm:p-6 md:p-8 flex items-center justify-center min-h-[200px] sm:min-h-[250px] md:min-h-[400px]">
+                    <img id="modal-img" src="" alt="Product" class="max-w-full max-h-[250px] sm:max-h-[300px] md:max-h-[400px] object-contain drop-shadow-lg">
                 </div>
-                <div class="p-8 lg:p-10">
-                    <span id="modal-category" class="text-xs font-bold text-brand-blue uppercase tracking-wider mb-2 block">Category</span>
-                    <h2 id="modal-title" class="text-3xl font-extrabold text-brand-dark mb-4">Product Title</h2>
-                    <p id="modal-desc" class="text-gray-600 mb-6 leading-relaxed">Description goes here.</p>
+
+                <!-- Details Section -->
+                <div class="p-4 sm:p-6 md:p-10 flex flex-col justify-between">
                     
-                    <div class="mb-8">
-                        <h4 class="font-bold text-sm text-gray-900 mb-3 uppercase">Spesifikasi Utama:</h4>
-                        <ul id="modal-specs" class="space-y-2 text-sm text-gray-600">
-                            <!-- Specs injected via JS -->
-                        </ul>
+                    <!-- Text Content -->
+                    <div>
+                        <span id="modal-category" class="text-[10px] sm:text-xs font-bold text-brand-blue uppercase tracking-wider mb-1.5 sm:mb-2 block">Category</span>
+                        
+                        <!-- Title made smaller for better fit -->
+                        <h2 id="modal-title" class="text-lg sm:text-xl md:text-3xl font-extrabold text-brand-dark mb-2 sm:mb-3 leading-tight">Product Title</h2>
+                        
+                        <p id="modal-desc" class="text-xs sm:text-sm md:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">Description goes here.</p>
+                        
+                        <!-- Specs Section -->
+                        <div class="mb-4 sm:mb-6">
+                            <h4 class="font-bold text-[10px] sm:text-xs md:text-sm text-gray-900 mb-2 sm:mb-3 uppercase tracking-wide">Spesifikasi Utama:</h4>
+                            <ul id="modal-specs" class="space-y-1.5 sm:space-y-2 text-[10px] sm:text-xs md:text-sm text-gray-600">
+                                <!-- Specs injected via JS -->
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="flex gap-4">
-                        <button onclick="addToCartFromModal()" class="flex-1 bg-brand-blue hover:bg-brand-dark text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-cart-plus"></i> Tambah ke Penawaran
+                    <!-- Action Buttons (Improved spacing & sizing) -->
+                    <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+                        <button onclick="addToCartFromModal()" class="flex-1 bg-brand-blue hover:bg-brand-dark text-white font-semibold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg transition-colors flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base">
+                            <i class="fa-solid fa-cart-plus text-sm sm:text-base"></i> Tambah ke Penawaran
                         </button>
-                        <a href="https://wa.me/6285718200115" target="_blank" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp"></i> Tanya via WA
+                        <a href="https://wa.me/6285718200115" target="_blank" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg transition-colors flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base">
+                            <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i> Tanya via WA
                         </a>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -681,32 +711,32 @@
     <!-- Cart Sidebar -->
     <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden" onclick="toggleCart()"></div>
     <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-[70] flex flex-col">
-        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-brand-dark">Daftar Penawaran</h2>
-            <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-800 text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        <div class="p-4 sm:p-6 border-b border-gray-200 flex justify-between items-center">
+            <h2 class="text-lg sm:text-2xl font-bold text-brand-dark">Daftar Penawaran</h2>
+            <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-800 text-xl sm:text-2xl p-2"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <div id="cart-items" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 sm:space-y-4">
             <!-- Cart items will be injected here -->
-            <div class="text-center text-gray-500 mt-10">
-                <i class="fa-solid fa-cart-shopping text-4xl mb-4 text-gray-300"></i>
-                <p>Keranjang penawaran Anda masih kosong.</p>
+            <div class="text-center text-gray-500 mt-8 sm:mt-10">
+                <i class="fa-solid fa-cart-shopping text-3xl sm:text-4xl mb-3 sm:mb-4 text-gray-300"></i>
+                <p class="text-sm sm:text-base">Keranjang penawaran Anda masih kosong.</p>
             </div>
         </div>
-        <div class="p-6 border-t border-gray-200 bg-gray-50">
-            <button onclick="alert('Fitur kirim penawaran akan segera hadir!')" class="w-full bg-brand-blue hover:bg-brand-dark text-white font-bold py-3 rounded-lg transition-colors shadow-lg shadow-brand-blue/30">
+        <div class="p-4 sm:p-6 border-t border-gray-200 bg-gray-50">
+            <button onclick="alert('Fitur kirim penawaran akan segera hadir!')" class="w-full bg-brand-blue hover:bg-brand-dark text-white font-bold py-2.5 sm:py-3 rounded-lg transition-colors shadow-lg shadow-brand-blue/30 text-sm sm:text-base">
                 Kirim Permintaan Penawaran
             </button>
         </div>
     </div>
 
     <!-- Toast Notification -->
-    <div id="toast" class="fixed top-24 right-4 bg-white border-l-4 border-brand-accent shadow-xl rounded-r-lg p-4 transform translate-x-full transition-transform duration-300 z-[80] flex items-center gap-3">
-        <div class="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
-            <i class="fa-solid fa-check"></i>
+    <div id="toast" class="fixed top-20 sm:top-24 right-3 sm:right-4 bg-white border-l-4 border-brand-accent shadow-xl rounded-r-lg p-3 sm:p-4 transform translate-x-full transition-transform duration-300 z-[80] flex items-center gap-2 sm:gap-3 max-w-[calc(100%-24px)] sm:max-w-none">
+        <div class="w-7 h-7 sm:w-8 sm:h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-check text-sm"></i>
         </div>
-        <div>
-            <h4 class="font-bold text-sm text-gray-900">Berhasil!</h4>
-            <p class="text-xs text-gray-500">Produk ditambahkan ke daftar penawaran.</p>
+        <div class="min-w-0">
+            <h4 class="font-bold text-xs sm:text-sm text-gray-900">Berhasil!</h4>
+            <p class="text-[10px] sm:text-xs text-gray-500 truncate">Produk ditambahkan ke daftar penawaran.</p>
         </div>
     </div>
 
@@ -941,16 +971,16 @@
                     card.innerHTML = `
                         <div class="product-img-container relative bg-gray-100">
                             <img src="${product.image}" alt="${product.name}" class="group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-brand-blue text-white text-[10px] font-bold px-2 py-1 rounded uppercase">${product.brand}</div>
-                            ${product.category === 'loadcell' ? '<div class="absolute top-3 right-3 bg-brand-accent text-brand-dark text-[10px] font-bold px-2 py-1 rounded">HOT</div>' : ''}
+                            <div class="absolute top-2 sm:top-3 left-2 sm:left-3 bg-brand-blue text-white text-[8px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded uppercase">${product.brand}</div>
+                            ${product.category === 'loadcell' ? '<div class="absolute top-2 sm:top-3 right-2 sm:right-3 bg-brand-accent text-brand-dark text-[8px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded">HOT</div>' : ''}
                         </div>
-                        <div class="p-5">
-                            <h3 class="text-base font-bold text-gray-900 mb-2 line-clamp-2 h-12">${product.name}</h3>
-                            <p class="text-xs text-gray-500 mb-4 line-clamp-2">${product.desc}</p>
+                        <div class="p-3 sm:p-5">
+                            <h3 class="text-sm sm:text-base font-bold text-gray-900 mb-1 sm:mb-2 line-clamp-2 h-9 sm:h-12">${product.name}</h3>
+                            <p class="text-[10px] sm:text-xs text-gray-500 mb-2 sm:mb-4 line-clamp-2">${product.desc}</p>
                             <div class="flex items-center justify-between">
-                                <span class="text-[10px] bg-gray-100 text-gray-600 px-2 py-1 rounded capitalize">${getCategoryName(product.category)}</span>
-                                <button class="text-brand-blue hover:bg-brand-blue hover:text-white w-8 h-8 rounded-full flex items-center justify-center transition-colors">
-                                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                                <span class="text-[8px] sm:text-[10px] bg-gray-100 text-gray-600 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded capitalize">${getCategoryName(product.category)}</span>
+                                <button class="text-brand-blue hover:bg-brand-blue hover:text-white w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors">
+                                    <i class="fa-solid fa-arrow-right text-xs sm:text-sm"></i>
                                 </button>
                             </div>
                         </div>
@@ -1018,7 +1048,7 @@
             product.specs.forEach(spec => {
                 const li = document.createElement('li');
                 li.className = 'flex items-start gap-2';
-                li.innerHTML = `<i class="fa-solid fa-check text-brand-accent mt-1 text-xs"></i> <span>${spec}</span>`;
+                li.innerHTML = `<i class="fa-solid fa-check text-brand-accent mt-0.5 sm:mt-1 text-[8px] sm:text-xs"></i> <span>${spec}</span>`;
                 specsList.appendChild(li);
             });
 
@@ -1064,23 +1094,23 @@
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = `
-                    <div class="text-center text-gray-500 mt-10">
-                        <i class="fa-solid fa-cart-shopping text-4xl mb-4 text-gray-300"></i>
-                        <p>Keranjang penawaran Anda masih kosong.</p>
+                    <div class="text-center text-gray-500 mt-8 sm:mt-10">
+                        <i class="fa-solid fa-cart-shopping text-3xl sm:text-4xl mb-3 sm:mb-4 text-gray-300"></i>
+                        <p class="text-sm sm:text-base">Keranjang penawaran Anda masih kosong.</p>
                     </div>
                 `;
             } else {
                 cart.forEach(item => {
                     const itemEl = document.createElement('div');
-                    itemEl.className = 'flex items-center gap-4 bg-gray-50 p-3 rounded-lg';
+                    itemEl.className = 'flex items-center gap-3 sm:gap-4 bg-gray-50 p-2.5 sm:p-3 rounded-lg';
                     itemEl.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md bg-white">
-                        <div class="flex-1">
-                            <h4 class="font-bold text-sm text-gray-800 line-clamp-1">${item.name}</h4>
-                            <p class="text-xs text-gray-500">${item.brand}</p>
+                        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-md bg-white shrink-0">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-bold text-xs sm:text-sm text-gray-800 line-clamp-1">${item.name}</h4>
+                            <p class="text-[10px] sm:text-xs text-gray-500">${item.brand}</p>
                         </div>
-                        <button onclick="removeFromCart('${item.id}')" class="text-gray-400 hover:text-red-500 transition-colors p-2">
-                            <i class="fa-solid fa-trash-can"></i>
+                        <button onclick="removeFromCart('${item.id}')" class="text-gray-400 hover:text-red-500 transition-colors p-1.5 sm:p-2 shrink-0">
+                            <i class="fa-solid fa-trash-can text-xs sm:text-sm"></i>
                         </button>
                     `;
                     cartItemsContainer.appendChild(itemEl);
@@ -1146,12 +1176,12 @@
             const header = document.getElementById('main-header');
             if (window.scrollY > 50) {
                 header.classList.add('shadow-lg');
-                header.querySelector('.container').classList.remove('h-20');
-                header.querySelector('.container').classList.add('h-16');
+                header.querySelector('.container').classList.remove('h-16', 'sm:h-20');
+                header.querySelector('.container').classList.add('h-14', 'sm:h-16');
             } else {
                 header.classList.remove('shadow-lg');
-                header.querySelector('.container').classList.add('h-20');
-                header.querySelector('.container').classList.remove('h-16');
+                header.querySelector('.container').classList.add('h-16', 'sm:h-20');
+                header.querySelector('.container').classList.remove('h-14', 'sm:h-16');
             }
         });
 
