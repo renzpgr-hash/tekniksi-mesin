@@ -302,46 +302,55 @@
         <div class="absolute bottom-0 left-0 w-full h-16 sm:h-24 bg-gray-50" style="clip-path: polygon(0 100%, 100% 100%, 100% 0);"></div>
     </section>
 
-    <!-- Trust Badges (MINIMALIST MOBILE GRID) -->
+    <!-- Trust Badges (PERBAIKAN POSISI MOBILE) -->
     <section class="bg-white container mx-auto rounded-xl shadow-lg p-4 sm:p-8 mb-8 sm:mb-16 relative z-20 -mt-8 sm:-mt-12 mx-3 sm:mx-4 lg:mx-auto max-w-6xl">
-        <div class="grid grid-cols-2 gap-4 sm:gap-8">
-            <div class="flex items-center gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default">
+        <!-- Grid diperbaiki: items-stretch memastikan semua kolom tingginya sama -->
+        <div class="grid grid-cols-2 gap-3 sm:gap-8 items-stretch">
+            
+            <!-- Item 1 -->
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default h-full py-2 sm:py-0">
                 <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-lg sm:text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors shrink-0">
                     <i class="fa-solid fa-crosshairs"></i>
                 </div>
-                <div>
-                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm">Akurasi Tinggi</h3>
-                    <p class="text-[10px] sm:text-xs text-gray-500">Hasil penimbangan presisi</p>
+                <div class="text-center sm:text-left">
+                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm leading-tight mb-0.5 sm:mb-1">Akurasi Tinggi</h3>
+                    <p class="text-[10px] sm:text-xs text-gray-500 leading-snug">Hasil penimbangan presisi</p>
                 </div>
             </div>
-            <!-- QUALITY ASSURANCE ICON RESTORED -->
-            <div class="flex items-center gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default">
+
+            <!-- Item 2 -->
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default h-full py-2 sm:py-0">
                 <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-lg sm:text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors shrink-0">
                     <i class="fa-solid fa-circle-check"></i>
                 </div>
-                <div>
-                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm">Kualitas Terjamin</h3>
-                    <p class="text-[10px] sm:text-xs text-gray-500">Original Korea, Tahan Lama</p>
+                <div class="text-center sm:text-left">
+                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm leading-tight mb-0.5 sm:mb-1">Kualitas Terjamin</h3>
+                    <p class="text-[10px] sm:text-xs text-gray-500 leading-snug">Original Korea, Tahan Lama</p>
                 </div>
             </div>
-            <div class="flex items-center gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default">
+
+            <!-- Item 3 -->
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default h-full py-2 sm:py-0">
                 <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-lg sm:text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors shrink-0">
                     <i class="fa-solid fa-industry"></i>
                 </div>
-                <div>
-                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm">Aplikasi Luas</h3>
-                    <p class="text-[10px] sm:text-xs text-gray-500">Cocok segala industri</p>
+                <div class="text-center sm:text-left">
+                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm leading-tight mb-0.5 sm:mb-1">Aplikasi Luas</h3>
+                    <p class="text-[10px] sm:text-xs text-gray-500 leading-snug">Cocok segala industri</p>
                 </div>
             </div>
-            <div class="flex items-center gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default">
+
+            <!-- Item 4 -->
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 justify-center sm:justify-start group cursor-default h-full py-2 sm:py-0">
                 <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center text-lg sm:text-xl group-hover:bg-brand-blue group-hover:text-white transition-colors shrink-0">
                     <i class="fa-solid fa-headset"></i>
                 </div>
-                <div>
-                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm">Layanan Profesional</h3>
-                    <p class="text-[10px] sm:text-xs text-gray-500">Tim support siap bantu</p>
+                <div class="text-center sm:text-left">
+                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm leading-tight mb-0.5 sm:mb-1">Layanan Profesional</h3>
+                    <p class="text-[10px] sm:text-xs text-gray-500 leading-snug">Tim support siap bantu</p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -541,25 +550,36 @@
                         Butuh bantuan cepat? Tim support kami siap membantu Anda melalui WhatsApp. Respon cepat, ramah, dan solutif.
                     </p>
 
-                    <!-- Feature List -->
-                    <div class="space-y-4 mt-6">
-                        <div class="flex items-center justify-center lg:justify-start space-x-3">
-                            <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                                <i class="fa-solid fa-bolt text-sm"></i>
+                    <!-- Feature List (MODIFIED ONLY THIS PART) -->
+                    <div class="space-y-5 mt-6 max-w-md mx-auto lg:mx-0">
+                        <div class="grid grid-cols-[3rem_1fr] items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shrink-0">
+                                <i class="fa-solid fa-bolt text-lg"></i>
                             </div>
-                            <span class="text-gray-300 font-medium">Respon Cepat & Real-time</span>
+                            <div class="text-left">
+                                <h4 class="font-bold text-gray-100 text-base sm:text-lg">Respon Cepat & Real-time</h4>
+                                <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Balasan instan dari tim ahli</p>
+                            </div>
                         </div>
-                        <div class="flex items-center justify-center lg:justify-start space-x-3">
-                            <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                                <i class="fa-solid fa-clock text-sm"></i>
+
+                        <div class="grid grid-cols-[3rem_1fr] items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shrink-0">
+                                <i class="fa-solid fa-clock text-lg"></i>
                             </div>
-                            <span class="text-gray-300 font-medium">Layanan 24/7 Online</span>
+                            <div class="text-left">
+                                <h4 class="font-bold text-gray-100 text-base sm:text-lg">Layanan 24/7 Online</h4>
+                                <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Siap melayani kapan saja</p>
+                            </div>
                         </div>
-                        <div class="flex items-center justify-center lg:justify-start space-x-3">
-                            <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                                <i class="fa-solid fa-shield-halved text-sm"></i>
+
+                        <div class="grid grid-cols-[3rem_1fr] items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shrink-0">
+                                <i class="fa-solid fa-shield-halved text-lg"></i>
                             </div>
-                            <span class="text-gray-300 font-medium">Privasi & Keamanan Terjamin</span>
+                            <div class="text-left">
+                                <h4 class="font-bold text-gray-100 text-base sm:text-lg">Privasi & Keamanan</h4>
+                                <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Data percakapan terjamin aman</p>
+                            </div>
                         </div>
                     </div>
                 </div>
