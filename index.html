@@ -494,14 +494,17 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+        <!-- Services Section -->
     <section id="services" class="py-10 sm:py-16 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-6 sm:mb-10">
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-dark mb-2 sm:mb-4 text-center w-full">
-    LAYANAN KAMI
-</h2>
-                <p class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2 md:mt-0 text-center w-full">Dukungan penuh dari konsultasi hingga pemasangan.</p>
+            <!-- PERBAIKAN: Menggunakan justify-center dan text-center -->
+            <div class="flex flex-col items-center mb-6 sm:mb-10">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-dark mb-2 sm:mb-4 uppercase tracking-tight">
+                    LAYANAN KAMI
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                    Dukungan penuh dari konsultasi hingga pemasangan.
+                </p>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -528,6 +531,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Contact Section (REPLACED WITH WHATSAPP FORM) -->
     <section id="contact" class="py-10 sm:py-16 bg-brand-dark text-white relative overflow-hidden">
