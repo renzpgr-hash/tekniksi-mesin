@@ -136,6 +136,27 @@
             overflow: hidden !important; 
             overflow-x: hidden !important;
         }
+
+        /* --- WHATSAPP FORM STYLES --- */
+        .input-group:focus-within label {
+            color: #10b981;
+        }
+        
+        .input-group:focus-within i {
+            color: #10b981;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #059669, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden loading">
@@ -345,11 +366,11 @@
                     <!-- Category Filters (Horizontal Scroll on Mobile) -->
                     <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 sm:pb-0 sm:flex-wrap sm:justify-end">
                         <button onclick="filterProducts('all')" class="filter-btn active px-3 sm:px-4 py-2 sm:py-3 bg-brand-blue text-white rounded-lg text-xs sm:text-sm font-bold transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="all">Semua</button>
-                        <button onclick="filterProducts('loadcell')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="loadcell">Load Cell</button>
-                        <button onclick="filterProducts('cnc')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="cnc">Mesin CNC</button>
-                        <button onclick="filterProducts('filtration')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="filtration">Filtrasi</button>
-                        <button onclick="filterProducts('grinding')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="grinding">Grinding Wheel</button>
-                        <button onclick="filterProducts('conveyor')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue hover:text-brand-blue transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="conveyor">Conveyor</button>
+                        <button onclick="filterProducts('loadcell')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="loadcell">Load Cell</button>
+                        <button onclick="filterProducts('cnc')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="cnc">Mesin CNC</button>
+                        <button onclick="filterProducts('filtration')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="filtration">Filtrasi</button>
+                        <button onclick="filterProducts('grinding')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="grinding">Grinding Wheel</button>
+                        <button onclick="filterProducts('conveyor')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="conveyor">Conveyor</button>
                     </div>
                 </div>
             </div>
@@ -499,83 +520,119 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section (REPLACED WITH WHATSAPP FORM) -->
     <section id="contact" class="py-10 sm:py-16 bg-brand-dark text-white relative overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col lg:flex-row gap-8 sm:gap-12">
-                <div class="lg:w-1/2">
-                    <h2 class="text-2xl sm:text-3xl font-extrabold mb-4 sm:mb-6">HUBUNGI KAMI</h2>
-                    <p class="text-xs sm:text-sm text-gray-300 mb-6 sm:mb-8 leading-relaxed">Butuh penawaran harga atau konsultasi teknis? Jangan ragu untuk menghubungi tim sales kami. Kami siap melayani Anda.</p>
+            <div class="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center">
+                
+                <!-- Left Side: Info -->
+                <div class="lg:w-1/2 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center justify-center p-3 bg-emerald-100 rounded-2xl mb-4 animate-float shadow-sm">
+                        <i class="fa-brands fa-whatsapp text-4xl text-emerald-600"></i>
+                    </div>
                     
-                    <div class="space-y-4 sm:space-y-6">
-                        <div class="flex items-start gap-3 sm:gap-4">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-blue flex items-center justify-center text-base sm:text-xl shrink-0">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-base sm:text-lg">Alamat Kantor</h4>
-                                <p class="text-xs sm:text-sm text-gray-400">Ruko Cikangkara no.2A-3A<br>Cibenda Serang Baru Bekasi</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-3 sm:gap-4">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-blue flex items-center justify-center text-base sm:text-xl shrink-0">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-base sm:text-lg">Telepon / WhatsApp</h4>
-                                <p class="text-xs sm:text-sm text-gray-400">085 718 200 115</p>
-                            </div>
-                        </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
+                        Hubungi Kami <br>
+                        <span class="text-gradient">Secara Langsung</span>
+                    </h2>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Butuh bantuan cepat? Tim support kami siap membantu Anda melalui WhatsApp. Respon cepat, ramah, dan solutif.
+                    </p>
 
-                        <div class="flex items-start gap-3 sm:gap-4">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-blue flex items-center justify-center text-base sm:text-xl shrink-0">
-                                <i class="fa-solid fa-envelope"></i>
+                    <!-- Feature List -->
+                    <div class="space-y-4 mt-6">
+                        <div class="flex items-center justify-center lg:justify-start space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                                <i class="fa-solid fa-bolt text-sm"></i>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-base sm:text-lg">Email</h4>
-                                <p class="text-xs sm:text-sm text-gray-400">sales@tatehnkk.com</p>
-                            </div>
+                            <span class="text-gray-300 font-medium">Respon Cepat & Real-time</span>
                         </div>
-
-                        <div class="flex items-start gap-3 sm:gap-4">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-blue flex items-center justify-center text-base sm:text-xl shrink-0">
-                                <i class="fa-solid fa-globe"></i>
+                        <div class="flex items-center justify-center lg:justify-start space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                                <i class="fa-solid fa-clock text-sm"></i>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-base sm:text-lg">Website</h4>
-                                <p class="text-xs sm:text-sm text-gray-400">www.tatehnik.com</p>
+                            <span class="text-gray-300 font-medium">Layanan 24/7 Online</span>
+                        </div>
+                        <div class="flex items-center justify-center lg:justify-start space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                                <i class="fa-solid fa-shield-halved text-sm"></i>
                             </div>
+                            <span class="text-gray-300 font-medium">Privasi & Keamanan Terjamin</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:w-1/2 bg-white text-gray-800 rounded-2xl p-5 sm:p-8 shadow-2xl">
-                    <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-brand-dark">Kirim Pesan</h3>
-                    <form onsubmit="handleFormSubmit(event)" class="space-y-3 sm:space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-                            <div>
-                                <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                                <input type="text" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all text-sm">
+                <!-- Right Side: WhatsApp Form Card -->
+                <div class="lg:w-1/2 relative w-full">
+                    <!-- Decorative blob behind card -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-400 to-teal-500 rounded-3xl transform rotate-3 opacity-20 blur-lg scale-105"></div>
+                    
+                    <div class="glass-effect rounded-3xl shadow-2xl p-8 relative z-10 border-t border-white/50 text-gray-800">
+                        <div class="mb-6">
+                            <h2 class="text-2xl font-bold text-gray-800">Kirim Pesan</h2>
+                            <p class="text-gray-500 text-sm mt-1">Isi detail di bawah untuk memulai chat WhatsApp.</p>
+                        </div>
+
+                        <form id="waForm" class="space-y-5" onsubmit="sendToWhatsApp(event)">
+                            
+                            <!-- Name Input -->
+                            <div class="input-group relative">
+                                <label class="block text-sm font-medium text-gray-700 mb-1 transition-colors">Nama Lengkap</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fa-regular fa-user text-gray-400 transition-colors"></i>
+                                    </div>
+                                    <input type="text" id="name" required 
+                                        class="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-150 ease-in-out sm:text-sm" 
+                                        placeholder="Masukkan nama Anda">
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">No. Telepon</label>
-                                <input type="tel" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all text-sm">
+
+                            <!-- Topic Selection -->
+                            <div class="input-group relative">
+                                <label class="block text-sm font-medium text-gray-700 mb-1 transition-colors">Topik Pembicaraan</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fa-regular fa-comment-dots text-gray-400 transition-colors"></i>
+                                    </div>
+                                    <select id="topic" 
+                                        class="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl leading-5 bg-gray-50 focus:outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-150 ease-in-out sm:text-sm appearance-none cursor-pointer">
+                                        <option value="Umum">Pertanyaan Umum</option>
+                                        <option value="Pemesanan">Pemesanan Produk/Jasa</option>
+                                        <option value="Support">Bantuan Teknis</option>
+                                        <option value="Kerjasama">Kerjasama Bisnis</option>
+                                        <option value="Lainnya">Lainnya</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Pesan / Permintaan</label>
-                            <textarea rows="3" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all resize-none text-sm"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-brand-blue hover:bg-brand-dark text-white font-bold py-2.5 sm:py-3 rounded-lg transition-colors shadow-lg shadow-brand-blue/30 text-sm sm:text-base">
-                            Kirim Pesan
-                        </button>
-                    </form>
+
+                            <!-- Message Input -->
+                            <div class="input-group relative">
+                                <label class="block text-sm font-medium text-gray-700 mb-1 transition-colors">Pesan Anda</label>
+                                <div class="relative">
+                                    <textarea id="message" rows="4" required
+                                        class="block w-full p-3 border border-gray-200 rounded-xl leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-150 ease-in-out sm:text-sm resize-none" 
+                                        placeholder="Tuliskan detail pertanyaan atau kebutuhan Anda..."></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" 
+                                class="w-full flex items-center justify-center py-3.5 px-4 border border-transparent rounded-xl shadow-lg text-sm font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transform transition hover:-translate-y-0.5 active:scale-95 duration-200">
+                                <i class="fa-brands fa-whatsapp mr-2 text-lg"></i>
+                                Kirim via WhatsApp
+                            </button>
+                            
+                            <p class="text-center text-xs text-gray-400 mt-4">
+                                Dengan mengklik tombol di atas, Anda akan diarahkan ke aplikasi WhatsApp.
+                            </p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1142,28 +1199,31 @@
             }, 3000);
         }
 
-        function handleFormSubmit(e) {
+        // WHATSAPP FORM LOGIC
+        function sendToWhatsApp(e) {
             e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
             
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
+            // Get values
+            const name = document.getElementById('name').value.trim();
+            const topic = document.getElementById('topic').value;
+            const message = document.getElementById('message').value.trim();
             
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> Terkirim!';
-                btn.classList.remove('bg-brand-blue');
-                btn.classList.add('bg-green-500');
-                
-                setTimeout(() => {
-                    e.target.reset();
-                    btn.disabled = false;
-                    btn.innerHTML = originalText;
-                    btn.classList.add('bg-brand-blue');
-                    btn.classList.remove('bg-green-500');
-                    alert('Terima kasih! Pesan Anda telah terkirim. Tim kami akan segera menghubungi Anda.');
-                }, 1500);
-            }, 1500);
+            if (!name || !message) {
+                alert("Mohon lengkapi nama dan pesan Anda.");
+                return;
+            }
+
+            // Format Message
+            const text = `Halo Admin TTM, 👋%0a%0a` +
+                         `Saya *${name}* ingin bertanya mengenai *${topic}*.%0a%0a` +
+                         `Pesan:%0a"${message}"%0a%0a` +
+                         `Terima kasih.`;
+
+            // Construct URL (Using the number from the footer/contact bar)
+            const url = `https://wa.me/6285718200115?text=${text}`;
+
+            // Open in new tab
+            window.open(url, '_blank');
         }
 
         // Close modal on outside click
