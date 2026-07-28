@@ -273,7 +273,7 @@
                     <div class="relative w-full aspect-video flex items-center justify-center">
                         <!-- Slide 1 -->
                         <div class="hero-slide active" data-index="0">
-                            <img src="assets/img/Bongshin_BSA.png" 
+                            <img src="assets/img/XIN_TIPE.png" 
                                  alt="Bongshin Load Cell Products">
                         </div>
                         <!-- Slide 2 -->
@@ -810,194 +810,175 @@
         </div>
     </div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed top-20 sm:top-24 right-3 sm:right-4 bg-white border-l-4 border-brand-accent shadow-xl rounded-r-lg p-3 sm:p-4 transform translate-x-full transition-transform duration-300 z-[80] flex items-center gap-2 sm:gap-3 max-w-[calc(100%-24px)] sm:max-w-none">
-        <div class="w-7 h-7 sm:w-8 sm:h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center shrink-0">
-            <i class="fa-solid fa-check text-sm"></i>
-        </div>
-        <div class="min-w-0">
-            <h4 class="font-bold text-xs sm:text-sm text-gray-900">Berhasil!</h4>
-            <p class="text-[10px] sm:text-xs text-gray-500 truncate">Produk ditambahkan ke daftar penawaran.</p>
-        </div>
-    </div>
-
     <!-- JavaScript Logic -->
     <script>
         // --- DATA: Individual Products with Realistic Images ---
-        const productsData = [
+                const productsData = [
             // BONGSHIN LOAD CELLS
             {
-                id: 'bsa-500kg',
-                name: 'Bongshin Compression Load Cell BSA-500kg',
+                id: 'bsa-compression',
+                name: 'Bongshin Compression Load Cell',
                 category: 'loadcell',
                 brand: 'Bongshin',
                 image: 'assets/img/Bongshin_BSA.png',
-                desc: 'Load cell tipe kompresi dengan kapasitas 500kg. Ideal untuk platform scale dan hopper kecil. Material alloy steel dengan proteksi IP67.',
-                specs: ['Kapasitas: 500kg', 'Tipe: Compression', 'Material: Alloy Steel', 'Proteksi: IP67', 'Output: 2.0mV/V']
+                desc: 'Load cell tipe kompresi (Compression) dirancang untuk menahan beban vertikal dari atas. Ideal untuk aplikasi platform scale, hopper, dan tank scale dengan kapasitas mulai dari 500kg hingga puluhan ton.',
+                specs: ['Tipe: Compression', 'Kapasitas: 500kg - 50 Ton', 'Material: Alloy Steel / Stainless', 'Proteksi: IP67', 'Output: Analog 2.0mV/V']
             },
             {
-                id: 'bsa-5ton',
-                name: 'Bongshin Compression Load Cell BSA-5Ton',
+                id: 'bck-canister',
+                name: 'Bongshin Canister Load Cell',
                 category: 'loadcell',
                 brand: 'Bongshin',
-                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Bongshin+BSA+5Ton',
-                desc: 'Load cell kompresi kapasitas menengah 5 ton. Cocok untuk tank scale dan silo berukuran sedang. Akurasi tinggi dan stabil.',
-                specs: ['Kapasitas: 5 Ton', 'Tipe: Compression', 'Material: Alloy Steel', 'Proteksi: IP67', 'Aplikasi: Tank Scale']
+                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Bongshin+BCK+Canister',
+                desc: 'Load cell tipe canister hermetic sealed yang tahan terhadap lingkungan keras, debu, dan kelembaban tinggi. Sangat cocok untuk truck scale, railway scale, dan silo industri berat.',
+                specs: ['Tipe: Canister Hermetic Sealed', 'Kapasitas: 10 Ton - 100 Ton', 'Material: Stainless Steel', 'Proteksi: IP68', 'Aplikasi: Truck Scale, Weighbridge']
             },
             {
-                id: 'bck-10ton',
-                name: 'Bongshin Canister Load Cell BCK-10Ton',
+                id: 'bsu-shear-beam',
+                name: 'Bongshin Shear Beam Load Cell',
                 category: 'loadcell',
                 brand: 'Bongshin',
-                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Bongshin+BCK+10T',
-                desc: 'Load cell tipe canister/hermetic sealed dengan kapasitas 10 ton. Tahan terhadap lingkungan keras dan kelembaban tinggi.',
-                specs: ['Kapasitas: 10 Ton', 'Tipe: Canister (Hermetic)', 'Material: Stainless Steel', 'Proteksi: IP68', 'Aplikasi: Truck Scale']
+                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Bongshin+BSU+Shear+Beam',
+                desc: 'Load cell shear beam dengan profil rendah dan ketahanan terhadap beban samping (side load). Presisi tinggi untuk floor scale, conveyor scale, dan batching system.',
+                specs: ['Tipe: Shear Beam', 'Kapasitas: 1 Ton - 10 Ton', 'Material: Alloy Steel', 'Proteksi: IP67', 'Keunggulan: Tahan Side Load']
             },
             {
-                id: 'bck-50ton',
-                name: 'Bongshin Canister Load Cell BCK-50Ton',
+                id: 'bst-single-point',
+                name: 'Bongshin Single Point Load Cell',
                 category: 'loadcell',
                 brand: 'Bongshin',
-                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Bongshin+BCK+50T',
-                desc: 'Load cell canister kapasitas besar 50 ton untuk aplikasi truck scale dan weighbridge. Konstruksi kokoh dan tahan lama.',
-                specs: ['Kapasitas: 50 Ton', 'Tipe: Canister', 'Material: Stainless Steel', 'Proteksi: IP68', 'Aplikasi: Weighbridge']
-            },
-            {
-                id: 'bsu-1ton',
-                name: 'Bongshin Shear Beam Load Cell BSU-1Ton',
-                category: 'loadcell',
-                brand: 'Bongshin',
-                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Bongshin+BSU+1T',
-                desc: 'Load cell shear beam compact dengan kapasitas 1 ton. Sangat cocok untuk platform scale lantai dan conveyor scale.',
-                specs: ['Kapasitas: 1 Ton', 'Tipe: Shear Beam', 'Material: Alloy Steel', 'Proteksi: IP67', 'Aplikasi: Platform Scale']
-            },
-            {
-                id: 'bst-50kg',
-                name: 'Bongshin Single Point Load Cell BST-50kg',
-                category: 'loadcell',
-                brand: 'Bongshin',
-                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Bongshin+BST+50kg',
-                desc: 'Load cell single point untuk bench scale dan counting scale. Presisi tinggi untuk penimbangan benda kecil hingga menengah.',
-                specs: ['Kapasitas: 50kg', 'Tipe: Single Point', 'Material: Aluminum Alloy', 'Proteksi: IP66', 'Aplikasi: Bench Scale']
+                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Bongshin+BST+Single+Point',
+                desc: 'Load cell single point (parallel beam) yang akurat meskipun beban diletakkan tidak tepat di tengah plat timbang. Sempurna untuk bench scale, counting scale, dan checkweigher.',
+                specs: ['Tipe: Single Point / Parallel Beam', 'Kapasitas: 10kg - 500kg', 'Material: Aluminum Alloy', 'Proteksi: IP66', 'Aplikasi: Bench Scale, Retail Scale']
             },
             {
                 id: 'bmd-digital',
-                name: 'Bongshin Digital Load Cell BMD-20Ton',
+                name: 'Bongshin Digital Load Cell',
                 category: 'loadcell',
                 brand: 'Bongshin',
-                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Bongshin+Digital+20T',
-                desc: 'Load cell digital dengan output sinyal digital langsung. Anti-interferensi elektromagnetik, cocok untuk lingkungan industri berat.',
-                specs: ['Kapasitas: 20 Ton', 'Tipe: Digital', 'Output: RS485/Modbus', 'Proteksi: IP68', 'Anti-EMI']
+                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Bongshin+BMD+Digital',
+                desc: 'Load cell digital dengan output sinyal RS-485/Modbus langsung. Mengeliminasi interferensi elektromagnetik (EMI) dan memungkinkan koneksi jarak jauh tanpa kehilangan akurasi.',
+                specs: ['Tipe: Digital Smart Sensor', 'Output: RS-485 / Modbus RTU', 'Proteksi: IP68', 'Fitur: Anti-EMI, Self-Diagnosis', 'Aplikasi: Heavy Industry']
             },
-
+            {
+                id: 'accessories',
+                name: 'Bongshin Accessories',
+                category: 'loadcell',
+                brand: 'Bongshin',
+                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Bongshin+Accessories',
+                desc: 'Aksesoris pendukung sistem penimbangan Bongshin meliputi mounting kit, junction box, cable connector, dan protective cover untuk memastikan instalasi aman dan presisi.',
+                specs: ['Item: Mounting Kit, Junction Box', 'Material: Stainless / Carbon Steel', 'Fungsi: Proteksi & Konektivitas', 'Kompatibilitas: Semua Tipe Load Cell', 'Garansi: Original Parts']
+            },
+        
             // BIG TOOL / CNC
             {
                 id: 'xin-cnc-grinder',
                 name: 'XIN Series CNC Tool & Cutter Grinder',
                 category: 'cnc',
                 brand: 'Big Tool',
-                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=XIN+CNC+Grinder',
+                image: 'assets/img/XIN_TIPE.png',
                 desc: 'Mesin gerinda alat potong CNC presisi tinggi dari Korea. Dilengkapi kontrol numerik untuk hasil grinding yang sangat akurat dan konsisten.',
                 specs: ['Presisi: ±0.002mm', 'Kontrol: CNC System', 'Spindle Speed: Variable', 'Aplikasi: Endmill, Drill, Tap', 'Origin: Korea']
-            },
-            {
-                id: 'bigtool-endmill',
-                name: 'Big Tool Solid Carbide Endmill',
-                category: 'cnc',
-                brand: 'Big Tool',
-                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Carbide+Endmill',
-                desc: 'Endmill solid carbide berkualitas tinggi untuk milling material keras. Coating khusus untuk umur pakai lebih panjang.',
-                specs: ['Material: Solid Carbide', 'Coating: TiAlN', 'Flute: 2/3/4 Flutes', 'Diameter: 1mm - 20mm', 'Hardness: HRC65']
             },
 
             // SUGINO FILTRATION
             {
                 id: 'sugino-magnetic',
-                name: 'Sugino Magnetic Separator MS-Series',
+                name: 'Sugino Magnetic Separator',
                 category: 'filtration',
                 brand: 'Sugino',
-                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Magnetic+Separator',
+                image: 'assets/img/MAGNETIC_SEPARATOR.png',
                 desc: 'Magnetic separator untuk menghilangkan serbuk besi halus dari coolant. Efektif menjaga kebersihan cairan pendingin mesin.',
                 specs: ['Tipe: Magnetic Drum', 'Flow Rate: 50-200 L/min', 'Particle Size: >10 micron', 'Material: Stainless Steel', 'Auto Cleaning']
             },
             {
                 id: 'sugino-paper',
-                name: 'Sugino Paper Filter PF-Series',
+                name: 'Sugino Paper Filter',
                 category: 'filtration',
                 brand: 'Sugino',
-                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Paper+Filter',
+                image: 'assets/img/PAPER_FILTER.png',
                 desc: 'Paper filter otomatis dengan kertas filter berkualitas tinggi. Filtrasi halus untuk finishing process machining.',
                 specs: ['Filtration: 5-20 micron', 'Auto Feed Paper', 'Tank Capacity: 100-500L', 'Pump: Included', 'Application: Grinding']
             },
             {
                 id: 'sugino-drum',
-                name: 'Sugino Drum Filter DF-Series',
+                name: 'Sugino Drum Filter',
                 category: 'filtration',
                 brand: 'Sugino',
-                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Drum+Filter',
+                image: 'assets/img/DRUM_FILTER.png',
                 desc: 'Drum filter dengan kapasitas besar dan efisiensi tinggi. Sistem filtrasi otomatis continuous untuk produksi massal.',
                 specs: ['Capacity: Large Volume', 'Auto Backwash', 'Filtration: 10-50 micron', 'Continuous Operation', 'Low Maintenance']
+            },
+            {
+                id: 'Coolant-Tank',
+                name: 'Sugino Coolant Tank',
+                category: 'filtration',
+                brand: 'Sugino',
+                image: 'assets/img/COOLANT_TANK.png',
+                desc: 'Tangki penampung coolant dengan desain optimal dan mudah perawatan. Terintegrasi sempurna dengan sistem filtrasi Sugino.',
+                specs: ['Material: Stainless Steel', 'Desain: Compact & Durable', 'Integrasi: Mudah dengan Filter', 'Perawatan: Minimal', 'Aplikasi: Mesin CNC']
             },
 
             // EHWA GRINDING
             {
                 id: 'ehwa-diamond-wheel',
-                name: 'Ehwa Diamond Grinding Wheel D107',
+                name: 'Ehwa Diamond Grinding Wheel',
                 category: 'grinding',
                 brand: 'Ehwa',
-                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Diamond+Wheel',
+                image: 'assets/img/CBN_GRINDING.png',
                 desc: 'Diamond grinding wheel untuk material keras seperti carbide dan ceramic. Grit D107 untuk finishing halus.',
                 specs: ['Abrasive: Diamond', 'Grit: D107', 'Bond: Resin/Metal', 'Diameter: 100-200mm', 'Application: Carbide']
             },
             {
-                id: 'ehwa-cbn-wheel',
-                name: 'Ehwa CBN Grinding Wheel B64',
-                category: 'grinding',
-                brand: 'Ehwa',
-                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=CBN+Wheel',
-                desc: 'CBN wheel untuk grinding baja hardened. Umur pakai 10x lebih lama dibanding conventional wheel.',
-                specs: ['Abrasive: CBN', 'Grit: B64', 'Bond: Vitrified', 'Hardness: HRC60+', 'Application: Steel']
+                id: 'yamasa-super-roll',
+                name: 'Yamasa Super Roll',
+                category: 'conveyor',
+                brand: 'Yamasa',
+                image: 'assets/img/SUPER_ROLL.png',
+                desc: 'Roller presisi tinggi untuk sistem conveyor. Permukaan halus dan tahan aus untuk pergerakan material yang stabil.',
+                specs: ['Material: High Carbon Steel', 'Surface: Hardened & Polished', 'Tolerance: Presisi Tinggi', 'Durability: Tahan Aus', 'Aplikasi: Conveyor System']
             },
 
             // YAMASA & YUH CHERN
             {
                 id: 'yamasa-tap-m6',
-                name: 'Yamasa Spiral Point Tap M6',
+                name: 'Yamasa Mandrel',
                 category: 'conveyor',
                 brand: 'Yamasa',
-                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Yamasa+Tap+M6',
-                desc: 'Tap ulir metrik M6 dengan spiral point untuk through hole. Performa unggul dan daya tahan tinggi.',
-                specs: ['Size: M6 x 1.0', 'Type: Spiral Point', 'Material: HSS-E', 'Coating: TiN', 'Thread: Metric']
+                image: 'assets/img/MANDREL.png',
+                desc: 'Mandrel presisi untuk memegang workpiece saat proses grinding atau machining. Kekakuan tinggi untuk hasil maksimal.',
+                specs: ['Type: Precision Mandrel', 'Material: Alloy Steel', 'Runout: < 0.005mm', 'Hardness: HRC60+', 'Aplikasi: Grinding Machine']
             },
             {
                 id: 'yuhchern-hanger',
-                name: 'Yuh Chern Painting Hanger Jig',
+                name: 'Yuh Chern Hanger Painting',
                 category: 'conveyor',
                 brand: 'Yuh Chern',
-                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Painting+Hanger',
-                desc: 'Hanger jig untuk proses painting conveyor. Desain kuat dan tahan panas oven cat.',
+                image: 'assets/img/HANGER_PAINTING.png',
+                desc: 'Hanger jig khusus untuk proses painting conveyor. Desain kuat dan tahan panas oven cat hingga 200°C.',
                 specs: ['Material: Heat Resistant Steel', 'Load: 5-20kg', 'Temperature: Up to 200°C', 'Custom Design Available', 'Anti-Drip']
+            },
+            {
+                id: 'yuhchren-chain',
+                name: 'Yu Chern Chain Painting',
+                category: 'conveyor',
+                brand: 'Yuh Chern',
+                image: 'assets/img/RANTAI_PAINTING.png',
+                desc: 'Rantai conveyor khusus untuk jalur painting. Tahan terhadap cat, solvent, dan suhu tinggi di oven curing.',
+                specs: ['Type: Painting Conveyor Chain', 'Material: Special Alloy', 'Heat Resistance: High Temp', 'Coating: Anti-Corrosion', 'Aplikasi: Paint Line']
             },
 
             // JUKYO CHAIN
             {
                 id: 'jukyo-painting-chain',
-                name: 'Jukyo Overhead Painting Chain X458',
+                name: 'Jukyo Overhead Painting Chain',
                 category: 'conveyor',
                 brand: 'Jukyo',
-                image: 'https://placehold.co/600x450/f1f5f9/0f172a?text=Painting+Chain+X458',
+                image: 'assets/img/RANTAI_PAINTINGJ.png',
                 desc: 'Rantai overhead conveyor tipe X458 untuk sistem painting. Kuat, presisi, dan tahan terhadap cat dan suhu tinggi.',
                 specs: ['Type: X458 Drop Forged', 'Pitch: 76.2mm', 'Material: Alloy Steel', 'Heat Treatment: Yes', 'Application: Paint Line']
-            },
-            {
-                id: 'jukyo-power-free',
-                name: 'Jukyo Power & Free Chain',
-                category: 'conveyor',
-                brand: 'Jukyo',
-                image: 'https://placehold.co/600x450/e2e8f0/1e3a8a?text=Power+Free+Chain',
-                desc: 'Sistem rantai power and free untuk conveyor fleksibel. Memungkinkan accumulation dan switching jalur otomatis.',
-                specs: ['Type: Power & Free', 'Track: Enclosed', 'Switch: Automatic', 'Accumulation: Yes', 'Heavy Duty']
             }
+            
         ];
 
         let cart = [];
