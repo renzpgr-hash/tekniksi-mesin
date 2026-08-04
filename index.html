@@ -419,7 +419,7 @@
             <div class="mb-8 sm:mb-10 space-y-4 sm:space-y-6">
                 <div class="text-center md:text-left">
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-dark uppercase tracking-tight">Katalog Produk Lengkap</h2>
-                    <p class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2">Pilih produk spesifik sesuai kebutuhan industri Anda.</p>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2">Pilih produk berdasarkan merek terpercaya.</p>
                 </div>
                 
                 <div class="flex flex-col gap-3 sm:gap-4">
@@ -429,14 +429,16 @@
                         <i class="fa-solid fa-magnifying-glass absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
                     </div>
 
-                    <!-- Category Filters (Horizontal Scroll on Mobile) -->
+                    <!-- Brand Filters (Horizontal Scroll on Mobile) - UPDATED TO BRANDS -->
                     <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 sm:pb-0 sm:flex-wrap sm:justify-end">
-                        <button onclick="filterProducts('all')" class="filter-btn active px-3 sm:px-4 py-2 sm:py-3 bg-brand-blue text-white rounded-lg text-xs sm:text-sm font-bold transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="all">Semua</button>
-                        <button onclick="filterProducts('loadcell')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="loadcell">Load Cell</button>
-                        <button onclick="filterProducts('cnc')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="cnc">Mesin CNC</button>
-                        <button onclick="filterProducts('filtration')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="filtration">Filtrasi</button>
-                        <button onclick="filterProducts('grinding')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="grinding">Grinding Wheel</button>
-                        <button onclick="filterProducts('conveyor')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="conveyor">Conveyor</button>
+                        <button onclick="filterProducts('all')" class="filter-btn active px-3 sm:px-4 py-2 sm:py-3 bg-brand-blue text-white rounded-lg text-xs sm:text-sm font-bold transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="all">Semua Merek</button>
+                        <button onclick="filterProducts('Bongshin')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Bongshin">Bongshin</button>
+                        <button onclick="filterProducts('Big Tool')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Big Tool">Big Tool</button>
+                        <button onclick="filterProducts('Sugino')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Sugino">Sugino</button>
+                        <button onclick="filterProducts('Ehwa')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Ehwa">Ehwa</button>
+                        <button onclick="filterProducts('Yamasa')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Yamasa">Yamasa</button>
+                        <button onclick="filterProducts('Yuh Chern')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Yuh Chern">Yuh Chern</button>
+                        <button onclick="filterProducts('Jukyo')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Jukyo">Jukyo</button>
                     </div>
                 </div>
             </div>
@@ -1077,9 +1079,9 @@
             
             let filtered = productsData;
 
-            // Apply category filter
+            // Apply BRAND filter (Updated logic)
             if (filter !== 'all') {
-                filtered = filtered.filter(p => p.category === filter);
+                filtered = filtered.filter(p => p.brand === filter);
             }
 
             // Apply search filter
@@ -1135,11 +1137,11 @@
             return names[cat] || cat;
         }
 
-        function filterProducts(category) {
-            currentFilter = category;
+        function filterProducts(brand) {
+            currentFilter = brand;
             // Update button styles
             document.querySelectorAll('.filter-btn').forEach(btn => {
-                if(btn.dataset.filter === category) {
+                if(btn.dataset.filter === brand) {
                     btn.classList.add('bg-brand-blue', 'text-white', 'border-transparent');
                     btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
                 } else {
@@ -1148,7 +1150,7 @@
                 }
             });
             
-            // Clear search when filtering by category
+            // Clear search when filtering by brand
             document.getElementById('search-input').value = '';
             renderProducts(currentFilter, '');
         }
@@ -1156,7 +1158,7 @@
         // SEARCH FUNCTIONALITY
         document.getElementById('search-input').addEventListener('input', (e) => {
             const searchTerm = e.target.value;
-            // Reset category filter buttons visually when searching
+            // Reset brand filter buttons visually when searching
             document.querySelectorAll('.filter-btn').forEach(btn => {
                  btn.classList.remove('bg-brand-blue', 'text-white', 'border-transparent');
                  btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
