@@ -433,7 +433,7 @@
                     <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 sm:pb-0 sm:flex-wrap sm:justify-end">
                         <button onclick="filterProducts('all')" class="filter-btn active px-3 sm:px-4 py-2 sm:py-3 bg-brand-blue text-white rounded-lg text-xs sm:text-sm font-bold transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="all">Semua Merek</button>
                         <button onclick="filterProducts('Bongshin')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Bongshin">Bongshin</button>
-                        <button onclick="filterProducts('Big Tool')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Big Tool">Big Tool</button>
+                        <button onclick="filterProducts('Bic Tool')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Bic Tool">Bic Tool</button>
                         <button onclick="filterProducts('Sugino')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Sugino">Sugino</button>
                         <button onclick="filterProducts('Ehwa')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Ehwa">Ehwa</button>
                         <button onclick="filterProducts('Yamasa')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Yamasa">Yamasa</button>
@@ -468,7 +468,7 @@
                         <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-brand-blue transition-colors cursor-pointer group">
                             <div class="w-9 h-9 sm:w-10 sm:h-10 rounded bg-brand-blue text-white flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-microchip text-sm sm:text-base"></i></div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-sm sm:text-base">Mesin CNC Presisi (Big Tool)</h4>
+                                <h4 class="font-bold text-gray-900 text-sm sm:text-base">Mesin CNC Presisi (Bic Tool)</h4>
                                 <p class="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1">Akurasi ±0.002mm, Kontrol CNC Canggih, Spindle Speed Variable. Aplikasi: Grinding Endmill, Drill, Tap.</p>
                             </div>
                         </div>
@@ -744,7 +744,7 @@
                     <h3 class="font-bold mb-4 sm:mb-6 text-base sm:text-lg text-brand-accent">Produk Unggulan</h3>
                     <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-400">
                         <li><a href="#" class="hover:text-white transition-colors">Bongshin Load Cell</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Big Tool CNC Machine</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Bic Tool CNC Machine</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Sugino Filter System</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Ehwa Grinding Wheel</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Yamasa Taps</a></li>
@@ -1027,18 +1027,144 @@
                 specs: ['Tipe: Single Ended Shear Beam', 'Kapasitas: 500kg - 5 Ton', 'Material: Alloy Tool Steel', 'Proteksi: IP67', 'Aplikasi: Platform Scale, Floor Scale']
             },
         
-            // BIG TOOL / CNC
+            // BIC TOOL / CNC (UPDATED 14 PRODUCTS)
             {
                 id: 'xin-cnc-grinder',
                 name: 'XIN Series CNC Tool & Cutter Grinder',
                 category: 'cnc',
-                brand: 'Big Tool',
+                brand: 'Bic Tool',
                 image: 'assets/img/XIN_TIPE.png',
-                desc: 'Mesin gerinda alat potong CNC presisi tinggi dari Korea. Dilengkapi kontrol numerik untuk hasil grinding yang sangat akurat dan konsisten.',
-                specs: ['Presisi: ±0.002mm', 'Kontrol: CNC System', 'Spindle Speed: Variable', 'Aplikasi: Endmill, Drill, Tap', 'Origin: Korea']
+                desc: 'Mesin gerinda alat potong CNC presisi tinggi dari Jepang (Bictool). Dilengkapi kontrol numerik untuk hasil grinding yang sangat akurat dan konsisten.',
+                specs: ['Presisi: ±0.002mm', 'Kontrol: CNC System', 'Spindle Speed: Variable', 'Aplikasi: Endmill, Drill, Tap', 'Origin: Japan']
+            },
+            {
+                id: 'BicTool_Drills',
+                name: 'Bic Tool Gekkou Drills',
+                category: 'Cutting Tools',
+                brand: 'Bic Tool',
+                image: 'assets/img/GEKKOU_DRILLS.png',
+                desc: 'Mata bor Gekkou (Moonlight) dengan teknologi bentuk ujung unik yang meningkatkan kemampuan gigit, potong, dan pembuangan chip secara signifikan. Tahan 5-10x lebih lama dari bor konvensional.',
+                specs: ['Material: Cobalt High Speed Steel (HSCO)', 'Ukuran: 2.5mm - 13.0mm', 'Fitur: Unique Tip Shape Technology', 'Aplikasi: Stainless Steel, Difficult Materials', 'Keunggulan: Improved Chip Evacuation']
+            },
+            {
+                id: 'BicTool_CutiingOilGekkou',
+                name: 'Bic Tool Cutting Oil Gekkou',
+                category: 'Cutting Fluids',
+                brand: 'Bic Tool',
+                image: 'assets/img/CUTTING_OIL_GEKKOU.png',
+                desc: 'Minyak potong khusus yang diformulasikan untuk memaksimalkan performa mata bor Gekkou. Memberikan pelumasan optimal dan pendinginan untuk memperpanjang umur alat.',
+                specs: ['Tipe: High Performance Cutting Oil', 'Fungsi: Lubrication & Cooling', 'Kompatibilitas: Gekkou Drills Series', 'Manfaat: Extend Tool Life', 'Aplikasi: Metal Machining']
+            },
+            {
+                id: 'BicTool_SpotCutter',
+                name: 'Bic Tool Spot Cutter GK-KIN',
+                category: 'Spot Weld Cutter',
+                brand: 'Bic Tool',
+                image: 'assets/img/SPOT_CUTTER.png',
+                desc: 'Spot cutter kekerasan tinggi (High Hardness) untuk memisahkan panel spot weld tanpa merusak panel bawah. Lebih mudah, tenang, dan cepat dibandingkan gerinda sabuk.',
+                specs: ['Tipe: High Hardness Spot Cutter', 'Material Target: High Tensile Steel Plate', 'Diameter Blade: 8.2mm', 'Panjang: 80mm', 'Aplikasi: Auto Body Repair, Panel Separation']
+            },
+            {
+                id: 'BicTool_SpotCutter2',
+                name: 'Bic Tool Spot Cutter Gekkou',
+                category: 'Spot Weld Cutter',
+                brand: 'Bic Tool',
+                image: 'assets/img/SPOT_CUTTER2.png',
+                desc: 'Spot cutter seri Gekkou yang dirancang untuk efisiensi tinggi dalam pekerjaan body repair. Memungkinkan pemotongan spot weld yang presisi pada berbagai jenis baja.',
+                specs: ['Seri: Gekkou (Moonlight)', 'Fungsi: Spot Weld Removal', 'Keunggulan: Precision Cutting', 'Material: Special Alloy Steel', 'Aplikasi: Automotive Workshop']
+            },
+            {
+                id: 'BicTool_GekkouBladeSaw',
+                name: 'Bic Tool Gekkou Blade Saw',
+                category: 'Saw Blades',
+                brand: 'Bic Tool',
+                image: 'assets/img/GEKKOU_BLADE.png',
+                desc: 'Mata gergaji Gekkou dengan ketajaman luar biasa berkat teknologi bentuk gigi asli. Ideal untuk memotong berbagai material dengan hasil yang halus dan cepat.',
+                specs: ['Tipe: Gekkou Blade Saw', 'Teknologi: Original Tooth Shape', 'Material: High Speed Steel', 'Aplikasi: General Cutting', 'Keunggulan: Sharpness & Durability']
+            },
+            {
+                id: 'BicTool_DrillSharpener',
+                name: 'Bic Tool D-KEN 13',
+                category: 'Drill Sharpener',
+                brand: 'Bic Tool',
+                image: 'assets/img/DKEN_13.png',
+                desc: 'Mesin gerinda mata bor kompak untuk mengasah kembali bor umum dan alat bor lubang dalam. Desain portabel memudahkan penggunaan di mana saja.',
+                specs: ['Kapasitas Bor: 2.0mm - 13.0mm', 'Daya Motor: 65W', 'Kecepatan: 2850 / 3440 RPM', 'Fitur: Compact & Portable', 'Aplikasi: General Purpose Drills']
+            },
+            {
+                id: 'BicTool_DrillSharpener1',
+                name: 'Bic Tool D-KEN 26',
+                category: 'Drill Sharpener',
+                brand: 'Bic Tool',
+                image: 'assets/img/DKEN_26.png',
+                desc: 'Mesin gerinda mata bor untuk ukuran lebih besar. Dirancang untuk presisi tinggi dan kemudahan operasi, memungkinkan pengasahan cepat tanpa keahlian khusus.',
+                specs: ['Kapasitas Bor: 13.0mm - 26.0mm', 'Fitur: High Precision Grinding', 'Operasi: Easy & Rapid', 'Motor: Stable Frequency DC Motor', 'Aplikasi: Large Diameter Drills']
+            },
+            {
+                id: 'BicTool_DrillSharpener2',
+                name: 'Bic Tool SMK-13',
+                category: 'Drill Sharpener',
+                brand: 'Bic Tool',
+                image: 'assets/img/SMK_13.png',
+                desc: 'Mesin gerinda bor sangat kompak dan ringan dengan roda CBN. Memungkinkan pengasahan presisi tinggi untuk bor twist Ø3mm-Ø13mm dengan fitur thinning.',
+                specs: ['Kapasitas Bor: 3.0mm - 13.0mm', 'Roda Gerinda: CBN Wheel #170', 'Kecepatan: 7200 RPM', 'Fitur: Thinning Function', 'Berat: 2.0kg (Ultra Compact)']
+            },
+            {
+                id: 'BicTool_ENDMILL',
+                name: 'Bic Tool Apollo 13',
+                category: 'End Mill Grinder',
+                brand: 'Bic Tool',
+                image: 'assets/img/ENDMILL.png',
+                desc: 'Mesin gerinda end mill yang mampu mengasah diameter φ4.0～φ13.0. Kompatibel dengan HSS dan Carbide, serta mendukung berbagai bentuk ujung alat.',
+                specs: ['Kapasitas: 4.0mm - 13.0mm', 'Material Tool: HSS & Solid Carbide', 'Daya Motor: 600W', 'Fitur: Multi-Shape Grinding', 'Voltage: 100V / 220V Available']
+            },
+            {
+                id: 'BicTool_Desktop',
+                name: 'Bic Tool Desktop Automatic Drill Sharpener Xin',
+                category: 'Automatic Drill Sharpener',
+                brand: 'Bic Tool',
+                image: 'assets/img/DESKTOP.png',
+                desc: 'Mesin pengasah bor otomatis tipe desktop (Xin Series). Solusi hemat biaya untuk internalisasi proses pengasahan dengan hasil instan dan presisi.',
+                specs: ['Tipe: Desktop Automatic', 'Fitur: One-Touch Operation', 'Kompatibilitas: HSS & Carbide', 'Keunggulan: Cost Down Solution', 'Aplikasi: Workshop Internal Use']
+            },
+            {
+                id: 'BicTool_IONSHOWER',
+                name: 'Bic Tool MG-3000 Ion Shower',
+                category: 'Static Eliminator',
+                brand: 'Bic Tool',
+                image: 'assets/img/IONSHOWER.png',
+                desc: 'Ion shower blow gun Magnum (MG-3000) untuk menghilangkan listrik statis, debu, dan bau. Output 1.7x lebih kuat dari model sebelumnya dengan baterai tahan 6 jam.',
+                specs: ['Fungsi: Static & Dust Removal', 'Output: 1.7x Previous Model', 'Baterai: Ni-MH (6 Hours Runtime)', 'Berat: 380g (Lightweight)', 'Aplikasi: Painting Preparation']
+            },
+            {
+                id: 'BicTool_RokenS2000',
+                name: 'Bic Tool Roken S-2000',
+                category: 'Spot Weld Drill Sharpener',
+                brand: 'Bic Tool',
+                image: 'assets/img/ROKENS2000.png',
+                desc: 'Mesin pengasah bor spot weld (Roken S-2000) untuk baja tegangan tinggi ultra. Memberikan sudut potong presisi untuk pelepasan spot weld yang cepat dan hemat waktu.',
+                specs: ['Kapasitas Asah: 6.5mm - 10.0mm', 'Material Target: Ultra High Tensile Steel', 'Fitur: Precise Cutting Angle', 'Operasi: 3 Easy Steps', 'Aplikasi: Auto Body Spot Weld Removal']
+            },
+            {
+                id: 'BicTool_Necessary',
+                name: 'Bic Tool G-CC',
+                category: 'Surface Preparation',
+                brand: 'Bic Tool',
+                image: 'assets/img/NECESSARY.png',
+                desc: 'Alat persiapan permukaan yang wajib sebelum pengecatan (G-CC). Memastikan permukaan bersih dan siap untuk hasil cat yang sempurna dan tahan lama.',
+                specs: ['Fungsi: Pre-Painting Surface Prep', 'Kategori: Necessary Product', 'Manfaat: Perfect Paint Adhesion', 'Aplikasi: Automotive Refinish', 'Origin: Japan']
+            },
+            {
+                id: 'BicTool_PS200',
+                name: 'Bic Tool PS-200',
+                category: 'Color Test Sheet',
+                brand: 'Bic Tool',
+                image: 'assets/img/PS200.png',
+                desc: 'Lembar uji pewarnaan tipe baru (PS-200) untuk verifikasi warna yang akurat sebelum aplikasi cat. Membantu mencocokkan warna dengan presisi tinggi.',
+                specs: ['Tipe: New Type Coloring Test Sheet', 'Fungsi: Color Verification', 'Manfaat: Accurate Color Matching', 'Aplikasi: Paint Shop, Body Repair', 'Material: High Quality Paper']
             },
 
-            // SUGINO FILTRATION (EXISTING)
+            // SUGINO FILTRATION (EXISTING + NEW)
             {
                 id: 'sugino-magnetic',
                 name: 'Sugino Magnetic Separator',
@@ -1075,106 +1201,104 @@
                 desc: 'Tangki penampung coolant dengan desain optimal dan mudah perawatan. Terintegrasi sempurna dengan sistem filtrasi Sugino.',
                 specs: ['Material: Stainless Steel', 'Desain: Compact & Durable', 'Integrasi: Mudah dengan Filter', 'Perawatan: Minimal', 'Aplikasi: Mesin CNC']
             },
-
-            // --- 11 PRODUK SUGINO BARU (UPDATED SPECS) ---
             {
-                id: 'Sugino-Water-Cut',
+            id: 'Sugino-Water-Cut',
                 name: 'Sugino Water Jet Cutter',
                 category: 'Water Jet Cutter',
                 brand: 'Sugino',
                 image: 'assets/img/SUGINO_WATERJETCUT.png',
-                desc: 'Mesin pemotong water jet ultra-high pressure (hingga 392 MPa) yang mampu memotong berbagai material termasuk logam, resin, dan komposit tanpa zona panas (HAZ). Presisi tinggi dengan nozzle ekstra halus.',
-                specs: ['Tekanan: Hingga 392 MPa (Ultra-High Pressure)', 'Material Cutting: Logam, Resin, Komposit, Makanan', 'Nozzle: Extra Fine (Min. 0.3mm)', 'Fitur: Cold Cutting (No Heat Affected Zone)', 'Aplikasi: Automotive, Aerospace, Food Industry']
+                desc: 'Mesin pemotong water jet tekanan ultra-tinggi (hingga 392 MPa) yang mampu memotong material apa pun termasuk logam, resin, dan komposit tanpa zona panas.',
+                specs: ['Tekanan: Max 392 MPa', 'Material: Logam, Resin, Komposit', 'Fitur: Cold Cutting (No Heat)', 'Nozzle: Extra Fine (0.3mm)', 'Aplikasi: Automotive, Food, Aerospace']
             },
             {
-                id: 'Sugino-Skive-Roller',
+            id: 'Sugino-Skive-Roller',
                 name: 'Sugino Skive Roller',
                 category: 'Combined Type',
                 brand: 'Sugino',
                 image: 'assets/img/SUGINO_SKIVEROLLER.png',
-                desc: 'Alat kombinasi yang melakukan skiving (pengikisan) dan roller burnishing dalam satu langkah proses. Mengurangi waktu machining secara signifikan dibandingkan honing konvensional.',
-                specs: ['Fungsi: Skiving + Roller Burnishing (1 Pass)', 'Kapasitas Panjang: Hingga 1300mm', 'Diameter Proses: Hingga 152.4mm', 'Material Target: Hydraulic Cylinder, Bore', 'Keunggulan: Menggantikan Proses Honing']
+                desc: 'Alat kombinasi yang melakukan skiving dan roller burnishing dalam satu langkah. Mengurangi waktu machining secara signifikan dibandingkan honing.',
+                specs: ['Fungsi: Skiving + Burnishing (1 Pass)', 'Kapasitas: Hingga 1300mm Length', 'Diameter: Hingga 152.4mm', 'Material: Hydraulic Cylinder Bore', 'Keunggulan: Replaces Honing Process']
             },
             {
-                id: 'Sugino-Self-Center',
-                name: 'Sugino Self-Center Machining Center',
+            id: 'Sugino-Self-Center',
+                name: 'Sugino Self Center',
                 category: 'Machining Center',
                 brand: 'Sugino',
                 image: 'assets/img/SUGINO_SELFCENTER.png',
-                desc: 'CNC Machining Center kompak dengan rigiditas tinggi. Tersedia dalam tipe vertikal dan horizontal, dirancang untuk produksi massal presisi tinggi dan otomatisasi lini produksi.',
-                specs: ['Tipe: Vertical / Horizontal Compact MC', 'Fitur: High Rigidity, Column Traverse', 'Aplikasi: Mass Production, Precision Milling', 'Otomatisasi: Ready for Automation Line', 'Origin: Japan (Since 1986)']
+                desc: 'CNC Machining Center kompak dengan rigiditas tinggi. Tersedia dalam tipe vertikal dan horizontal untuk produksi massal presisi.',
+                specs: ['Tipe: Vertical / Horizontal Compact MC', 'Fitur: High Rigidity, Column Traverse', 'Aplikasi: Mass Production', 'Otomatisasi: Ready for Automation', 'Origin: Japan (Since 1986)']
             },
             {
-                id: 'Sugino-Robot-Machining-System',
+            id: 'Sugino-Robot-Machining-System',
                 name: 'Sugino Robot Machining System',
                 category: 'Drilling and Tapping Unit',
                 brand: 'Sugino',
                 image: 'assets/img/SUGINO_ROBOTMACHINING.png',
-                desc: 'Solusi machining turnkey yang menambahkan kemampuan cutting pada robot industri. Ideal untuk machining komponen besar dan produksi high-mix low-volume dengan fleksibilitas tinggi.',
-                specs: ['Sistem: Robot End Effector + Controller', 'Fungsi: Drilling, Tapping, Milling via Robot', 'Aplikasi: Large Part Machining', 'Keunggulan: High-Mix Low-Volume Production', 'Integrasi: Industrial Robot Arm']
+                desc: 'Solusi machining turnkey yang menambahkan kemampuan cutting pada robot industri. Ideal untuk komponen besar dan produksi high-mix low-volume.',
+                specs: ['Sistem: Robot End Effector + Controller', 'Fungsi: Drilling, Tapping, Milling', 'Aplikasi: Large Part Machining', 'Keunggulan: High Flexibility', 'Integrasi: Industrial Robot Arm']
             },
             {
-                id: 'Sugino-WaterBeam',
-                name: 'Sugino WaterBeam Machine (WbM)',
+            id: 'Sugino-WaterBeam',
+                name: 'Sugino WaterBeam Machine',
                 category: 'Water Beam Machine',
                 brand: 'Sugino',
                 image: 'assets/img/SUGINO_WATERBEAM.png',
-                desc: 'Mesin micro-fabrication generasi berikutnya yang menggabungkan teknologi water jet ultra-high pressure dengan teknologi laser terbaru. Presisi ekstrem untuk pemrosesan material mikro.',
-                specs: ['Teknologi: Hybrid Water Jet + Laser', 'Aplikasi: Micro-Fabrication, Precision Cutting', 'Material: Hard & Brittle Materials', 'Presisi: Ultra-High Precision', 'Fitur: Minimal Thermal Damage']
+                desc: 'Mesin micro-fabrication generasi berikutnya yang menggabungkan teknologi water jet ultra-high pressure dengan laser terbaru.',
+                specs: ['Teknologi: Hybrid Water Jet + Laser', 'Aplikasi: Micro-Fabrication', 'Material: Hard & Brittle Materials', 'Presisi: Ultra-High Precision', 'Fitur: Minimal Thermal Damage']
             },
             {
-                id: 'Sugino-Selfeeder',
-                name: 'Sugino Selfeeder / Synchro Tapper',
+            id: 'Sugino-Selfeeder',
+                name: 'Sugino Selfeeder/Synchro Tapper',
                 category: 'Drilling and Tapping Unit',
                 brand: 'Sugino',
                 image: 'assets/img/SUGINO_SELFEEDER.png',
-                desc: 'Unit drilling dan tapping otomatis standar global yang telah digunakan selama lebih dari setengah abad. Dikenal karena daya tahan, presisi, dan mekanisme feed mekanis yang andal.',
-                specs: ['Fungsi: Automated Drilling & Tapping', 'Mekanisme: Mechanical Feed / Servo Feed', 'Kapasitas: Hingga φ33mm (Drill), M27 (Tap)', 'Fitur: Fast Approach & Return', 'Reputasi: Global Standard (50+ Years)']
+                desc: 'Unit drilling dan tapping otomatis standar global selama lebih dari 50 tahun. Dikenal karena daya tahan, presisi, dan mekanisme feed mekanis.',
+                specs: ['Fungsi: Automated Drilling & Tapping', 'Mekanisme: Mechanical / Servo Feed', 'Kapasitas: Hingga φ33mm / M27', 'Fitur: Fast Approach & Return', 'Reputasi: Global Standard']
             },
             {
-                id: 'Sugino-Selfeeder2',
+            id: 'Sugino-Selfeeder2',
                 name: 'Sugino Selfeeder Duo Robot Edition',
                 category: 'Drilling and Tapping Unit-Robot Machining',
                 brand: 'Sugino',
                 image: 'assets/img/SUGINO_SELFEEDER2.png',
-                desc: 'End effector canggih yang dipasang pada lengan robot industri untuk machining multi-sisi yang efisien. Memungkinkan operasi drilling dan tapping kompleks dengan fleksibilitas robot.',
-                specs: ['Tipe: Robot End Effector', 'Fungsi: Robotic Drilling & Tapping', 'Keunggulan: Multi-Face Machining', 'Integrasi: Seamless Robot Arm Attachment', 'Aplikasi: Complex Geometry Parts']
+                desc: 'End effector canggih untuk lengan robot industri yang memungkinkan machining multi-sisi yang efisien dengan fleksibilitas robot.',
+                specs: ['Tipe: Robot End Effector', 'Fungsi: Robotic Drilling & Tapping', 'Keunggulan: Multi-Face Machining', 'Integrasi: Seamless Robot Attachment', 'Aplikasi: Complex Geometry Parts']
             },
             {
-                id: 'Sugino-Gunfeeder',
+            id: 'Sugino-Gunfeeder',
                 name: 'Sugino Gun Feeder',
                 category: 'Gun Drill machine',
                 brand: 'Sugino',
                 image: 'assets/img/SUGINO_GUNFEEDER.png',
-                desc: 'Mesin gun drill presisi tinggi yang dikhususkan untuk pengeboran diameter kecil dan lubang dalam (deep hole). Dilengkapi perangkat putar workpiece untuk akurasi maksimal.',
-                specs: ['Fungsi: Small Diameter & Deep Hole Drilling', 'Fitur: Workpiece Rotation Device', 'Presisi: High Precision Gun Drilling', 'Aplikasi: Medical, Hydraulic, Mold', 'Tipe: Single / Multi Spindle']
+                desc: 'Mesin gun drill presisi tinggi untuk pengeboran diameter kecil dan lubang dalam. Dilengkapi perangkat putar workpiece untuk akurasi maksimal.',
+                specs: ['Fungsi: Small Dia & Deep Hole Drilling', 'Fitur: Workpiece Rotation Device', 'Presisi: High Precision', 'Aplikasi: Medical, Hydraulic, Mold', 'Tipe: Single / Multi Spindle']
             },
             {
-                id: 'Sugino-Barriquan',
-                name: 'Sugino Barriquan Deburring System',
+            id: 'Sugino-Barriquan',
+                name: 'Sugino Barriquan',
                 category: 'Deburring Tool Holder and Spindle Motor',
                 brand: 'Sugino',
                 image: 'assets/img/SUGINO_BARRIQUAN.png',
-                desc: 'Tool holder deburring dengan mekanisme floating (axial compliant) yang memungkinkan cutter mengikuti bentuk workpiece yang rumit. Ideal untuk deburring otomatis dengan robot atau CNC.',
-                specs: ['Fungsi: Automated Deburring', 'Mekanisme: Floating / Axial Compliant', 'Keunggulan: Consistent Pressure, Follows Contour', 'Aplikasi: Robotic Deburring, CNC Machining Center', 'Fitur: Minimizes Robot Load/Impact']
+                desc: 'Tool holder deburring dengan mekanisme floating (axial compliant) yang mengikuti bentuk workpiece rumit. Ideal untuk deburring otomatis.',
+                specs: ['Fungsi: Automated Deburring', 'Mekanisme: Floating / Axial Compliant', 'Keunggulan: Consistent Pressure', 'Aplikasi: Robotic Deburring, CNC', 'Fitur: Minimizes Robot Load']
             },
             {
-                id: 'Sugino-SuperRoll',
-                name: 'Sugino SuperRoll Burnishing Tool',
+            id: 'Sugino-SuperRoll',
+                name: 'Sugino SuperRoll',
                 category: 'Roller Burnishing Tool',
                 brand: 'Sugino',
                 image: 'assets/img/SUGINO_SUPERROLL.png',
-                desc: 'Alat roller burnishing yang menghasilkan permukaan mirror finish (hingga 4 micro-inch) dalam satu kali pass. Meningkatkan kekerasan permukaan dan ketahanan aus tanpa menghilangkan material.',
-                specs: ['Fungsi: Roller Burnishing (Surface Finishing)', 'Hasil: Mirror Finish (≤ 4 micro-inch)', 'Proses: Cold Working (Single Pass)', 'Aplikasi: Inner/Outer Diameter Finishing', 'Penyesuaian: Increment 0.0025mm']
+                desc: 'Alat roller burnishing yang menghasilkan mirror finish (hingga 4 micro-inch) dalam satu pass. Meningkatkan kekerasan permukaan tanpa membuang material.',
+                specs: ['Fungsi: Roller Burnishing', 'Hasil: Mirror Finish (≤ 4 micro-inch)', 'Proses: Cold Working (Single Pass)', 'Aplikasi: Inner/Outer Diameter', 'Penyesuaian: 0.0025mm Increment']
             },
             {
-                id: 'Sugino-JCCSERIES',
-                name: 'Sugino JCC Series (Jet Clean Center)',
-                category: 'Washing and Deburring Machine',
+            id: 'Sugino-JCCSERIES',
+                name: 'Sugino JCC Series',
+                category: 'Washing and Deburing Machine',
                 brand: 'Sugino',
                 image: 'assets/img/SUGINO_JCCSERIES.png',
-                desc: 'Mesin cuci dan deburring tekanan tinggi (hingga 245 MPa) untuk membersihkan burr dan chip secara menyeluruh. Sistem CNC turret memungkinkan pembersihan presisi pada bagian yang rumit.',
-                specs: ['Tekanan: Hingga 245 MPa (Ultra-High Pressure)', 'Fungsi: Washing, Deburring, Chip Removal', 'Sistem: CNC Turret Type Nozzle', 'Fitur: Transfer, Wash, Dry in One Machine', 'Aplikasi: Precision Parts Cleaning']
+                desc: 'Mesin cuci dan deburring tekanan tinggi (hingga 245 MPa) untuk membersihkan burr dan chip secara menyeluruh dengan nozzle CNC turret.',
+                specs: ['Tekanan: Hingga 245 MPa', 'Fungsi: Washing, Deburring, Chip Removal', 'Sistem: CNC Turret Nozzle', 'Fitur: Transfer, Wash, Dry in One', 'Aplikasi: Precision Parts Cleaning']
             },
 
             // EHWA GRINDING
@@ -1317,10 +1441,21 @@
                 'filtration': 'Filtrasi',
                 'grinding': 'Grinding Wheel',
                 'conveyor': 'Conveyor',
+                'Cutting Tools': 'Cutting Tools',
+                'Cutting Fluids': 'Cutting Oil',
+                'Spot Weld Cutter': 'Spot Cutter',
+                'Saw Blades': 'Blade Saw',
+                'Drill Sharpener': 'Drill Sharpener',
+                'End Mill Grinder': 'End Mill Grinder',
+                'Automatic Drill Sharpener': 'Auto Sharpener',
+                'Static Eliminator': 'Ion Shower',
+                'Spot Weld Drill Sharpener': 'Spot Weld Sharpener',
+                'Surface Preparation': 'Surface Prep',
+                'Color Test Sheet': 'Color Test',
                 'Water Jet Cutter': 'Water Jet',
                 'Combined Type': 'Combined Tool',
                 'Machining Center': 'Machining Center',
-                'Drilling and Tapping Unit': 'Drilling/Tapping',
+                'Drilling and Tapping Unit': 'Drill/Tap Unit',
                 'Water Beam Machine': 'Water Beam',
                 'Drilling and Tapping Unit-Robot Machining': 'Robot Machining',
                 'Gun Drill machine': 'Gun Drill',
