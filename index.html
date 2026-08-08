@@ -746,7 +746,7 @@
                         <li><a href="#" class="hover:text-white transition-colors">Bongshin Load Cell</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Bic Tool CNC Machine</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Sugino Filter System</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Ehwa PCD & Milling Tools</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Ehwa PCD & Carbide Tools</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Yamasa Burnishing Tools</a></li>
                     </ul>
                 </div>
@@ -1301,7 +1301,7 @@
                 specs: ['Tekanan: Hingga 245 MPa', 'Fungsi: Washing, Deburring, Chip Removal', 'Sistem: CNC Turret Nozzle', 'Fitur: Transfer, Wash, Dry in One', 'Aplikasi: Precision Parts Cleaning']
             },
 
-            // EHWA GRINDING & CUTTING TOOLS (UPDATED 14 PRODUCTS)
+            // EHWA GRINDING & CUTTING TOOLS (UPDATED 5 NEW PRODUCTS)
             {
                 id: 'ehwa-diamond-wheel',
                 name: 'Ehwa Diamond Grinding Wheel',
@@ -1392,16 +1392,52 @@
                 desc: 'Face milling cutter tipe XF yang merupakan kombinasi keunggulan BF dan CF. Dirancang khusus untuk paduan aluminium (Al Alloys), cocok untuk roughing dan finishing dalam satu alat.',
                 specs: ['Tipe: XF Face Milling Cutter', 'Fungsi: Combination of BF & CF', 'Aplikasi: Al Alloys (Roughing & Finishing)', 'Diameter: 100D ~ 250D', 'Keunggulan: Dual Purpose Efficiency']
             },
-            // Tambahan produk Ehwa lainnya untuk mencapai total 14 baru (sesuai request user "total nya ada 14 produk baru")
-            // Karena user hanya memberikan 9 ID baru di code (4 PCD + 5 Milling), saya asumsikan ada beberapa varian lain atau user menghitung diamond wheel existing sebagai bagian dari update.
-            // Namun, untuk memastikan jumlah data sesuai request "14 produk baru", saya akan menambahkan beberapa varian PCD/Milling lain yang umum dari Ehwa jika diperlukan, 
-            // tapi karena user hanya memberi 9 blok kode baru, saya akan fokus memperbaiki 9 tersebut + 1 existing = 10. 
-            // Jika user benar-benar menambah 14, mungkin ada yang terlewat di paste code. 
-            // Saya akan memperbaiki 9 yang ada di code + memastikan deskripsinya akurat. 
-            // Jika user maksudnya "total produk Ehwa jadi 14", maka 1 existing + 13 baru? 
-            // Di code user ada: 1 existing (diamond-wheel) + 9 baru (PCDCTYPE, PCDDTYPE, PCDTTYPE, PCDVTYPE, FaceMilling1-5). Total 10.
-            // Mungkin user salah hitung atau ada produk lain yang tidak dipaste. 
-            // Saya akan memperbaiki 9 produk baru yang ada di code sesuai nama dan spesifikasinya.
+            // --- 5 PRODUK EHWA BARU (UPDATED SPECS) ---
+            {
+                id: 'ehwa-EndMill1',
+                name: 'Ehwa Square EndMill',
+                category: 'Tungsten Carbide Tool',
+                brand: 'Ehwa',
+                image: 'assets/img/SENDMILL.png',
+                desc: 'End mill solid carbide dengan ujung persegi (square end) untuk pemesinan slot, pocketing, dan profiling umum. Material tungsten carbide premium memberikan ketahanan aus tinggi dan rigiditas maksimal.',
+                specs: ['Material: Tungsten Carbide', 'Tipe: Square End Mill', 'Aplikasi: Slotting, Pocketing, Profiling', 'Keunggulan: High Rigidity & Wear Resistance', 'Coating: TiAlN / AlTiN Available']
+            },
+            {
+                id: 'ehwa-EndMill2',
+                name: 'Ehwa Radius EndMill',
+                category: 'Tungsten Carbide Tool',
+                brand: 'Ehwa',
+                image: 'assets/img/RENDMILL.png',
+                desc: 'End mill solid carbide dengan radius sudut (corner radius) untuk meningkatkan kekuatan ujung alat dan menghasilkan finishing permukaan yang lebih halus pada kontur.',
+                specs: ['Material: Tungsten Carbide', 'Tipe: Corner Radius End Mill', 'Aplikasi: Contour Milling, Finishing', 'Keunggulan: Stronger Corner, Better Finish', 'Radius: R0.2 - R2.0 Available']
+            },
+            {
+                id: 'ehwa-EndMill3',
+                name: 'Ehwa Ball EndMill',
+                category: 'Tungsten Carbide Tool',
+                brand: 'Ehwa',
+                image: 'assets/img/BENDMILL.png',
+                desc: 'End mill solid carbide dengan ujung bola (ball nose) untuk pemesinan 3D, die & mold, dan permukaan kompleks. Presisi tinggi pada radius bola menjamin akurasi geometri.',
+                specs: ['Material: Tungsten Carbide', 'Tipe: Ball Nose End Mill', 'Aplikasi: 3D Machining, Die & Mold', 'Keunggulan: High Precision Ball Radius', 'Fitur: Center Cutting']
+            },
+            {
+                id: 'ehwa-WearParts1',
+                name: 'Ehwa Sliding Shoe / V-Block',
+                category: 'Wear Parts',
+                brand: 'Ehwa',
+                image: 'assets/img/SLIDINGSHOE.png',
+                desc: 'Komponen wear parts presisi tinggi untuk mesin centerless grinding. Sliding shoe dan V-block terbuat dari material tahan aus khusus untuk menopang workpiece dengan stabilitas maksimal.',
+                specs: ['Material: High Wear Resistance Alloy', 'Tipe: Sliding Shoe & V-Block', 'Aplikasi: Centerless Grinding Machines', 'Keunggulan: Excellent Wear Resistance', 'Fitur: High Precision & Customizable']
+            },
+            {
+                id: 'ehwa-WearParts2',
+                name: 'Ehwa Bearing Backing Plate',
+                category: 'Wear Parts',
+                brand: 'Ehwa',
+                image: 'assets/img/BACKINGPLATE.png',
+                desc: 'Backing plate presisi untuk aplikasi bearing manufacturing. Dirancang dengan toleransi ketat dan permukaan finish tinggi untuk memastikan kinerja optimal pada perakitan bearing.',
+                specs: ['Material: Precision Ground Steel', 'Tipe: Bearing Backing Plate', 'Aplikasi: Bearing Manufacturing', 'Keunggulan: High Precision & Surface Finish', 'Fitur: Customizable Dimensions']
+            },
 
              // YAMASA (UPDATED 13 PRODUCTS - ROLLER BURNISHING TOOLS)
             {
@@ -1684,7 +1720,9 @@
                 'Radial/Shaft Burnishing 75°': 'Radial 75°',
                 'Radial Burnishing': 'Radial Burnishing',
                 'PCD Insert': 'PCD Insert',
-                'Face Milling Cutter': 'Face Milling'
+                'Face Milling Cutter': 'Face Milling',
+                'Tungsten Carbide Tool': 'Carbide Tool',
+                'Wear Parts': 'Wear Parts'
             };
             return names[cat] || cat;
         }
