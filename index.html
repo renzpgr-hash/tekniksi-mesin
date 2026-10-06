@@ -150,15 +150,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        /* --- EMAIL FORM STYLES (NEW) --- */
-.input-group-email:focus-within label { color: #6366f1; } /* Indigo */
-.input-group-email:focus-within i { color: #6366f1; }
-.text-gradient-email {
-background: linear-gradient(to right, #4f46e5, #818cf8);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-}
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden loading">
@@ -442,7 +433,7 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
                     <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 sm:pb-0 sm:flex-wrap sm:justify-end">
                         <button onclick="filterProducts('all')" class="filter-btn active px-3 sm:px-4 py-2 sm:py-3 bg-brand-blue text-white rounded-lg text-xs sm:text-sm font-bold transition-colors shadow-sm whitespace-nowrap shrink-0" data-filter="all">Semua Merek</button>
                         <button onclick="filterProducts('Bongshin')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Bongshin">Bongshin</button>
-                        <button onclick="filterProducts('Big Tool')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Big Tool">Big Tool</button>
+                        <button onclick="filterProducts('Bic Tool')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Bic Tool">Bic Tool</button>
                         <button onclick="filterProducts('Sugino')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Sugino">Sugino</button>
                         <button onclick="filterProducts('Ehwa')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Ehwa">Ehwa</button>
                         <button onclick="filterProducts('Yamasa')" class="filter-btn px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 text-gray-600 rounded-lg text-xs sm:text-sm font-medium hover:border-brand-blue whitespace-nowrap shrink-0" data-filter="Yamasa">Yamasa</button>
@@ -477,7 +468,7 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
                         <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-brand-blue transition-colors cursor-pointer group">
                             <div class="w-9 h-9 sm:w-10 sm:h-10 rounded bg-brand-blue text-white flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-microchip text-sm sm:text-base"></i></div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-sm sm:text-base">Mesin CNC Presisi (Big Tool)</h4>
+                                <h4 class="font-bold text-gray-900 text-sm sm:text-base">Mesin CNC Presisi (Bic Tool)</h4>
                                 <p class="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1">Akurasi ±0.002mm, Kontrol CNC Canggih, Spindle Speed Variable. Aplikasi: Grinding Endmill, Drill, Tap.</p>
                             </div>
                         </div>
@@ -604,144 +595,141 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
     </section>
 
 
-    <!-- Contact Section (DUAL: WHATSAPP & EMAIL) -->
-<section id="contact" class="py-10 sm:py-16 bg-brand-dark text-white relative overflow-hidden">
-<div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    
-    <!-- Header Section -->
-    <div class="text-center mb-10 sm:mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-4">
-            Hubungi Kami <br class="sm:hidden">
-            <span class="text-brand-accent">Pilih Cara Terbaik</span>
-        </h2>
-        <p class="text-gray-300 max-w-2xl mx-auto">
-            Butuh respon cepat? Gunakan WhatsApp. Butuh dokumen resmi/penawaran? Kirim Email.
-        </p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
-        
-        <!-- LEFT COLUMN: WHATSAPP (Existing Logic, Styled) -->
-        <div class="relative w-full h-full flex flex-col">
-            <!-- Decorative blob -->
-            <div class="absolute inset-0 bg-gradient-to-tr from-emerald-400 to-teal-500 rounded-3xl transform -rotate-2 opacity-20 blur-lg scale-105"></div>
-            
-            <div class="glass-effect rounded-3xl shadow-2xl p-6 sm:p-8 relative z-10 border-t border-white/50 text-gray-800 flex flex-col h-full">
-                <div class="mb-6 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                        <i class="fa-brands fa-whatsapp text-xl"></i>
+    <!-- Contact Section (REPLACED WITH WHATSAPP FORM) -->
+    <section id="contact" class="py-10 sm:py-16 bg-brand-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center">
+                
+                <!-- Left Side: Info -->
+                <div class="lg:w-1/2 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center justify-center p-3 bg-emerald-100 rounded-2xl mb-4 animate-float shadow-sm">
+                        <i class="fa-brands fa-whatsapp text-4xl text-emerald-600"></i>
                     </div>
-                    <div>
-                        <h2 class="text-xl font-bold text-gray-800">Chat WhatsApp</h2>
-                        <p class="text-gray-500 text-xs">Respon cepat & real-time</p>
-                    </div>
-                </div>
-
-                <form id="waForm" class="space-y-4 flex-grow flex flex-col" onsubmit="sendToWhatsApp(event)">
-                    <div class="input-group relative">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fa-regular fa-user text-gray-400"></i>
-                            </div>
-                            <input type="text" id="name" required class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl bg-gray-50 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition sm:text-sm" placeholder="Nama Anda">
-                        </div>
-                    </div>
-
-                    <div class="input-group relative">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Topik</label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fa-regular fa-comment-dots text-gray-400"></i>
-                            </div>
-                            <select id="topic" class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl bg-gray-50 focus:ring-2 focus:ring-emerald-500 outline-none sm:text-sm appearance-none">
-                                <option value="Umum">Pertanyaan Umum</option>
-                                <option value="Pemesanan">Pemesanan Produk</option>
-                                <option value="Support">Bantuan Teknis</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"><i class="fa-solid fa-chevron-down text-xs text-gray-400"></i></div>
-                        </div>
-                    </div>
-
-                    <div class="input-group relative flex-grow">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Pesan</label>
-                        <textarea id="message" rows="3" required class="block w-full p-3 border border-gray-200 rounded-xl bg-gray-50 focus:ring-2 focus:ring-emerald-500 outline-none sm:text-sm resize-none h-full min-h-[80px]" placeholder="Tulis pesan singkat..."></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full flex items-center justify-center py-3 px-4 rounded-xl shadow-lg text-sm font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 transition transform hover:-translate-y-0.5 mt-auto">
-                        <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Kirim via WhatsApp
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <!-- RIGHT COLUMN: EMAIL (NEW) -->
-        <div class="relative w-full h-full flex flex-col">
-            <!-- Decorative blob -->
-            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-3xl transform rotate-2 opacity-20 blur-lg scale-105"></div>
-            
-            <div class="glass-effect rounded-3xl shadow-2xl p-6 sm:p-8 relative z-10 border-t border-white/50 text-gray-800 flex flex-col h-full">
-                <div class="mb-6 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
-                        <i class="fa-solid fa-envelope text-xl"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-bold text-gray-800">Kirim Email</h2>
-                        <p class="text-gray-500 text-xs">Untuk penawaran resmi & lampiran</p>
-                    </div>
-                </div>
-
-                <form id="emailForm" class="space-y-4 flex-grow flex flex-col" onsubmit="sendToEmail(event)">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="input-group-email relative">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama</label>
-                            <input type="text" id="email-name" required class="block w-full px-3 py-2.5 border border-gray-200 rounded-xl bg-gray-50 focus:ring-2 focus:ring-indigo-500 outline-none sm:text-sm" placeholder="Nama Anda">
-                        </div>
-                        <div class="input-group-email relative">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Email Anda</label>
-                            <input type="email" id="email-address" required class="block w-full px-3 py-2.5 border border-gray-200 rounded-xl bg-gray-50 focus:ring-2 focus:ring-indigo-500 outline-none sm:text-sm" placeholder="email@anda.com">
-                        </div>
-                    </div>
-
-                    <div class="input-group-email relative">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Subjek Email</label>
-                        <div class="relative">
-                            <select id="email-subject" class="block w-full px-3 py-2.5 border border-gray-200 rounded-xl bg-gray-50 focus:ring-2 focus:ring-indigo-500 outline-none sm:text-sm appearance-none">
-                                <option value="Permintaan Penawaran Harga">Permintaan Penawaran Harga (Quotation)</option>
-                                <option value="Pertanyaan Spesifikasi Produk">Pertanyaan Spesifikasi Produk</option>
-                                <option value="Kerjasama Bisnis">Kerjasama Bisnis</option>
-                                <option value="Lainnya">Lainnya</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"><i class="fa-solid fa-chevron-down text-xs text-gray-400"></i></div>
-                        </div>
-                    </div>
-
-                    <div class="input-group-email relative flex-grow">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Isi Pesan</label>
-                        <textarea id="email-message" rows="3" required class="block w-full p-3 border border-gray-200 rounded-xl bg-gray-50 focus:ring-2 focus:ring-indigo-500 outline-none sm:text-sm resize-none h-full min-h-[80px]" placeholder="Jelaskan detail kebutuhan Anda..."></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full flex items-center justify-center py-3 px-4 rounded-xl shadow-lg text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition transform hover:-translate-y-0.5 mt-auto">
-                        <i class="fa-solid fa-paper-plane mr-2 text-lg"></i> Buka Aplikasi Email
-                    </button>
-                    <p class="text-center text-[10px] text-gray-400 mt-2">
-                        *Akan membuka Gmail/Outlook/App Mail Anda
+                    
+                    <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
+                        Hubungi Kami <br>
+                        <span class="text-gradient">Secara Langsung</span>
+                    </h2>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Butuh bantuan cepat? Tim support kami siap membantu Anda melalui WhatsApp. Respon cepat, ramah, dan solutif.
                     </p>
-                </form>
+
+                    <!-- Feature List (MODIFIED ONLY THIS PART) -->
+                    <div class="space-y-5 mt-6 max-w-md mx-auto lg:mx-0">
+                        <div class="grid grid-cols-[3rem_1fr] items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shrink-0">
+                                <i class="fa-solid fa-bolt text-lg"></i>
+                            </div>
+                            <div class="text-left">
+                                <h4 class="font-bold text-gray-100 text-base sm:text-lg">Respon Cepat & Real-time</h4>
+                                <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Balasan instan dari tim ahli</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-[3rem_1fr] items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shrink-0">
+                                <i class="fa-solid fa-clock text-lg"></i>
+                            </div>
+                            <div class="text-left">
+                                <h4 class="font-bold text-gray-100 text-base sm:text-lg">Layanan 24/7 Online</h4>
+                                <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Siap melayani kapan saja</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-[3rem_1fr] items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shrink-0">
+                                <i class="fa-solid fa-shield-halved text-lg"></i>
+                            </div>
+                            <div class="text-left">
+                                <h4 class="font-bold text-gray-100 text-base sm:text-lg">Privasi & Keamanan</h4>
+                                <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Data percakapan terjamin aman</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: WhatsApp Form Card -->
+                <div class="lg:w-1/2 relative w-full">
+                    <!-- Decorative blob behind card -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-400 to-teal-500 rounded-3xl transform rotate-3 opacity-20 blur-lg scale-105"></div>
+                    
+                    <div class="glass-effect rounded-3xl shadow-2xl p-8 relative z-10 border-t border-white/50 text-gray-800">
+                        <div class="mb-6">
+                            <h2 class="text-2xl font-bold text-gray-800">Kirim Pesan</h2>
+                            <p class="text-gray-500 text-sm mt-1">Isi detail di bawah untuk memulai chat WhatsApp.</p>
+                        </div>
+
+                        <form id="waForm" class="space-y-5" onsubmit="sendToWhatsApp(event)">
+                            
+                            <!-- Name Input -->
+                            <div class="input-group relative">
+                                <label class="block text-sm font-medium text-gray-700 mb-1 transition-colors">Nama Lengkap</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fa-regular fa-user text-gray-400 transition-colors"></i>
+                                    </div>
+                                    <input type="text" id="name" required 
+                                        class="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-150 ease-in-out sm:text-sm" 
+                                        placeholder="Masukkan nama Anda">
+                                </div>
+                            </div>
+
+                            <!-- Topic Selection -->
+                            <div class="input-group relative">
+                                <label class="block text-sm font-medium text-gray-700 mb-1 transition-colors">Topik Pembicaraan</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fa-regular fa-comment-dots text-gray-400 transition-colors"></i>
+                                    </div>
+                                    <select id="topic" 
+                                        class="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl leading-5 bg-gray-50 focus:outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-150 ease-in-out sm:text-sm appearance-none cursor-pointer">
+                                        <option value="Umum">Pertanyaan Umum</option>
+                                        <option value="Pemesanan">Pemesanan Produk/Jasa</option>
+                                        <option value="Support">Bantuan Teknis</option>
+                                        <option value="Kerjasama">Kerjasama Bisnis</option>
+                                        <option value="Lainnya">Lainnya</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Message Input -->
+                            <div class="input-group relative">
+                                <label class="block text-sm font-medium text-gray-700 mb-1 transition-colors">Pesan Anda</label>
+                                <div class="relative">
+                                    <textarea id="message" rows="4" required
+                                        class="block w-full p-3 border border-gray-200 rounded-xl leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-150 ease-in-out sm:text-sm resize-none" 
+                                        placeholder="Tuliskan detail pertanyaan atau kebutuhan Anda..."></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" 
+                                class="w-full flex items-center justify-center py-3.5 px-4 border border-transparent rounded-xl shadow-lg text-sm font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transform transition hover:-translate-y-0.5 active:scale-95 duration-200">
+                                <i class="fa-brands fa-whatsapp mr-2 text-lg"></i>
+                                Kirim via WhatsApp
+                            </button>
+                            
+                            <p class="text-center text-xs text-gray-400 mt-4">
+                                Dengan mengklik tombol di atas, Anda akan diarahkan ke aplikasi WhatsApp.
+                            </p>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-
-    </div>
-</div>
-</section>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-brand-dark text-white pt-10 sm:pt-16 pb-6 sm:pb-8 border-t border-gray-800">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-8 sm:mb-12">
                 <div class="col-span-1 sm:col-span-2 lg:col-span-1">
-                     <img src="assets/img/logo.png" width="180" alt="Logo" class="animate-logo-enter w-36 sm:w-[235px]">
+                    <h2 class="text-2xl sm:text-3xl font-black italic mb-3 sm:mb-4">TTM</h2>
                     <p class="text-xs sm:text-sm text-gray-400 leading-relaxed mb-4 sm:mb-6">
                         PT Tawakal Tehnik Mandiri adalah distributor resmi peralatan industri terpercaya di Indonesia. Kami berkomitmen memberikan solusi tepat dengan teknologi hebat.
                     </p>
@@ -756,10 +744,10 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
                     <h3 class="font-bold mb-4 sm:mb-6 text-base sm:text-lg text-brand-accent">Produk Unggulan</h3>
                     <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-400">
                         <li><a href="#" class="hover:text-white transition-colors">Bongshin Load Cell</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Big Tool CNC Machine</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Bic Tool CNC Machine</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Sugino Filter System</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Ehwa Grinding Wheel</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Yamasa Taps</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Ehwa PCD & Carbide Tools</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Yamasa Burnishing Tools</a></li>
                     </ul>
                 </div>
 
@@ -900,7 +888,7 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
     <script>
         // --- DATA: Individual Products with Realistic Images ---
                 const productsData = [
-            // BONGSHIN LOAD CELLS
+            // BONGSHIN LOAD CELLS (EXISTING)
             {
                 id: 'bsa-compression',
                 name: 'Bongshin Compression Load Cell',
@@ -955,100 +943,228 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
                 desc: 'Aksesoris pendukung sistem penimbangan Bongshin meliputi mounting kit, junction box, cable connector, dan protective cover untuk memastikan instalasi aman dan presisi.',
                 specs: ['Item: Mounting Kit, Junction Box', 'Material: Stainless / Carbon Steel', 'Fungsi: Proteksi & Konektivitas', 'Kompatibilitas: Semua Tipe Load Cell', 'Garansi: Original Parts']
             },
+            
+            // --- 9 PRODUK BONGSHIN BARU (UPDATED SPECS) ---
             {
-            id: 'LOADCELL_CBFM',
-                name: 'Bongshin CBFM',
+                id: 'LOADCELL_CBFM',
+                name: 'Bongshin CBFM Miniature Load Cell',
                 category: 'loadcell',
                 brand: 'Bongshin',
                 image: 'assets/img/BONGSHIN_CBFM.png',
-                desc: 'Aksesoris pendukung sistem penimbangan Bongshin meliputi mounting kit, junction box, cable connector, dan protective cover untuk memastikan instalasi aman dan presisi.',
-                specs: ['Item: Mounting Kit, Junction Box', 'Material: Stainless / Carbon Steel', 'Fungsi: Proteksi & Konektivitas', 'Kompatibilitas: Semua Tipe Load Cell', 'Garansi: Original Parts']
+                desc: 'Load cell tipe miniature compression (CBFM) dengan desain low-profile. Cocok untuk ruang terbatas dan aplikasi OEM yang membutuhkan akurasi tinggi dalam ukuran kecil.',
+                specs: ['Tipe: Miniature Compression', 'Kapasitas: 3kg - 1000kg', 'Material: Stainless Steel', 'Desain: Low Profile / Compact', 'Aplikasi: Medical, Packaging, OEM']
             },
             {
-            id: 'LOADCELL_CML',
-                name: 'Bongshin CML',
+                id: 'LOADCELL_CML',
+                name: 'Bongshin CML High Capacity Load Cell',
                 category: 'loadcell',
                 brand: 'Bongshin',
                 image: 'assets/img/BONGSHIN_CML.png',
-                desc: 'Aksesoris pendukung sistem penimbangan Bongshin meliputi mounting kit, junction box, cable connector, dan protective cover untuk memastikan instalasi aman dan presisi.',
-                specs: ['Item: Mounting Kit, Junction Box', 'Material: Stainless / Carbon Steel', 'Fungsi: Proteksi & Konektivitas', 'Kompatibilitas: Semua Tipe Load Cell', 'Garansi: Original Parts']
+                desc: 'Load cell kompresi kapasitas tinggi (High Capacity) dengan desain miniatur yang ringkas. Dirancang khusus untuk aplikasi berat seperti silo besar dan tangki industri.',
+                specs: ['Tipe: Compression High Capacity', 'Kapasitas: 5 Ton - 15 Ton', 'Material: Alloy Steel', 'Fitur: Compact & Robust', 'Aplikasi: Silo, Tank Weighing']
             },
             {
-            id: 'LOADCELL_DBSM',
-                name: 'Bongshin DBSM',
+                id: 'LOADCELL_DBSM',
+                name: 'Bongshin DBSM S-Type Miniature',
                 category: 'loadcell',
                 brand: 'Bongshin',
                 image: 'assets/img/BONGSHIN_DBSM.png',
-                desc: 'Aksesoris pendukung sistem penimbangan Bongshin meliputi mounting kit, junction box, cable connector, dan protective cover untuk memastikan instalasi aman dan presisi.',
-                specs: ['Item: Mounting Kit, Junction Box', 'Material: Stainless / Carbon Steel', 'Fungsi: Proteksi & Konektivitas', 'Kompatibilitas: Semua Tipe Load Cell', 'Garansi: Original Parts']
+                desc: 'Load cell S-Type miniatur dengan akurasi sangat tinggi (±0.05%). Dilengkapi proteksi overload bawaan (built-in) hingga 1000% dari kapasitas rated.',
+                specs: ['Tipe: S-Type Miniature', 'Kapasitas: 3kg - 30kg', 'Akurasi: ±0.05% R.O.', 'Material: 17-4PH Stainless Steel', 'Fitur: Built-in Overload Protection']
             },
             {
-            id: 'LOADCELL_DBCM',
-                name: 'Bongshin DBCM',
+                id: 'LOADCELL_DBCM',
+                name: 'Bongshin DBCM Miniature Compression',
                 category: 'loadcell',
                 brand: 'Bongshin',
                 image: 'assets/img/BONGSHIN_DBCM.png',
-                desc: 'Aksesoris pendukung sistem penimbangan Bongshin meliputi mounting kit, junction box, cable connector, dan protective cover untuk memastikan instalasi aman dan presisi.',
-                specs: ['Item: Mounting Kit, Junction Box', 'Material: Stainless / Carbon Steel', 'Fungsi: Proteksi & Konektivitas', 'Kompatibilitas: Semua Tipe Load Cell', 'Garansi: Original Parts']
+                desc: 'Load cell kompresi miniatur serbaguna dengan rentang kapasitas luas. Konstruksi stainless steel menjamin durabilitas dan ketahanan terhadap korosi.',
+                specs: ['Tipe: Miniature Compression', 'Kapasitas: 2kg - 300kg', 'Material: Stainless Steel', 'Output: 2.0mV/V', 'Aplikasi: Process Weighing, Hopper']
             },
             {
-            id: 'LOADCELL_BMK',
-                name: 'Bongshin BMK',
+                id: 'LOADCELL_BMK',
+                name: 'Bongshin BMK Weigh Module',
                 category: 'loadcell',
                 brand: 'Bongshin',
                 image: 'assets/img/BONGSHIN_BMK.png',
-                desc: 'Aksesoris pendukung sistem penimbangan Bongshin meliputi mounting kit, junction box, cable connector, dan protective cover untuk memastikan instalasi aman dan presisi.',
-                specs: ['Item: Mounting Kit, Junction Box', 'Material: Stainless / Carbon Steel', 'Fungsi: Proteksi & Konektivitas', 'Kompatibilitas: Semua Tipe Load Cell', 'Garansi: Original Parts']
+                desc: 'Weigh module lengkap yang dirancang khusus untuk hopper, bin, dan tank. Termasuk load cell, mounting hardware, dan check rod untuk stabilitas maksimal.',
+                specs: ['Tipe: Weigh Module Kit', 'Kapasitas: 100kg - 5 Ton', 'Komponen: Load Cell + Mounting', 'Material: Alloy / Stainless Steel', 'Aplikasi: Hopper, Bin, Tank Scale']
             },
             {
-            id: 'LOADCELL_BMA',
-                name: 'Bongshin BMA',
+                id: 'LOADCELL_BMA',
+                name: 'Bongshin BMA Weigh Module',
                 category: 'loadcell',
                 brand: 'Bongshin',
                 image: 'assets/img/BONGSHIN_BMA.png',
-                desc: 'Aksesoris pendukung sistem penimbangan Bongshin meliputi mounting kit, junction box, cable connector, dan protective cover untuk memastikan instalasi aman dan presisi.',
-                specs: ['Item: Mounting Kit, Junction Box', 'Material: Stainless / Carbon Steel', 'Fungsi: Proteksi & Konektivitas', 'Kompatibilitas: Semua Tipe Load Cell', 'Garansi: Original Parts']
+                desc: 'Weigh module presisi untuk aplikasi penimbangan tangki dan hopper. Desain self-centering memastikan akurasi tetap terjaga meski ada ekspansi termal.',
+                specs: ['Tipe: Weigh Module Assembly', 'Kapasitas: 20kg - 300kg', 'Fitur: Self-Centering Design', 'Material: Stainless Steel', 'Aplikasi: Pharmaceutical, Food Industry']
             },
             {
-            id: 'LOADCELL_BMD',
-                name: 'Bongshin BMD',
+                id: 'LOADCELL_BMD',
+                name: 'Bongshin BMD Weigh Module',
                 category: 'loadcell',
                 brand: 'Bongshin',
                 image: 'assets/img/BONGSHIN_BMD.png',
-                desc: 'Aksesoris pendukung sistem penimbangan Bongshin meliputi mounting kit, junction box, cable connector, dan protective cover untuk memastikan instalasi aman dan presisi.',
-                specs: ['Item: Mounting Kit, Junction Box', 'Material: Stainless / Carbon Steel', 'Fungsi: Proteksi & Konektivitas', 'Kompatibilitas: Semua Tipe Load Cell', 'Garansi: Original Parts']
+                desc: 'Modul penimbangan heavy-duty untuk aplikasi industri berat. Menyediakan solusi lengkap untuk konversi tangki lama menjadi sistem timbangan digital.',
+                specs: ['Tipe: Heavy Duty Weigh Module', 'Kapasitas: 500kg - 5 Ton', 'Konstruksi: Rugged Design', 'Fitur: Anti-Lift Off', 'Aplikasi: Industrial Tank, Reactor']
             },
             {
-            id: 'LOADCELL_CDUP',
-                name: 'Bongshin CDUP',
+                id: 'LOADCELL_CDUP',
+                name: 'Bongshin CDUP Truck Scale Load Cell',
                 category: 'loadcell',
                 brand: 'Bongshin',
                 image: 'assets/img/BONGSHIN_CDUP.png',
-                desc: 'Aksesoris pendukung sistem penimbangan Bongshin meliputi mounting kit, junction box, cable connector, dan protective cover untuk memastikan instalasi aman dan presisi.',
-                specs: ['Item: Mounting Kit, Junction Box', 'Material: Stainless / Carbon Steel', 'Fungsi: Proteksi & Konektivitas', 'Kompatibilitas: Semua Tipe Load Cell', 'Garansi: Original Parts']
+                desc: 'Load cell kompresi khusus untuk jembatan timbang (truck scale). Desain self-centering dan toleransi overload tinggi menjamin performa jangka panjang.',
+                specs: ['Tipe: Compression for Truck Scale', 'Kapasitas: 15 Ton - 25 Ton', 'Material: High Alloy Tool Steel', 'Fitur: Self-Centering, Waterproof', 'Aplikasi: Weighbridge, Truck Scale']
             },
             {
-            id: 'LOADCELL_OS76',
-                name: 'Bongshin OS76',
+                id: 'LOADCELL_OS76',
+                name: 'Bongshin OS76 Shear Beam Load Cell',
                 category: 'loadcell',
                 brand: 'Bongshin',
                 image: 'assets/img/BONGSHIN_OS76.png',
-                desc: 'Aksesoris pendukung sistem penimbangan Bongshin meliputi mounting kit, junction box, cable connector, dan protective cover untuk memastikan instalasi aman dan presisi.',
-                specs: ['Item: Mounting Kit, Junction Box', 'Material: Stainless / Carbon Steel', 'Fungsi: Proteksi & Konektivitas', 'Kompatibilitas: Semua Tipe Load Cell', 'Garansi: Original Parts']
+                desc: 'Load cell shear beam single-ended untuk platform scale dan aplikasi proses. Konstruksi alloy tool steel memberikan akurasi dan stabilitas tinggi.',
+                specs: ['Tipe: Single Ended Shear Beam', 'Kapasitas: 500kg - 5 Ton', 'Material: Alloy Tool Steel', 'Proteksi: IP67', 'Aplikasi: Platform Scale, Floor Scale']
             },
         
-            // BIG TOOL / CNC
+            // BIC TOOL / CNC (UPDATED 14 PRODUCTS)
             {
                 id: 'xin-cnc-grinder',
                 name: 'XIN Series CNC Tool & Cutter Grinder',
                 category: 'cnc',
-                brand: 'Big Tool',
+                brand: 'Bic Tool',
                 image: 'assets/img/XIN_TIPE.png',
-                desc: 'Mesin gerinda alat potong CNC presisi tinggi dari Korea. Dilengkapi kontrol numerik untuk hasil grinding yang sangat akurat dan konsisten.',
-                specs: ['Presisi: ±0.002mm', 'Kontrol: CNC System', 'Spindle Speed: Variable', 'Aplikasi: Endmill, Drill, Tap', 'Origin: Korea']
+                desc: 'Mesin gerinda alat potong CNC presisi tinggi dari Jepang (Bictool). Dilengkapi kontrol numerik untuk hasil grinding yang sangat akurat dan konsisten.',
+                specs: ['Presisi: ±0.002mm', 'Kontrol: CNC System', 'Spindle Speed: Variable', 'Aplikasi: Endmill, Drill, Tap', 'Origin: Japan']
+            },
+            {
+                id: 'BicTool_Drills',
+                name: 'Bic Tool Gekkou Drills',
+                category: 'Cutting Tools',
+                brand: 'Bic Tool',
+                image: 'assets/img/GEKKOU_DRILLS.png',
+                desc: 'Mata bor Gekkou (Moonlight) dengan teknologi bentuk ujung unik yang meningkatkan kemampuan gigit, potong, dan pembuangan chip secara signifikan. Tahan 5-10x lebih lama dari bor konvensional.',
+                specs: ['Material: Cobalt High Speed Steel (HSCO)', 'Ukuran: 2.5mm - 13.0mm', 'Fitur: Unique Tip Shape Technology', 'Aplikasi: Stainless Steel, Difficult Materials', 'Keunggulan: Improved Chip Evacuation']
+            },
+            {
+                id: 'BicTool_CutiingOilGekkou',
+                name: 'Bic Tool Cutting Oil Gekkou',
+                category: 'Cutting Fluids',
+                brand: 'Bic Tool',
+                image: 'assets/img/CUTTING_OIL_GEKKOU.png',
+                desc: 'Minyak potong khusus yang diformulasikan untuk memaksimalkan performa mata bor Gekkou. Memberikan pelumasan optimal dan pendinginan untuk memperpanjang umur alat.',
+                specs: ['Tipe: High Performance Cutting Oil', 'Fungsi: Lubrication & Cooling', 'Kompatibilitas: Gekkou Drills Series', 'Manfaat: Extend Tool Life', 'Aplikasi: Metal Machining']
+            },
+            {
+                id: 'BicTool_SpotCutter',
+                name: 'Bic Tool Spot Cutter GK-KIN',
+                category: 'Spot Weld Cutter',
+                brand: 'Bic Tool',
+                image: 'assets/img/SPOT_CUTTER.png',
+                desc: 'Spot cutter kekerasan tinggi (High Hardness) untuk memisahkan panel spot weld tanpa merusak panel bawah. Lebih mudah, tenang, dan cepat dibandingkan gerinda sabuk.',
+                specs: ['Tipe: High Hardness Spot Cutter', 'Material Target: High Tensile Steel Plate', 'Diameter Blade: 8.2mm', 'Panjang: 80mm', 'Aplikasi: Auto Body Repair, Panel Separation']
+            },
+            {
+                id: 'BicTool_SpotCutter2',
+                name: 'Bic Tool Spot Cutter Gekkou',
+                category: 'Spot Weld Cutter',
+                brand: 'Bic Tool',
+                image: 'assets/img/SPOT_CUTTER2.png',
+                desc: 'Spot cutter seri Gekkou yang dirancang untuk efisiensi tinggi dalam pekerjaan body repair. Memungkinkan pemotongan spot weld yang presisi pada berbagai jenis baja.',
+                specs: ['Seri: Gekkou (Moonlight)', 'Fungsi: Spot Weld Removal', 'Keunggulan: Precision Cutting', 'Material: Special Alloy Steel', 'Aplikasi: Automotive Workshop']
+            },
+            {
+                id: 'BicTool_GekkouBladeSaw',
+                name: 'Bic Tool Gekkou Blade Saw',
+                category: 'Saw Blades',
+                brand: 'Bic Tool',
+                image: 'assets/img/GEKKOU_BLADE.png',
+                desc: 'Mata gergaji Gekkou dengan ketajaman luar biasa berkat teknologi bentuk gigi asli. Ideal untuk memotong berbagai material dengan hasil yang halus dan cepat.',
+                specs: ['Tipe: Gekkou Blade Saw', 'Teknologi: Original Tooth Shape', 'Material: High Speed Steel', 'Aplikasi: General Cutting', 'Keunggulan: Sharpness & Durability']
+            },
+            {
+                id: 'BicTool_DrillSharpener',
+                name: 'Bic Tool D-KEN 13',
+                category: 'Drill Sharpener',
+                brand: 'Bic Tool',
+                image: 'assets/img/DKEN_13.png',
+                desc: 'Mesin gerinda mata bor kompak untuk mengasah kembali bor umum dan alat bor lubang dalam. Desain portabel memudahkan penggunaan di mana saja.',
+                specs: ['Kapasitas Bor: 2.0mm - 13.0mm', 'Daya Motor: 65W', 'Kecepatan: 2850 / 3440 RPM', 'Fitur: Compact & Portable', 'Aplikasi: General Purpose Drills']
+            },
+            {
+                id: 'BicTool_DrillSharpener1',
+                name: 'Bic Tool D-KEN 26',
+                category: 'Drill Sharpener',
+                brand: 'Bic Tool',
+                image: 'assets/img/DKEN_26.png',
+                desc: 'Mesin gerinda mata bor untuk ukuran lebih besar. Dirancang untuk presisi tinggi dan kemudahan operasi, memungkinkan pengasahan cepat tanpa keahlian khusus.',
+                specs: ['Kapasitas Bor: 13.0mm - 26.0mm', 'Fitur: High Precision Grinding', 'Operasi: Easy & Rapid', 'Motor: Stable Frequency DC Motor', 'Aplikasi: Large Diameter Drills']
+            },
+            {
+                id: 'BicTool_DrillSharpener2',
+                name: 'Bic Tool SMK-13',
+                category: 'Drill Sharpener',
+                brand: 'Bic Tool',
+                image: 'assets/img/SMK_13.png',
+                desc: 'Mesin gerinda bor sangat kompak dan ringan dengan roda CBN. Memungkinkan pengasahan presisi tinggi untuk bor twist Ø3mm-Ø13mm dengan fitur thinning.',
+                specs: ['Kapasitas Bor: 3.0mm - 13.0mm', 'Roda Gerinda: CBN Wheel #170', 'Kecepatan: 7200 RPM', 'Fitur: Thinning Function', 'Berat: 2.0kg (Ultra Compact)']
+            },
+            {
+                id: 'BicTool_ENDMILL',
+                name: 'Bic Tool Apollo 13',
+                category: 'End Mill Grinder',
+                brand: 'Bic Tool',
+                image: 'assets/img/ENDMILL.png',
+                desc: 'Mesin gerinda end mill yang mampu mengasah diameter φ4.0～φ13.0. Kompatibel dengan HSS dan Carbide, serta mendukung berbagai bentuk ujung alat.',
+                specs: ['Kapasitas: 4.0mm - 13.0mm', 'Material Tool: HSS & Solid Carbide', 'Daya Motor: 600W', 'Fitur: Multi-Shape Grinding', 'Voltage: 100V / 220V Available']
+            },
+            {
+                id: 'BicTool_Desktop',
+                name: 'Bic Tool Desktop Automatic Drill Sharpener Xin',
+                category: 'Automatic Drill Sharpener',
+                brand: 'Bic Tool',
+                image: 'assets/img/DESKTOP.png',
+                desc: 'Mesin pengasah bor otomatis tipe desktop (Xin Series). Solusi hemat biaya untuk internalisasi proses pengasahan dengan hasil instan dan presisi.',
+                specs: ['Tipe: Desktop Automatic', 'Fitur: One-Touch Operation', 'Kompatibilitas: HSS & Carbide', 'Keunggulan: Cost Down Solution', 'Aplikasi: Workshop Internal Use']
+            },
+            {
+                id: 'BicTool_IONSHOWER',
+                name: 'Bic Tool MG-3000 Ion Shower',
+                category: 'Static Eliminator',
+                brand: 'Bic Tool',
+                image: 'assets/img/IONSHOWER.png',
+                desc: 'Ion shower blow gun Magnum (MG-3000) untuk menghilangkan listrik statis, debu, dan bau. Output 1.7x lebih kuat dari model sebelumnya dengan baterai tahan 6 jam.',
+                specs: ['Fungsi: Static & Dust Removal', 'Output: 1.7x Previous Model', 'Baterai: Ni-MH (6 Hours Runtime)', 'Berat: 380g (Lightweight)', 'Aplikasi: Painting Preparation']
+            },
+            {
+                id: 'BicTool_RokenS2000',
+                name: 'Bic Tool Roken S-2000',
+                category: 'Spot Weld Drill Sharpener',
+                brand: 'Bic Tool',
+                image: 'assets/img/ROKENS2000.png',
+                desc: 'Mesin pengasah bor spot weld (Roken S-2000) untuk baja tegangan tinggi ultra. Memberikan sudut potong presisi untuk pelepasan spot weld yang cepat dan hemat waktu.',
+                specs: ['Kapasitas Asah: 6.5mm - 10.0mm', 'Material Target: Ultra High Tensile Steel', 'Fitur: Precise Cutting Angle', 'Operasi: 3 Easy Steps', 'Aplikasi: Auto Body Spot Weld Removal']
+            },
+            {
+                id: 'BicTool_Necessary',
+                name: 'Bic Tool G-CC',
+                category: 'Surface Preparation',
+                brand: 'Bic Tool',
+                image: 'assets/img/NECESSARY.png',
+                desc: 'Alat persiapan permukaan yang wajib sebelum pengecatan (G-CC). Memastikan permukaan bersih dan siap untuk hasil cat yang sempurna dan tahan lama.',
+                specs: ['Fungsi: Pre-Painting Surface Prep', 'Kategori: Necessary Product', 'Manfaat: Perfect Paint Adhesion', 'Aplikasi: Automotive Refinish', 'Origin: Japan']
+            },
+            {
+                id: 'BicTool_PS200',
+                name: 'Bic Tool PS-200',
+                category: 'Color Test Sheet',
+                brand: 'Bic Tool',
+                image: 'assets/img/PS200.png',
+                desc: 'Lembar uji pewarnaan tipe baru (PS-200) untuk verifikasi warna yang akurat sebelum aplikasi cat. Membantu mencocokkan warna dengan presisi tinggi.',
+                specs: ['Tipe: New Type Coloring Test Sheet', 'Fungsi: Color Verification', 'Manfaat: Accurate Color Matching', 'Aplikasi: Paint Shop, Body Repair', 'Material: High Quality Paper']
             },
 
-            // SUGINO FILTRATION
+            // SUGINO FILTRATION (EXISTING + NEW)
             {
                 id: 'sugino-magnetic',
                 name: 'Sugino Magnetic Separator',
@@ -1085,8 +1201,107 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
                 desc: 'Tangki penampung coolant dengan desain optimal dan mudah perawatan. Terintegrasi sempurna dengan sistem filtrasi Sugino.',
                 specs: ['Material: Stainless Steel', 'Desain: Compact & Durable', 'Integrasi: Mudah dengan Filter', 'Perawatan: Minimal', 'Aplikasi: Mesin CNC']
             },
+            {
+            id: 'Sugino-Water-Cut',
+                name: 'Sugino Water Jet Cutter',
+                category: 'Water Jet Cutter',
+                brand: 'Sugino',
+                image: 'assets/img/SUGINO_WATERJETCUT.png',
+                desc: 'Mesin pemotong water jet tekanan ultra-tinggi (hingga 392 MPa) yang mampu memotong material apa pun termasuk logam, resin, dan komposit tanpa zona panas.',
+                specs: ['Tekanan: Max 392 MPa', 'Material: Logam, Resin, Komposit', 'Fitur: Cold Cutting (No Heat)', 'Nozzle: Extra Fine (0.3mm)', 'Aplikasi: Automotive, Food, Aerospace']
+            },
+            {
+            id: 'Sugino-Skive-Roller',
+                name: 'Sugino Skive Roller',
+                category: 'Combined Type',
+                brand: 'Sugino',
+                image: 'assets/img/SUGINO_SKIVEROLLER.png',
+                desc: 'Alat kombinasi yang melakukan skiving dan roller burnishing dalam satu langkah. Mengurangi waktu machining secara signifikan dibandingkan honing.',
+                specs: ['Fungsi: Skiving + Burnishing (1 Pass)', 'Kapasitas: Hingga 1300mm Length', 'Diameter: Hingga 152.4mm', 'Material: Hydraulic Cylinder Bore', 'Keunggulan: Replaces Honing Process']
+            },
+            {
+            id: 'Sugino-Self-Center',
+                name: 'Sugino Self Center',
+                category: 'Machining Center',
+                brand: 'Sugino',
+                image: 'assets/img/SUGINO_SELFCENTER.png',
+                desc: 'CNC Machining Center kompak dengan rigiditas tinggi. Tersedia dalam tipe vertikal dan horizontal untuk produksi massal presisi.',
+                specs: ['Tipe: Vertical / Horizontal Compact MC', 'Fitur: High Rigidity, Column Traverse', 'Aplikasi: Mass Production', 'Otomatisasi: Ready for Automation', 'Origin: Japan (Since 1986)']
+            },
+            {
+            id: 'Sugino-Robot-Machining-System',
+                name: 'Sugino Robot Machining System',
+                category: 'Drilling and Tapping Unit',
+                brand: 'Sugino',
+                image: 'assets/img/SUGINO_ROBOTMACHINING.png',
+                desc: 'Solusi machining turnkey yang menambahkan kemampuan cutting pada robot industri. Ideal untuk komponen besar dan produksi high-mix low-volume.',
+                specs: ['Sistem: Robot End Effector + Controller', 'Fungsi: Drilling, Tapping, Milling', 'Aplikasi: Large Part Machining', 'Keunggulan: High Flexibility', 'Integrasi: Industrial Robot Arm']
+            },
+            {
+            id: 'Sugino-WaterBeam',
+                name: 'Sugino WaterBeam Machine',
+                category: 'Water Beam Machine',
+                brand: 'Sugino',
+                image: 'assets/img/SUGINO_WATERBEAM.png',
+                desc: 'Mesin micro-fabrication generasi berikutnya yang menggabungkan teknologi water jet ultra-high pressure dengan laser terbaru.',
+                specs: ['Teknologi: Hybrid Water Jet + Laser', 'Aplikasi: Micro-Fabrication', 'Material: Hard & Brittle Materials', 'Presisi: Ultra-High Precision', 'Fitur: Minimal Thermal Damage']
+            },
+            {
+            id: 'Sugino-Selfeeder',
+                name: 'Sugino Selfeeder/Synchro Tapper',
+                category: 'Drilling and Tapping Unit',
+                brand: 'Sugino',
+                image: 'assets/img/SUGINO_SELFEEDER.png',
+                desc: 'Unit drilling dan tapping otomatis standar global selama lebih dari 50 tahun. Dikenal karena daya tahan, presisi, dan mekanisme feed mekanis.',
+                specs: ['Fungsi: Automated Drilling & Tapping', 'Mekanisme: Mechanical / Servo Feed', 'Kapasitas: Hingga φ33mm / M27', 'Fitur: Fast Approach & Return', 'Reputasi: Global Standard']
+            },
+            {
+            id: 'Sugino-Selfeeder2',
+                name: 'Sugino Selfeeder Duo Robot Edition',
+                category: 'Drilling and Tapping Unit-Robot Machining',
+                brand: 'Sugino',
+                image: 'assets/img/SUGINO_SELFEEDER2.png',
+                desc: 'End effector canggih untuk lengan robot industri yang memungkinkan machining multi-sisi yang efisien dengan fleksibilitas robot.',
+                specs: ['Tipe: Robot End Effector', 'Fungsi: Robotic Drilling & Tapping', 'Keunggulan: Multi-Face Machining', 'Integrasi: Seamless Robot Attachment', 'Aplikasi: Complex Geometry Parts']
+            },
+            {
+            id: 'Sugino-Gunfeeder',
+                name: 'Sugino Gun Feeder',
+                category: 'Gun Drill machine',
+                brand: 'Sugino',
+                image: 'assets/img/SUGINO_GUNFEEDER.png',
+                desc: 'Mesin gun drill presisi tinggi untuk pengeboran diameter kecil dan lubang dalam. Dilengkapi perangkat putar workpiece untuk akurasi maksimal.',
+                specs: ['Fungsi: Small Dia & Deep Hole Drilling', 'Fitur: Workpiece Rotation Device', 'Presisi: High Precision', 'Aplikasi: Medical, Hydraulic, Mold', 'Tipe: Single / Multi Spindle']
+            },
+            {
+            id: 'Sugino-Barriquan',
+                name: 'Sugino Barriquan',
+                category: 'Deburring Tool Holder and Spindle Motor',
+                brand: 'Sugino',
+                image: 'assets/img/SUGINO_BARRIQUAN.png',
+                desc: 'Tool holder deburring dengan mekanisme floating (axial compliant) yang mengikuti bentuk workpiece rumit. Ideal untuk deburring otomatis.',
+                specs: ['Fungsi: Automated Deburring', 'Mekanisme: Floating / Axial Compliant', 'Keunggulan: Consistent Pressure', 'Aplikasi: Robotic Deburring, CNC', 'Fitur: Minimizes Robot Load']
+            },
+            {
+            id: 'Sugino-SuperRoll',
+                name: 'Sugino SuperRoll',
+                category: 'Roller Burnishing Tool',
+                brand: 'Sugino',
+                image: 'assets/img/SUGINO_SUPERROLL.png',
+                desc: 'Alat roller burnishing yang menghasilkan mirror finish (hingga 4 micro-inch) dalam satu pass. Meningkatkan kekerasan permukaan tanpa membuang material.',
+                specs: ['Fungsi: Roller Burnishing', 'Hasil: Mirror Finish (≤ 4 micro-inch)', 'Proses: Cold Working (Single Pass)', 'Aplikasi: Inner/Outer Diameter', 'Penyesuaian: 0.0025mm Increment']
+            },
+            {
+            id: 'Sugino-JCCSERIES',
+                name: 'Sugino JCC Series',
+                category: 'Washing and Deburing Machine',
+                brand: 'Sugino',
+                image: 'assets/img/SUGINO_JCCSERIES.png',
+                desc: 'Mesin cuci dan deburring tekanan tinggi (hingga 245 MPa) untuk membersihkan burr dan chip secara menyeluruh dengan nozzle CNC turret.',
+                specs: ['Tekanan: Hingga 245 MPa', 'Fungsi: Washing, Deburring, Chip Removal', 'Sistem: CNC Turret Nozzle', 'Fitur: Transfer, Wash, Dry in One', 'Aplikasi: Precision Parts Cleaning']
+            },
 
-            // EHWA GRINDING
+            // EHWA GRINDING & CUTTING TOOLS (UPDATED 5 NEW PRODUCTS)
             {
                 id: 'ehwa-diamond-wheel',
                 name: 'Ehwa Diamond Grinding Wheel',
@@ -1097,6 +1312,135 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
                 specs: ['Abrasive: Diamond', 'Grit: D107', 'Bond: Resin/Metal', 'Diameter: 100-200mm', 'Application: Carbide']
             },
             {
+                id: 'ehwa-PCDCTYPE',
+                name: 'Ehwa PCD C-Type Insert',
+                category: 'PCD Insert',
+                brand: 'Ehwa',
+                image: 'assets/img/CTYPE.png',
+                desc: 'Insert PCD (Polycrystalline Diamond) tipe C untuk pemesinan material non-ferrous. Memiliki ketahanan aus luar biasa dan ketahanan kejutan tinggi berkat struktur diamond acak.',
+                specs: ['Material: Polycrystalline Diamond (PCD)', 'Tipe: C-Type (CNMG/CNMA shape)', 'Aplikasi: Aluminum, Copper, Non-Ferrous', 'Keunggulan: High Wear & Shock Resistance', 'Grade: EP55/EP59 Available']
+            },
+            {
+                id: 'ehwa-PCDDTYPE',
+                name: 'Ehwa PCD D-Type Insert',
+                category: 'PCD Insert',
+                brand: 'Ehwa',
+                image: 'assets/img/DTYPE.png',
+                desc: 'Insert PCD tipe D dengan geometri 55° untuk finishing presisi pada paduan aluminium dan material non-logam. Memberikan kekasaran permukaan yang sangat halus.',
+                specs: ['Material: Polycrystalline Diamond (PCD)', 'Tipe: D-Type (DNMG/DNMA shape)', 'Aplikasi: Al-Si Alloy, Engineering Plastic', 'Keunggulan: High Surface Finish', 'Fitur: Precision Turning']
+            },
+            {
+                id: 'ehwa-PCDTTYPE',
+                name: 'Ehwa PCD T-Type Insert',
+                category: 'PCD Insert',
+                brand: 'Ehwa',
+                image: 'assets/img/TTYPE.png',
+                desc: 'Insert PCD tipe T (segitiga) untuk operasi turning umum pada material non-ferrous. Sudut potong 60° memberikan keseimbangan antara kekuatan dan ketajaman.',
+                specs: ['Material: Polycrystalline Diamond (PCD)', 'Tipe: T-Type (TNMG/TNMA shape)', 'Aplikasi: General Non-Ferrous Turning', 'Keunggulan: Balanced Strength & Sharpness', 'Fitur: Versatile Application']
+            },
+            {
+                id: 'ehwa-PCDVTYPE',
+                name: 'Ehwa PCD V-Type Insert',
+                category: 'PCD Insert',
+                brand: 'Ehwa',
+                image: 'assets/img/VTYPE.png',
+                desc: 'Insert PCD tipe V (35°) untuk profiling dan finishing kontur kompleks pada material lunak dan non-ferrous. Ideal untuk aplikasi yang membutuhkan aksesibilitas tinggi.',
+                specs: ['Material: Polycrystalline Diamond (PCD)', 'Tipe: V-Type (VNMG/VNMA shape)', 'Aplikasi: Profiling, Contour Finishing', 'Keunggulan: High Accessibility', 'Fitur: Complex Geometry Machining']
+            },
+            {
+                id: 'ehwa-FaceMilling1',
+                name: 'Ehwa AF Milling Cutter',
+                category: 'Face Milling Cutter',
+                brand: 'Ehwa',
+                image: 'assets/img/AFMILLING.png',
+                desc: 'Face milling cutter tipe AF untuk pengerjaan muka umum pada material non-ferrous. Diameter tersedia dari 80mm hingga 250mm dengan desain ekonomis dan efisien.',
+                specs: ['Tipe: AF Face Milling Cutter', 'Diameter: 80D ~ 250D', 'Aplikasi: General Face Milling', 'Material Target: Non-Ferrous Metals', 'Keunggulan: Price Competitiveness']
+            },
+            {
+                id: 'ehwa-FaceMilling2',
+                name: 'Ehwa BF Milling Cutter',
+                category: 'Face Milling Cutter',
+                brand: 'Ehwa',
+                image: 'assets/img/BFFILLING.png',
+                desc: 'Face milling cutter tipe BF yang dioptimalkan khusus untuk material non-ferrous. Diameter 125mm hingga 250mm, dirancang untuk produktivitas tinggi pada aluminium.',
+                specs: ['Tipe: BF Face Milling Cutter', 'Diameter: 125D ~ 250D', 'Aplikasi: Non-Ferrous Materials', 'Material Target: Aluminum Alloys', 'Keunggulan: High Productivity']
+            },
+            {
+                id: 'ehwa-FaceMilling3',
+                name: 'Ehwa CF Milling Cutter',
+                category: 'Face Milling Cutter',
+                brand: 'Ehwa',
+                image: 'assets/img/CFMILLING.png',
+                desc: 'Face milling cutter tipe CF dengan performa tinggi untuk pemotongan material non-ferrous. Diameter 50mm hingga 250mm, menawarkan keseimbangan antara roughing dan finishing.',
+                specs: ['Tipe: CF Face Milling Cutter', 'Diameter: 50D ~ 250D', 'Aplikasi: High Performance Milling', 'Material Target: Non-Ferrous Metals', 'Keunggulan: Roughing & Finishing Balance']
+            },
+            {
+                id: 'ehwa-FaceMilling4',
+                name: 'Ehwa SD Milling Cutter',
+                category: 'Face Milling Cutter',
+                brand: 'Ehwa',
+                image: 'assets/img/SDMILLING.png',
+                desc: 'Face milling cutter tipe SD untuk aplikasi khusus dengan cartridge yang dapat diganti. Mendukung operasi roughing (SDR) dan corner milling (SDR-A) dengan fleksibilitas tinggi.',
+                specs: ['Tipe: SD Face Milling Cutter', 'Fitur: Replaceable Cartridge System', 'Varian: SDR (Rough), SDR-A (Corner)', 'Aplikasi: Special Purpose Milling', 'Keunggulan: High Flexibility']
+            },
+            {
+                id: 'ehwa-FaceMilling5',
+                name: 'Ehwa XF Milling Cutter',
+                category: 'Face Milling Cutter',
+                brand: 'Ehwa',
+                image: 'assets/img/XFMILLING.png',
+                desc: 'Face milling cutter tipe XF yang merupakan kombinasi keunggulan BF dan CF. Dirancang khusus untuk paduan aluminium (Al Alloys), cocok untuk roughing dan finishing dalam satu alat.',
+                specs: ['Tipe: XF Face Milling Cutter', 'Fungsi: Combination of BF & CF', 'Aplikasi: Al Alloys (Roughing & Finishing)', 'Diameter: 100D ~ 250D', 'Keunggulan: Dual Purpose Efficiency']
+            },
+            // --- 5 PRODUK EHWA BARU (UPDATED SPECS) ---
+            {
+                id: 'ehwa-EndMill1',
+                name: 'Ehwa Square EndMill',
+                category: 'Tungsten Carbide Tool',
+                brand: 'Ehwa',
+                image: 'assets/img/SENDMILL.png',
+                desc: 'End mill solid carbide dengan ujung persegi (square end) untuk pemesinan slot, pocketing, dan profiling umum. Material tungsten carbide premium memberikan ketahanan aus tinggi dan rigiditas maksimal.',
+                specs: ['Material: Tungsten Carbide', 'Tipe: Square End Mill', 'Aplikasi: Slotting, Pocketing, Profiling', 'Keunggulan: High Rigidity & Wear Resistance', 'Coating: TiAlN / AlTiN Available']
+            },
+            {
+                id: 'ehwa-EndMill2',
+                name: 'Ehwa Radius EndMill',
+                category: 'Tungsten Carbide Tool',
+                brand: 'Ehwa',
+                image: 'assets/img/RENDMILL.png',
+                desc: 'End mill solid carbide dengan radius sudut (corner radius) untuk meningkatkan kekuatan ujung alat dan menghasilkan finishing permukaan yang lebih halus pada kontur.',
+                specs: ['Material: Tungsten Carbide', 'Tipe: Corner Radius End Mill', 'Aplikasi: Contour Milling, Finishing', 'Keunggulan: Stronger Corner, Better Finish', 'Radius: R0.2 - R2.0 Available']
+            },
+            {
+                id: 'ehwa-EndMill3',
+                name: 'Ehwa Ball EndMill',
+                category: 'Tungsten Carbide Tool',
+                brand: 'Ehwa',
+                image: 'assets/img/BENDMILL.png',
+                desc: 'End mill solid carbide dengan ujung bola (ball nose) untuk pemesinan 3D, die & mold, dan permukaan kompleks. Presisi tinggi pada radius bola menjamin akurasi geometri.',
+                specs: ['Material: Tungsten Carbide', 'Tipe: Ball Nose End Mill', 'Aplikasi: 3D Machining, Die & Mold', 'Keunggulan: High Precision Ball Radius', 'Fitur: Center Cutting']
+            },
+            {
+                id: 'ehwa-WearParts1',
+                name: 'Ehwa Sliding Shoe / V-Block',
+                category: 'Wear Parts',
+                brand: 'Ehwa',
+                image: 'assets/img/SLIDINGSHOE.png',
+                desc: 'Komponen wear parts presisi tinggi untuk mesin centerless grinding. Sliding shoe dan V-block terbuat dari material tahan aus khusus untuk menopang workpiece dengan stabilitas maksimal.',
+                specs: ['Material: High Wear Resistance Alloy', 'Tipe: Sliding Shoe & V-Block', 'Aplikasi: Centerless Grinding Machines', 'Keunggulan: Excellent Wear Resistance', 'Fitur: High Precision & Customizable']
+            },
+            {
+                id: 'ehwa-WearParts2',
+                name: 'Ehwa Bearing Backing Plate',
+                category: 'Wear Parts',
+                brand: 'Ehwa',
+                image: 'assets/img/BEARINGBACK.png',
+                desc: 'Backing plate presisi untuk aplikasi bearing manufacturing. Dirancang dengan toleransi ketat dan permukaan finish tinggi untuk memastikan kinerja optimal pada perakitan bearing.',
+                specs: ['Material: Precision Ground Steel', 'Tipe: Bearing Backing Plate', 'Aplikasi: Bearing Manufacturing', 'Keunggulan: High Precision & Surface Finish', 'Fitur: Customizable Dimensions']
+            },
+
+             // YAMASA (UPDATED 13 PRODUCTS - ROLLER BURNISHING TOOLS)
+            {
                 id: 'yamasa-super-roll',
                 name: 'Yamasa Super Roll',
                 category: 'conveyor',
@@ -1105,8 +1449,6 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
                 desc: 'Roller presisi tinggi untuk sistem conveyor. Permukaan halus dan tahan aus untuk pergerakan material yang stabil.',
                 specs: ['Material: High Carbon Steel', 'Surface: Hardened & Polished', 'Tolerance: Presisi Tinggi', 'Durability: Tahan Aus', 'Aplikasi: Conveyor System']
             },
-
-            // YAMASA & YUH CHERN
             {
                 id: 'yamasa-tap-m6',
                 name: 'Yamasa Mandrel',
@@ -1117,9 +1459,128 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
                 specs: ['Type: Precision Mandrel', 'Material: Alloy Steel', 'Runout: < 0.005mm', 'Hardness: HRC60+', 'Aplikasi: Grinding Machine']
             },
             {
+                id: 'yamasa-DX',
+                name: 'Yamasa DX Series',
+                category: 'Internal Roller Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/DXSERIES.png',
+                desc: 'Alat burnishing rol internal untuk lubang silindris (Ø5-350mm). Mencapai finishing permukaan superior, akurasi dimensi tinggi (toleransi H8), dan peningkatan kekuatan permukaan dalam satu penyesuaian.',
+                specs: ['Tipe: Internal Roller Burnishing', 'Kapasitas: Ø5 - 350 mm', 'Toleransi: Hingga H8', 'Material Target: Hingga 45 HRC', 'Kecepatan: Max 250 m/min']
+            },
+            {
+                id: 'yamasa-MDX',
+                name: 'Yamasa MDX Series',
+                category: 'Internal Micro Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/MDXSERIES.png',
+                desc: 'Alat micro burnishing internal dengan desain kompak untuk area kerja terbatas. Dirancang khusus untuk mesin tipe Swiss, sliding headstock, dan multi-spindle.',
+                specs: ['Tipe: Internal Micro Burnishing', 'Desain: Compact for Swiss Lathes', 'Kapasitas: Ø5 - 20 mm', 'Fitur: Internal Coolant', 'Aplikasi: Multi-spindle Machines']
+            },
+            {
+                id: 'yamasa-MX',
+                name: 'Yamasa MX Series',
+                category: 'External Roller Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/MXSERIES.png',
+                desc: 'Alat burnishing rol eksternal untuk poros silindris. Mencapai kekasaran permukaan rendah, toleransi presisi (h7/H8), dan kualitas permukaan superior pada poros.',
+                specs: ['Tipe: External Roller Burnishing', 'Aplikasi: Cylindrical Shafts', 'Toleransi: h7 / H8', 'Material Target: Hingga 45 HRC', 'Fitur: Precision Adjustment']
+            },
+            {
+                id: 'yamasa-MXS',
+                name: 'Yamasa MXS Series',
+                category: 'External Micro Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/MXSERIES.png',
+                desc: 'Alat micro burnishing eksternal untuk poros berukuran kecil. Desain kompak memungkinkan penggunaan pada mesin dengan ruang terbatas dan presisi tinggi.',
+                specs: ['Tipe: External Micro Burnishing', 'Aplikasi: Small Diameter Shafts', 'Desain: Compact & Precise', 'Material Target: Hingga 45 HRC', 'Keunggulan: Space Saving']
+            },
+            {
+                id: 'yamasa-DS',
+                name: 'Yamasa DS Series',
+                category: 'Diamond Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/DSSERIES.png',
+                desc: 'Alat burnishing diamond untuk mencapai kekasaran permukaan sangat rendah, kilau tinggi (high gloss), dan dimensi presisi pada permukaan internal dan eksternal.',
+                specs: ['Tipe: Diamond Burnishing', 'Hasil: High Gloss & Low Roughness', 'Aplikasi: Internal & External Surfaces', 'Material: Diamond Tip', 'Keunggulan: Mirror Finish']
+            },
+            {
+                id: 'yamasa-SX5',
+                name: 'Yamasa SX-5/8',
+                category: 'Single Roller Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/SX5.png',
+                desc: 'Alat burnishing rol tunggal untuk poros bertingkat, poros polos, tapers, dan permukaan datar. Meningkatkan kekerasan permukaan dan akurasi dimensi.',
+                specs: ['Tipe: Single Roller Burnishing', 'Aplikasi: Stepped/Plain Shafts, Tapers', 'Material Target: Hingga 45 HRC', 'Kecepatan: Max 250 m/min', 'Fitur: Versatile Application']
+            },
+            {
+                id: 'yamasa-SX14',
+                name: 'Yamasa SX-14',
+                category: 'Single Roller Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/SX14.png',
+                desc: 'Alat burnishing rol tunggal serbaguna untuk berbagai kontur dan permukaan. Mudah disesuaikan dan memberikan hasil finishing yang konsisten pada material logam.',
+                specs: ['Tipe: Single Roller Burnishing', 'Aplikasi: Contours & Flat Surfaces', 'Material Target: Hingga 1400 N/mm²', 'Fitur: Easy Adjustment', 'Keunggulan: Consistent Finish']
+            },
+            {
+                id: 'yamasa-SX35M',
+                name: 'Yamasa SX-35M',
+                category: 'Hole/Shaft Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/SX35M.png',
+                desc: 'Alat burnishing rol tunggal untuk lubang dan poros dengan panjang terbatas. Ideal untuk aplikasi yang membutuhkan presisi pada area spesifik.',
+                specs: ['Tipe: Single Roller (Hole/Shaft)', 'Aplikasi: Limited Length Holes/Shafts', 'Material Target: Hingga 45 HRC', 'Fitur: Precision for Short Areas', 'Keunggulan: High Accuracy']
+            },
+            {
+                id: 'yamasa-SX35D',
+                name: 'Yamasa SX-35D',
+                category: 'Hole Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/SX35D.png',
+                desc: 'Alat burnishing khusus untuk lubang (hole burnishing) dengan desain optimasi untuk kedalaman tertentu. Memberikan finishing halus pada dinding lubang.',
+                specs: ['Tipe: Hole Burnishing Tool', 'Aplikasi: Specific Hole Depths', 'Material Target: Hingga 45 HRC', 'Fitur: Optimized for Holes', 'Keunggulan: Smooth Wall Finish']
+            },
+            {
+                id: 'yamasa-SX52D',
+                name: 'Yamasa SX-52D',
+                category: 'Hole Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/SX52D.png',
+                desc: 'Alat burnishing rol tunggal untuk lubang, poros, dan tapers internal-eksternal dengan panjang terbatas. Mampu memburnish kontur dan radius dengan presisi.',
+                specs: ['Tipe: Single Roller (Limited Length)', 'Aplikasi: Holes, Shafts, Tapers', 'Fitur: Contour & Radius Burnishing', 'Material Target: Hingga 45 HRC', 'Keunggulan: Versatile Geometry']
+            },
+            {
+                id: 'yamasa-RX45',
+                name: 'Yamasa RX-45',
+                category: 'Radial/Fillet Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/RX45.png',
+                desc: 'Alat burnishing radial untuk radius, fillet, dan kontur yang bersamaan dengan permukaan datar silindris. Ideal untuk finishing transisi permukaan yang rumit.',
+                specs: ['Tipe: Radial/Fillet Burnishing', 'Aplikasi: Radii, Fillets, Contours', 'Material Target: Hingga 45 HRC', 'Fitur: Concurrent Surface Finishing', 'Keunggulan: Complex Geometry']
+            },
+            {
+                id: 'yamasa-RX45H',
+                name: 'Yamasa RX-45H',
+                category: 'Radial/Shaft Burnishing 75°',
+                brand: 'Yamasa',
+                image: 'assets/img/RX45H.png',
+                desc: 'Alat burnishing radial untuk permukaan silindris dengan radius penghubung hingga 75°, fillet, dan permukaan bola. Dirancang untuk geometri spesifik.',
+                specs: ['Tipe: Radial Burnishing (75°)', 'Aplikasi: Connecting Radii up to 75°', 'Fitur: Spherical & Fillet Surfaces', 'Material Target: Hingga 45 HRC', 'Keunggulan: Specific Angle Finish']
+            },
+            {
+                id: 'yamasa-RXS45',
+                name: 'Yamasa RXS-45',
+                category: 'Radial Burnishing',
+                brand: 'Yamasa',
+                image: 'assets/img/RXS45.png',
+                desc: 'Alat burnishing radial dengan desain kompak untuk finishing radius dan permukaan transisi pada material kekerasan sedang. Efisien dan presisi.',
+                specs: ['Tipe: Compact Radial Burnishing', 'Aplikasi: Radii & Transition Surfaces', 'Material Target: Medium Hardness', 'Desain: Compact & Efficient', 'Keunggulan: Precision Finishing']
+            },
+
+            // YUH CHERN (UPDATED NEW PRODUCTS)
+            {
                 id: 'yuhchern-hanger',
                 name: 'Yuh Chern Hanger Painting',
-                category: 'conveyor',
+                category: 'Conveyor',
                 brand: 'Yuh Chern',
                 image: 'assets/img/HANGER_PAINTING.png',
                 desc: 'Hanger jig khusus untuk proses painting conveyor. Desain kuat dan tahan panas oven cat hingga 200°C.',
@@ -1128,24 +1589,266 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
             {
                 id: 'yuhchren-chain',
                 name: 'Yu Chern Chain Painting',
-                category: 'conveyor',
+                category: 'Conveyor',
                 brand: 'Yuh Chern',
                 image: 'assets/img/RANTAI_PAINTING.png',
                 desc: 'Rantai conveyor khusus untuk jalur painting. Tahan terhadap cat, solvent, dan suhu tinggi di oven curing.',
                 specs: ['Type: Painting Conveyor Chain', 'Material: Special Alloy', 'Heat Resistance: High Temp', 'Coating: Anti-Corrosion', 'Aplikasi: Paint Line']
             },
+            {
+                id: 'yuhchren-chain1',
+                name: 'Yu Chern 2 Ton Enclosed Track',
+                category: 'Conveyor Chain',
+                brand: 'Yuh Chern',
+                image: 'assets/img/2TONENC.png',
+                desc: 'Rantai enclosed track kapasitas 2 ton untuk sistem conveyor overhead. Desain tertutup melindungi rantai dari kontaminasi dan mengurangi kebutuhan pelumasan.',
+                specs: ['Kapasitas: 2 Ton', 'Tipe: Enclosed Track Chain', 'Material: Alloy Steel', 'Keunggulan: Low Maintenance', 'Aplikasi: Light Duty Overhead Conveyor']
+            },
+            {
+                id: 'yuhchren-chain2',
+                name: 'Yu Chern 5 Ton Enclosed Track',
+                category: 'Conveyor Chain',
+                brand: 'Yuh Chern',
+                image: 'assets/img/5TONENC.png',
+                desc: 'Rantai enclosed track kapasitas 5 ton untuk aplikasi industri menengah. Konstruksi kokoh menjamin keamanan dan kelancaran transportasi beban berat.',
+                specs: ['Kapasitas: 5 Ton', 'Tipe: Enclosed Track Chain', 'Material: High Strength Alloy', 'Keunggulan: Heavy Duty Performance', 'Aplikasi: Medium Duty Overhead Conveyor']
+            },
+            {
+                id: 'yuhchren-chain3',
+                name: 'Yu Chern 7 Ton Enclosed Track',
+                category: 'Conveyor Chain',
+                brand: 'Yuh Chern',
+                image: 'assets/img/7TONENC.png',
+                desc: 'Rantai enclosed track kapasitas 7 ton untuk aplikasi industri berat. Dirancang untuk menangani beban sangat berat dengan faktor keamanan tinggi.',
+                specs: ['Kapasitas: 7 Ton', 'Tipe: Enclosed Track Chain', 'Material: Forged Alloy Steel', 'Keunggulan: Extreme Load Capacity', 'Aplikasi: Heavy Duty Overhead Conveyor']
+            },
+            {
+                id: 'yuhchren-chain4',
+                name: 'Yu Chern Drop Forged Chain',
+                category: 'Drop Forged Chain',
+                brand: 'Yuh Chern',
+                image: 'assets/img/DROPCHAIN.png',
+                desc: 'Rantai drop forged (tempa) yang sangat kuat dan tahan lama. Proses penempaan meningkatkan struktur butir logam untuk ketahanan aus dan tarik maksimal.',
+                specs: ['Tipe: Drop Forged Rivetless Chain', 'Material: Forged Carbon Steel', 'Keunggulan: High Tensile Strength', 'Pitch: Standard Pitch Available', 'Aplikasi: Paint Line, Assembly Line']
+            },
+            {
+                id: 'yuhchren-TowBall',
+                name: 'Yu Chern Tow Ball',
+                category: 'Tow Ball',
+                brand: 'Yuh Chern',
+                image: 'assets/img/TOWBALL.png',
+                desc: 'Komponen tow ball untuk sistem conveyor power & free. Memungkinkan akumulasi dan pelepasan beban secara otomatis pada jalur produksi.',
+                specs: ['Tipe: Conveyor Tow Ball', 'Fungsi: Power & Free System', 'Material: Hardened Steel', 'Keunggulan: Smooth Engagement', 'Aplikasi: Accumulation Conveyor']
+            },
+            {
+                id: 'yuhchren-chain5',
+                name: 'Yu Chern Floor Drag',
+                category: 'Conveyor Chain',
+                brand: 'Yuh Chern',
+                image: 'assets/img/FLOORDRAG.png',
+                desc: 'Rantai floor drag untuk menarik beban di lantai (floor conveyor). Desain link yang kuat mampu menahan gaya gesek dan tarikan tinggi.',
+                specs: ['Tipe: Floor Drag Chain', 'Aplikasi: Floor Conveyor System', 'Material: Wear Resistant Steel', 'Keunggulan: High Drag Force', 'Fitur: Heavy Duty Links']
+            },
+            {
+                id: 'yuhchren-BoltKit',
+                name: 'Yu Chern U-Bolt Kit',
+                category: 'U-Bolt Kit',
+                brand: 'Yuh Chern',
+                image: 'assets/img/UBOLTKIT.png',
+                desc: 'Kit U-Bolt presisi untuk pemasangan dan pengencangan komponen conveyor. Material baja berkualitas tinggi menjamin kekakuan sambungan.',
+                specs: ['Tipe: U-Bolt Assembly Kit', 'Material: High Grade Steel', 'Fungsi: Conveyor Mounting', 'Keunggulan: Corrosion Resistant', 'Isi: U-Bolt, Nuts, Plates']
+            },
+            {
+                id: 'yuhchren-DFlex',
+                name: 'Yu Chern Double Flex',
+                category: 'Conveyor Chain',
+                brand: 'Yuh Chern',
+                image: 'assets/img/DIFLEX.png',
+                desc: 'Rantai double flex yang mampu bergerak ke dua arah (horizontal dan vertikal). Ideal untuk jalur conveyor dengan tikungan kompleks dan elevasi.',
+                specs: ['Tipe: Double Flex Chain', 'Fitur: Multi-Directional Movement', 'Material: Alloy Steel', 'Keunggulan: Complex Path Capability', 'Aplikasi: Spiral Conveyor, Curves']
+            },
+            {
+                id: 'yuhchren-DustCover',
+                name: 'Yu Chern Dust Cover',
+                category: 'Dust Cover',
+                brand: 'Yuh Chern',
+                image: 'assets/img/DUSTCOVER.png',
+                desc: 'Penutup debu (dust cover) untuk melindungi rel dan rantai conveyor dari kotoran dan partikel asing. Memperpanjang umur pakai komponen.',
+                specs: ['Tipe: Conveyor Dust Cover', 'Material: PVC / Metal Sheet', 'Fungsi: Protection from Debris', 'Keunggulan: Easy Installation', 'Aplikasi: Clean Room, Paint Booth']
+            },
+            {
+                id: 'yuhchren-Coupling',
+                name: 'Yu Chern Coupling',
+                category: 'Coupling',
+                brand: 'Yuh Chern',
+                image: 'assets/img/COUPLING.png',
+                desc: 'Coupling (sambungan) untuk menghubungkan poros motor dengan drive unit conveyor. Menjamin transmisi daya yang efisien dan meminimalkan getaran.',
+                specs: ['Tipe: Shaft Coupling', 'Fungsi: Power Transmission', 'Material: Steel / Aluminum', 'Keunggulan: Vibration Damping', 'Aplikasi: Conveyor Drive System']
+            },
+            {
+                id: 'yuhchren-RFType',
+                name: 'Yu Chern RF Type Industrial',
+                category: 'Conveyor Chain',
+                brand: 'Yuh Chern',
+                image: 'assets/img/RFTYPE.png',
+                desc: 'Rantai industri tipe RF untuk aplikasi umum dan berat. Desain link yang efisien memberikan keseimbangan antara kekuatan dan berat.',
+                specs: ['Tipe: RF Type Chain', 'Aplikasi: General Industrial Conveyor', 'Material: Carbon Steel', 'Keunggulan: Cost Effective', 'Fitur: Standard Duty']
+            },
+            {
+                id: 'yuhchren-PintleHook',
+                name: 'Yu Chern Pintle Hook',
+                category: 'Pintle Hook',
+                brand: 'Yuh Chern',
+                image: 'assets/img/PINTLEHOOK.png',
+                desc: 'Rantai pintle hook untuk aplikasi yang membutuhkan pelepasan muatan yang mudah dan pembersihan sederhana. Cocok untuk lingkungan kotor.',
+                specs: ['Tipe: Pintle Hook Chain', 'Fitur: Easy Cleaning & Release', 'Material: Malleable Iron / Steel', 'Keunggulan: Simple Design', 'Aplikasi: Agriculture, Waste Handling']
+            },
+            {
+                id: 'yuhchren-SideLink',
+                name: 'Yu Chern Side Link Pusher Log',
+                category: 'Side Link Pusher Log',
+                brand: 'Yuh Chern',
+                image: 'assets/img/SIDELINKPUSHER.png',
+                desc: 'Side link dengan pusher log untuk mendorong produk di sepanjang jalur conveyor. Memastikan posisi produk tetap akurat selama proses.',
+                specs: ['Tipe: Side Link with Pusher', 'Fungsi: Product Pushing/Guiding', 'Material: Steel', 'Keunggulan: Precise Positioning', 'Aplikasi: Assembly Line, Packaging']
+            },
 
-            // JUKYO CHAIN
+            // JUKYO CHAIN (UPDATED 14 NEW PRODUCTS)
             {
                 id: 'jukyo-painting-chain',
                 name: 'Jukyo Overhead Painting Chain',
-                category: 'conveyor',
+                category: 'Conveyor Chain',
                 brand: 'Jukyo',
                 image: 'assets/img/RANTAI_PAINTINGJ.png',
                 desc: 'Rantai overhead conveyor tipe X458 untuk sistem painting. Kuat, presisi, dan tahan terhadap cat dan suhu tinggi.',
                 specs: ['Type: X458 Drop Forged', 'Pitch: 76.2mm', 'Material: Alloy Steel', 'Heat Treatment: Yes', 'Application: Paint Line']
+            },
+            {
+                id: 'jukyo-2060F',
+                name: 'Jukyo 2060 Free Flow',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/2060F.png',
+                desc: 'Rantai free flow seri 2060 untuk sistem conveyor akumulasi. Memungkinkan produk berhenti sementara tanpa menghentikan pergerakan rantai utama.',
+                specs: ['Tipe: Free Flow Chain 2060', 'Fitur: Accumulation Capability', 'Material: Carbon Steel', 'Aplikasi: Assembly Line', 'Keunggulan: Smooth Stop & Go']
+            },
+            {
+                id: 'jukyo-2080F',
+                name: 'Jukyo 2080 Free Flow',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/2080F.png',
+                desc: 'Rantai free flow seri 2080 dengan kapasitas beban lebih besar. Ideal untuk lini produksi yang membutuhkan akumulasi produk berat.',
+                specs: ['Tipe: Free Flow Chain 2080', 'Kapasitas: Heavy Duty', 'Material: Alloy Steel', 'Aplikasi: Heavy Assembly Line', 'Fitur: High Load Accumulation']
+            },
+            {
+                id: 'jukyo-Alumunium',
+                name: 'Jukyo Alumunium Roller Free Flow Chain',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/ALUROLL.png',
+                desc: 'Rantai free flow dengan roller aluminium. Ringan, tahan korosi, dan minim kebisingan, cocok untuk lingkungan bersih dan elektronik.',
+                specs: ['Tipe: Aluminum Roller Chain', 'Material: Aluminum Alloy', 'Keunggulan: Lightweight & Quiet', 'Aplikasi: Electronics, Clean Room', 'Fitur: Corrosion Resistant']
+            },
+            {
+                id: 'jukyo-BracketC',
+                name: 'Jukyo Bracket Conveyor',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/BRACKET.png',
+                desc: 'Rantai conveyor dengan bracket khusus untuk membawa jig atau produk dengan bentuk tidak beraturan. Desain custom sesuai kebutuhan.',
+                specs: ['Tipe: Bracket Conveyor Chain', 'Fitur: Custom Bracket Attachment', 'Material: Steel', 'Aplikasi: Special Handling', 'Keunggulan: Secure Holding']
+            },
+            {
+                id: 'jukyo-CustomerM',
+                name: 'Jukyo Customer-Made Roller Chain',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/CROLLCHA.png',
+                desc: 'Rantai roller yang dibuat khusus sesuai spesifikasi pelanggan (custom-made). Solusi tepat untuk aplikasi conveyor yang unik dan spesifik.',
+                specs: ['Tipe: Custom Roller Chain', 'Spesifikasi: Made to Order', 'Material: Various Grades', 'Aplikasi: Special Applications', 'Keunggulan: Tailored Solution']
+            },
+            {
+                id: 'jukyo-DPITCH',
+                name: 'Jukyo Double Pitch Chain',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/DPITCHC.png',
+                desc: 'Rantai double pitch (pitch ganda) untuk conveyor kecepatan rendah dengan beban ringan hingga sedang. Ekonomis dan ringan untuk jarak jauh.',
+                specs: ['Tipe: Double Pitch Chain', 'Fitur: Lightweight & Economical', 'Material: Carbon Steel', 'Aplikasi: Long Distance Conveyor', 'Keunggulan: Cost Effective']
+            },
+            {
+                id: 'jukyo-FRollerC',
+                name: 'Jukyo F Roller Conveyor Chain',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/FROLLER.png',
+                desc: 'Rantai conveyor dengan roller tipe F (flange roller). Memberikan panduan lateral yang baik dan stabilitas tinggi pada jalur conveyor.',
+                specs: ['Tipe: F-Roller Chain', 'Fitur: Flange Roller Guidance', 'Material: Steel', 'Aplikasi: Guided Conveyor', 'Keunggulan: Lateral Stability']
+            },
+            {
+                id: 'jukyo-FFChain',
+                name: 'Jukyo Free Flow Chain',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/FREEFLOWCHAIN.png',
+                desc: 'Rantai free flow standar untuk sistem akumulasi umum. Memungkinkan fleksibilitas tinggi dalam pengaturan lini produksi.',
+                specs: ['Tipe: Standard Free Flow Chain', 'Fungsi: Accumulation System', 'Material: Steel', 'Aplikasi: General Assembly', 'Keunggulan: Flexible Layout']
+            },
+            {
+                id: 'jukyo-HeavyDuty',
+                name: 'Jukyo Heavy Duty Stainless',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/HEAVYDUTY.png',
+                desc: 'Rantai heavy duty berbahan stainless steel. Tahan korosi ekstrem dan kekuatan tinggi untuk lingkungan basah, kimia, atau makanan.',
+                specs: ['Tipe: Heavy Duty Stainless Chain', 'Material: Stainless Steel (SUS304/316)', 'Keunggulan: Corrosion Resistant', 'Aplikasi: Food, Chemical, Wet Env', 'Fitur: High Strength']
+            },
+            {
+                id: 'jukyo-RF12250',
+                name: 'Jukyo RF12280 Side F Roller',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/RF12280.png',
+                desc: 'Rantai dengan side roller tipe F seri RF12280. Dirancang untuk beban berat dengan panduan samping yang presisi pada jalur lurus.',
+                specs: ['Tipe: Side F-Roller Chain', 'Model: RF12280', 'Material: Alloy Steel', 'Aplikasi: Heavy Straight Conveyor', 'Keunggulan: Precise Guidance']
+            },
+            {
+                id: 'jukyo-RollerChain',
+                name: 'Jukyo Roller Chain',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/ROLLERCHAIN.png',
+                desc: 'Rantai roller standar industri (ANSI/DIN) untuk transmisi daya dan conveyor umum. Tersedia dalam berbagai ukuran pitch dan material.',
+                specs: ['Tipe: Standard Roller Chain', 'Standar: ANSI / DIN', 'Material: Carbon Steel', 'Aplikasi: Power Transmission', 'Keunggulan: Universal Fit']
+            },
+            {
+                id: 'jukyo-RS40S',
+                name: 'Jukyo RS40 Series',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/RS40S.png',
+                desc: 'Rantai seri RS40 dengan attachment khusus. Cocok untuk aplikasi conveyor yang memerlukan pemasangan slat atau bucket.',
+                specs: ['Tipe: RS40 Attachment Chain', 'Fitur: Special Attachments', 'Material: Steel', 'Aplikasi: Slat/Bucket Conveyor', 'Keunggulan: Versatile Mounting']
+            },
+            {
+                id: 'jukyo-RS50W',
+                name: 'Jukyo RS50 With Extra Roller',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/RS50W.png',
+                desc: 'Rantai seri RS50 dengan roller tambahan (extra roller). Mengurangi gesekan dan keausan pada rel panduan untuk umur pakai lebih panjang.',
+                specs: ['Tipe: RS50 Extra Roller Chain', 'Fitur: Additional Rollers', 'Material: Steel', 'Aplikasi: Guided Rail Conveyor', 'Keunggulan: Reduced Friction']
+            },
+            {
+                id: 'jukyo-RS60S',
+                name: 'Jukyo RS60 Special Attachment',
+                category: 'Conveyor Chain',
+                brand: 'Jukyo',
+                image: 'assets/img/RS60S.png',
+                desc: 'Rantai seri RS60 dengan attachment spesial untuk beban berat. Dirancang untuk aplikasi industri yang menuntut kekuatan dan kustomisasi tinggi.',
+                specs: ['Tipe: RS60 Special Attachment', 'Kapasitas: Heavy Duty', 'Material: Alloy Steel', 'Aplikasi: Industrial Heavy Conveyor', 'Keunggulan: Customizable']
             }
-            
         ];
 
         let cart = [];
@@ -1225,7 +1928,52 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
                 'cnc': 'Mesin CNC',
                 'filtration': 'Filtrasi',
                 'grinding': 'Grinding Wheel',
-                'conveyor': 'Conveyor'
+                'conveyor': 'Conveyor',
+                'Conveyor Chain': 'Conveyor Chain',
+                'Cutting Tools': 'Cutting Tools',
+                'Cutting Fluids': 'Cutting Oil',
+                'Spot Weld Cutter': 'Spot Cutter',
+                'Saw Blades': 'Blade Saw',
+                'Drill Sharpener': 'Drill Sharpener',
+                'End Mill Grinder': 'End Mill Grinder',
+                'Automatic Drill Sharpener': 'Auto Sharpener',
+                'Static Eliminator': 'Ion Shower',
+                'Spot Weld Drill Sharpener': 'Spot Weld Sharpener',
+                'Surface Preparation': 'Surface Prep',
+                'Color Test Sheet': 'Color Test',
+                'Water Jet Cutter': 'Water Jet',
+                'Combined Type': 'Combined Tool',
+                'Machining Center': 'Machining Center',
+                'Drilling and Tapping Unit': 'Drill/Tap Unit',
+                'Water Beam Machine': 'Water Beam',
+                'Drilling and Tapping Unit-Robot Machining': 'Robot Machining',
+                'Gun Drill machine': 'Gun Drill',
+                'Deburring Tool Holder and Spindle Motor': 'Deburring',
+                'Roller Burnishing Tool': 'Burnishing',
+                'Washing and Deburing Machine': 'Washing/Deburring',
+                'Internal Roller Burnishing': 'Internal Burnishing',
+                'Internal Micro Burnishing': 'Micro Burnishing',
+                'External Roller Burnishing': 'External Burnishing',
+                'External Micro Burnishing': 'Ext. Micro Burnishing',
+                'Diamond Burnishing': 'Diamond Burnishing',
+                'Single Roller Burnishing': 'Single Roller',
+                'Hole/Shaft Burnishing': 'Hole/Shaft Burnish',
+                'Hole Burnishing': 'Hole Burnishing',
+                'Radial/Fillet Burnishing': 'Radial/Fillet',
+                'Radial/Shaft Burnishing 75°': 'Radial 75°',
+                'Radial Burnishing': 'Radial Burnishing',
+                'PCD Insert': 'PCD Insert',
+                'Face Milling Cutter': 'Face Milling',
+                'Tungsten Carbide Tool': 'Carbide Tool',
+                'Wear Parts': 'Wear Parts',
+                'Drop Forged Chain': 'Drop Forged',
+                'Tow Ball': 'Tow Ball',
+                'U-Bolt Kit': 'U-Bolt Kit',
+                'Dust Cover': 'Dust Cover',
+                'Coupling': 'Coupling',
+                'Pintle Hook': 'Pintle Hook',
+                'Side Link  Pusher Log': 'Side Link Pusher',
+                'Side Link Pusher Log': 'Side Link Pusher'
             };
             return names[cat] || cat;
         }
@@ -1419,40 +2167,6 @@ background: linear-gradient(to right, #4f46e5, #818cf8);
             // Open in new tab
             window.open(url, '_blank');
         }
-
-        // --- FUNGSI BARU: KIRIM KE EMAIL (MAILTO) ---
-function sendToEmail(e) {
-    e.preventDefault();
-    
-    // Ambil nilai dari form email
-    const name = document.getElementById('email-name').value.trim();
-    const email = document.getElementById('email-address').value.trim();
-    const subject = document.getElementById('email-subject').value;
-    const message = document.getElementById('email-message').value.trim();
-
-    if (!name || !email || !message) {
-        alert("Mohon lengkapi Nama, Email, dan Pesan.");
-        return;
-    }
-
-    // GANTI EMAIL INI DENGAN EMAIL PERUSAHAAN ANDA
-    const destinationEmail = "sales@tatehnik.com"; 
-    
-    // Format Body Email (%0D%0A adalah enter/baris baru)
-    const body = `Halo Admin TTM,%0D%0A%0D%0A` +
-                 `Nama Pengirim: ${name}%0D%0A` +
-                 `Email Pengirim: ${email}%0D%0A` +
-                 `Topik: ${subject}%0D%0A%0D%0A` +
-                 `Pesan:%0D%0A${message}%0D%0A%0D%0A` +
-                 `Terima kasih.`;
-
-    // Buat link mailto
-    // encodeURIComponent memastikan spasi dan karakter khusus terbaca benar di URL
-    const mailtoLink = `mailto:${destinationEmail}?subject=${encodeURIComponent(subject)}&body=${body}`;
-
-    // Buka aplikasi email default pengguna
-    window.location.href = mailtoLink;
-}
 
         // Close modal on outside click
         document.getElementById('product-modal').addEventListener('click', function(e) {
